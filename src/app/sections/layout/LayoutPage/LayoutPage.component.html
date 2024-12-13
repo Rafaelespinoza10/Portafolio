@@ -1,0 +1,35 @@
+<div class="flex bg-slate-900 min-h-screen">
+  <div class="container mx-auto h-screen">
+    <div class="flex bg-slate-900 h-full">
+
+      <!-- Sidebar siempre visible en pantallas medianas y grandes -->
+      <div class="md:flex md:w-1/3 h-screen bg-slate-900 hidden">
+        <shared-sideBar></shared-sideBar>
+      </div>
+
+      <!-- Contenedor principal para el contenido con scroll solo en router-outlet -->
+      <div class="flex-grow flex flex-col h-screen">
+
+        <!-- Barra de navegación para dispositivos pequeños -->
+        <div class="md:hidden align-top col-span-1">
+          <div class=" container-bar-nav  h-10 w-full">
+            <shared-nav-bar></shared-nav-bar>
+          </div>
+        </div>
+
+        <!-- Contenedor de router-outlet con desplazamiento independiente -->
+        <div class="h-[100%] overflow-y-auto
+        [&::-webkit-scrollbar]:w-2
+        [&::-webkit-scrollbar-track]:bg-gray-100
+        [&::-webkit-scrollbar-thumb]:bg-gray-300
+        dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+        dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
+          <router-outlet></router-outlet>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

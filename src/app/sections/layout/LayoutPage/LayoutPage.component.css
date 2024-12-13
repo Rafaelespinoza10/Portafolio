@@ -1,0 +1,8 @@
+.scroll-container {
+  height: 100%;        /* Asegura que el contenedor ocupe toda la altura del área disponible */
+  overflow-y: auto;
+}
+
+.container-bar-nav{
+  margin-bottom: 5.7rem;
+}

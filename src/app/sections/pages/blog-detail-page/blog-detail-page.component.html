@@ -1,0 +1,60 @@
+<div class="bg-transparent min-h-screen flex items-center justify-center py-10 px-5 animate-fade-up animate-once animate-ease-in">
+  <div class="bg-transparent  shadow-lg rounded-lg max-w-3xl w-full overflow-hidden ">
+    <!-- Imagen de cabecera -->
+    <div class="relative">
+      <img
+        src={{article.image}}
+        alt="Imagen del artículo"
+        class="w-full h-64 object-cover"
+      />
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <h1 class="absolute bottom-5 left-5 text-white text-3xl font-bold px-4">
+        {{article.title}}
+      </h1>
+    </div>
+
+    <!-- Contenido del artículo -->
+    <div class="p-8 ">
+      <!-- Fecha y detalles del autor -->
+      <div class="text-gray-600 text-sm mb-6">
+        <span> {{article.date}} </span>
+        <span class="mx-2">•</span>
+        <span>Autor: <strong>{{article.author}}</strong></span>
+      </div>
+
+      <!-- Cuerpo del artículo -->
+      <p class="  leading-relaxed text-2xl mb-4 text-indigo-400">
+        {{article.introduction}}
+      </p>
+
+      <div class="text-white text-lg leading-relaxed  font-medium space-y-4">
+        <p *ngFor="let paragraph of article.description.split('\n')">
+          {{ paragraph }}
+        </p>
+      </div>
+
+
+      <!-- Botones de compartir -->
+      <div class="mt-8 flex items-center space-x-4">
+        <button
+          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors"
+          (click)="shareOnTwitter()"
+        >
+          Compartir en Twitter
+        </button>
+        <button
+          class="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition-colors"
+          (click)="shareOnLinkedIn()"
+        >
+          Compartir en LinkedIn
+        </button>
+        <button
+        (click)="copyLink()"
+        class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
+        >
+          Copiar enlace
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

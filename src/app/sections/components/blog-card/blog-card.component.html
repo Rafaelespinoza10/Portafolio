@@ -1,0 +1,25 @@
+blog-card.component.html
+<section class="bg-transparent py-16">
+
+  <div class="max-w-6xl mx-auto px-6 text-center mt-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <!-- Curso 1 -->
+      <div class="group relative overflow-hidden bg-white dark:bg-gray-900 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+
+      <img [src]="article.image" alt="Imagen del artículo" class="w-full h-48 object-cover">
+      <!-- Detalles del artículo -->
+      <div class="p-4">
+        <h2 class="text-2xl font-semibold text-gray-800">{{ article.title }}</h2>
+        <p class="text-gray-600 mt-2">{{ article.description }}</p>
+        <p class="text-gray-400 text-sm mt-2">{{ article.date | date }}</p>
+        <a [routerLink]="['/section/blog', article.id]" class="text-indigo-600 hover:text-indigo-800 font-bold mt-4 inline-block">Leer más</a>
+      </div>
+    </div>
+
+
+
+    <!-- Repetir las tarjetas para cada artículo adicional -->
+    <!-- Asegúrate de iterar sobre los artículos en el componente Angular -->
+  </div>
+</div>
+</section>
