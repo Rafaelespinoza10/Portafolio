@@ -1,6 +1,20 @@
-<section class=" text-gray-100">
+<section class="text-gray-100">
   <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-    <form [formGroup]="emailForm" class="space-y-8">
+    <!-- Título del formulario -->
+    <div class="text-center mb-8">
+      <h2 class="text-4xl sm:text-5xl font-bold gradient-text-purple mb-4 animate-fade-in">
+        ¡Hablemos!
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-6 animate-fade-in"></div>
+      <p class="text-gray-200 dark:text-gray-300 text-lg animate-fade-in">
+        Envíame un mensaje y te responderé lo antes posible
+      </p>
+    </div>
+
+    <!-- Formulario con glassmorphism -->
+    <div 
+      class="glass-card rounded-3xl p-8 lg:p-12 animate-fade-in">
+      <form [formGroup]="emailForm" class="space-y-8">
 
       <!-- Campo Email -->
       <div>
@@ -12,9 +26,10 @@
           id="email"
           formControlName="email"
           placeholder="tucorreo@ejemplo.com"
-          class="shadow-sm bg-gray-700 border border-[#444] text-gray-100 text-md
-                 rounded-lg focus:ring-purple-500 focus:border-purple-500
-                 block w-full p-2.5 placeholder-gray-400"
+          class="shadow-sm bg-gray-700/50 backdrop-blur-sm border border-purple-500/30 text-gray-100 text-md
+                 rounded-xl focus:ring-purple-500 focus:border-purple-500 focus:bg-gray-700/70
+                 block w-full p-4 placeholder-gray-400 transition-all duration-300
+                 hover:border-purple-400/50"
         />
         <div
           *ngIf="
@@ -39,10 +54,11 @@
           id="subject"
           formControlName="subject"
           placeholder="Asunto"
-          class="block p-3 w-full text-md text-gray-100 bg-gray-700
-                 rounded-lg border border-[#444] shadow-md
-                 focus:ring-purple-500 focus:border-purple-500
-                 placeholder-gray-400"
+          class="block p-4 w-full text-md text-gray-100 bg-gray-700/50 backdrop-blur-sm
+                 rounded-xl border border-purple-500/30 shadow-md
+                 focus:ring-purple-500 focus:border-purple-500 focus:bg-gray-700/70
+                 placeholder-gray-400 transition-all duration-300
+                 hover:border-purple-400/50"
         />
         <div
           *ngIf="
@@ -53,9 +69,6 @@
         >
           <span *ngIf="emailForm.get('subject')?.errors?.['required']">
             El asunto es obligatorio.
-          </span>
-          <span *ngIf="emailForm.get('subject')?.errors?.['minlength']">
-            Debe tener al menos 20 caracteres.
           </span>
         </div>
       </div>
@@ -70,10 +83,11 @@
           rows="6"
           formControlName="message"
           placeholder="Deja un comentario..."
-          class="block p-2.5 w-full text-md text-gray-100 bg-gray-700
-                 rounded-lg shadow-sm border border-[#444]
-                 focus:ring-purple-500 focus:border-purple-500
-                 placeholder-gray-400"
+          class="block p-4 w-full text-md text-gray-100 bg-gray-700/50 backdrop-blur-sm
+                 rounded-xl shadow-sm border border-purple-500/30
+                 focus:ring-purple-500 focus:border-purple-500 focus:bg-gray-700/70
+                 placeholder-gray-400 transition-all duration-300 resize-none
+                 hover:border-purple-400/50"
         ></textarea>
         <div
           *ngIf="
@@ -85,26 +99,41 @@
           <span *ngIf="emailForm.get('message')?.errors?.['required']">
             El mensaje es obligatorio.
           </span>
-          <span *ngIf="emailForm.get('message')?.errors?.['minlength']">
-            Debe tener al menos 50 caracteres.
-          </span>
         </div>
       </div>
 
       <!-- Botón Enviar -->
-      <button
-        [disabled]="emailForm.invalid"
-        (click)="onSubmit()"
-        class="disabled:opacity-50 disabled:cursor-not-allowed
-               py-3 px-8 bg-gradient-to-r from-purple-600 to-pink-600
-               text-md font-medium text-center text-white rounded-lg
-               sm:w-fit hover:from-pink-600 hover:to-purple-600
-               focus:ring-4 focus:outline-none focus:ring-purple-300
-               transition duration-300 ease-in-out transform hover:scale-105"
-      >
-        Enviar mensaje
-      </button>
+      <div class="flex justify-center">
+        <button
+          [disabled]="emailForm.invalid"
+          (click)="onSubmit()"
+          class="disabled:opacity-50 disabled:cursor-not-allowed
+                 group relative inline-flex items-center justify-center px-10 py-4 
+                 overflow-hidden font-bold text-white rounded-full 
+                 bg-gradient-to-r from-purple-600 to-pink-600 
+                 hover:from-pink-600 hover:to-purple-600
+                 transform transition-all duration-300 
+                 hover:scale-110 hover:shadow-glow-primary
+                 focus:outline-none focus:ring-4 focus:ring-purple-500/50
+                 active:scale-95"
+        >
+          <!-- Efecto de brillo al hover -->
+          <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                       transform -skew-x-12 -translate-x-full group-hover:translate-x-full 
+                       transition-transform duration-1000"></span>
+          
+          <!-- Texto del botón -->
+          <span class="relative flex items-center gap-2 text-lg">
+            Enviar mensaje
+            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            </svg>
+          </span>
+        </button>
+      </div>
 
-    </form>
+      </form>
+    </div>
   </div>
 </section>

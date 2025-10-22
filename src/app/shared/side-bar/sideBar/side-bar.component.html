@@ -1,106 +1,116 @@
+<div class="w-max sm:w-auto bg-gradient-to-r from-[#000000] dark:from-slate-950 md:w-auto h-screen transition-theme"
+     [class]="isExpanded ? 'w-max sm:w-auto md:w-auto' : 'w-16'">
 
-<!-- drawer component -->
-<!-- <div id="drawer-navigation" class="fixed top-0 left-0 z-40  w-max md:w-auto h-full p-8 overflow-y-auto bg-gray-800"  tabindex="-1" aria-labelledby="drawer-navigation-label"> -->
+    <!-- Botón de toggle simple -->
+    <div class="flex justify-end p-2">
+      <button 
+        (click)="toggleSidebar()"
+        class="p-2 rounded-lg hover:bg-gray-700 transition-colors"
+        [attr.aria-label]="isExpanded ? 'Colapsar sidebar' : 'Expandir sidebar'"
+      >
+        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
 
-  <div class="w-max sm:w-auto bg-gradient-to-r from-[#000000]   md:w-auto h-screen">
-    <!-- <div class="py-4 overflow-y-auto"> -->
+    <!-- Profile Picture - Solo visible cuando está expandido -->
+    <div *ngIf="isExpanded">
+      <shared-profile-picture></shared-profile-picture>
+    </div>
 
-    <shared-profile-picture></shared-profile-picture>
+    <!-- Profile Picture colapsada - Solo visible cuando está colapsado -->
+    <div *ngIf="!isExpanded" class="flex justify-center py-4">
+      <img class="w-10 h-10 rounded-full object-cover" src="images/profile_raf2.png" alt="profile">
+    </div>
+
 
     <ul class="space-y-1 font-medium p-2">
-
       <li>
         <a
         routerLink="/section/home"
-        routerLinkActive="bg-indigo-300"
-        class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group"
+        routerLinkActive="bg-gradient-to-r from-purple-600 to-pink-600"
+        class="flex items-center p-3 text-white rounded-xl hover:bg-slate-600/50 duration-300 group transition-all hover:scale-105"
+        [class.justify-center]="!isExpanded"
+        [title]="!isExpanded ? 'Inicio' : ''"
         >
-
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#9b9b9b" viewBox="0 0 24 24">
-          <path d="M3 9.857L12 3l9 6.857V21a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1V9.857z"/>
+        <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
         </svg>
-        
-           <span class="ms-3 text-md">Inicio</span>
+        <span *ngIf="isExpanded" class="ms-3 text-md font-medium">Inicio</span>
         </a>
      </li>
-
 
       <li>
            <a
            routerLink="/section/about-me"
-           routerLinkActive="bg-indigo-300"
-           class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group"
+           routerLinkActive="bg-gradient-to-r from-blue-600 to-cyan-600"
+           class="flex items-center p-3 text-white rounded-xl hover:bg-slate-600/50 duration-300 group transition-all hover:scale-105"
+           [class.justify-center]="!isExpanded"
+           [title]="!isExpanded ? 'Sobre mi' : ''"
            >
-
-           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#9b9b9b" viewBox="0 0 24 24">
-            <path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+           <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
           </svg>
-
-            <span class="ms-3 text-md">Sobre mi</span>
+            <span *ngIf="isExpanded" class="ms-3 text-md font-medium">Sobre mi</span>
            </a>
         </li>
 
           <li>
            <a
            routerLink="/section/resume"
-           routerLinkActive="bg-indigo-300"
-           class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group"
+           routerLinkActive="bg-gradient-to-r from-emerald-600 to-teal-600"
+           class="flex items-center p-3 text-white rounded-xl hover:bg-slate-600/50 duration-300 group transition-all hover:scale-105"
+           [class.justify-center]="!isExpanded"
+           [title]="!isExpanded ? 'Resume' : ''"
            >
-
-           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#9b9b9b" viewBox="0 0 24 24">
-            <path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h9a2 2 0 002-2V8l-5-6H6zm7 1.5L17.5 8H13V3.5zM8 13h8v2H8v-2zm0 4h5v2H8v-2z"/>
+           <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
-              <span class="flex-1 ms-3 whitespace-nowrap text-md">Resume</span>
+              <span *ngIf="isExpanded" class="flex-1 ms-3 whitespace-nowrap text-md font-medium">Resume</span>
            </a>
         </li>
         <li>
            <a
            routerLink="/section/portafolio"
-           routerLinkActive="bg-indigo-300"
-           class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group"
+           routerLinkActive="bg-gradient-to-r from-orange-600 to-red-600"
+           class="flex items-center p-3 text-white rounded-xl hover:bg-slate-600/50 duration-300 group transition-all hover:scale-105"
+           [class.justify-center]="!isExpanded"
+           [title]="!isExpanded ? 'Portafolio' : ''"
            >
-           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#9b9b9b" viewBox="0 0 24 24">
-            <path d="M20 6h-4l-2-2h-4l-2 2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2zM4 18V8h16v10H4z"/>
+           <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
           </svg>
-              <span class="flex-1 ms-3 whitespace-nowrap text-md">Portafolio</span>
+              <span *ngIf="isExpanded" class="flex-1 ms-3 whitespace-nowrap text-md font-medium">Portafolio</span>
            </a>
         </li>
         <li>
            <a
            routerLink="/section/blog"
-           routerLinkActive="bg-indigo-300"
-           class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group">
-
-           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#9b9b9b" viewBox="0 0 24 24">
-            <path d="M4 4h16v2H4V4zm0 4h10v2H4V8zm0 4h16v2H4v-2zm0 4h10v2H4v-2z"/>
+           routerLinkActive="bg-gradient-to-r from-indigo-600 to-purple-600"
+           class="flex items-center p-3 text-white rounded-xl hover:bg-slate-600/50 duration-300 group transition-all hover:scale-105"
+           [class.justify-center]="!isExpanded"
+           [title]="!isExpanded ? 'Blog' : ''"
+           >
+           <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
           </svg>
-          
-
-              <span class="flex-1 ms-3 whitespace-nowrap text-md">Blog</span>
+              <span *ngIf="isExpanded" class="flex-1 ms-3 whitespace-nowrap text-md font-medium">Blog</span>
            </a>
         </li>
         <li>
            <a
-           class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group"
+           class="flex items-center p-3 text-white rounded-xl hover:bg-slate-600/50 duration-300 group transition-all hover:scale-105"
            routerLink="/section/contact"
-           routerLinkActive="bg-indigo-300"
+           routerLinkActive="bg-gradient-to-r from-pink-600 to-rose-600"
+           [class.justify-center]="!isExpanded"
+           [title]="!isExpanded ? 'Contacto' : ''"
            >
-           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#9b9b9b" height="28px" width="28px" version="1.1" id="XMLID_199_" viewBox="0 0 24 24" xml:space="preserve">
-            <g id="contact-card">
-              <g>
-                <path d="M12,20H0v-3.5c0-2.4,1.3-4.5,3.2-5.6C2.5,10.2,2,9.2,2,8.1c0-2.2,1.8-4,4-4s4,1.8,4,4c0,1.1-0.4,2.1-1.2,2.8    c1.9,1.1,3.2,3.3,3.2,5.6V20z M2,18h8v-1.5c0-2.4-1.8-4.5-4-4.5c-2.1,0-4,2.1-4,4.5V18z M6,6C4.9,6,4,6.9,4,8s0.9,2,2,2s2-0.9,2-2    S7.1,6,6,6z M24,17H14v-2h10V17z M21,13h-7v-2h7V13z M24,9H14V7h10V9z"/>
-              </g>
-            </g>
-            </svg>
-
-              <span class="flex-1 ms-3 whitespace-nowrap text-md">Contacto</span>
+           <svg class="w-6 h-6 text-gray-400 group-hover:text-white transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+              <span *ngIf="isExpanded" class="flex-1 ms-3 whitespace-nowrap text-md font-medium">Contacto</span>
            </a>
         </li>
      </ul>
-  <!-- </div> -->
-  <!-- </div> -->
-
-
 </div>
-
-

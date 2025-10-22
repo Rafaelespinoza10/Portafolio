@@ -20,7 +20,6 @@ export class BlogDetailPageComponent implements OnInit {
     this.route.paramMap.subscribe(
       (params) => {
         const id = params.get('id');    // Extraemos el parámetro 'id' desde la URL
-        console.log(id);
         if (id) {
           this.articleId = id;  // Convertimos el 'id' a número (si es necesario)
           this.loadArticle(this.articleId);  // Cargamos el artículo usando el id
@@ -37,7 +36,6 @@ export class BlogDetailPageComponent implements OnInit {
   }
 
   shareOnLinkedIn(): void {
-    console.log(this.article.url);
     const urlPage = encodeURIComponent(window.location.href);
     const url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(urlPage)}&title=${encodeURIComponent(this.article.title)}&summary=${encodeURIComponent(this.article.description)}`;
     window.open(url, '_blank');
@@ -53,7 +51,7 @@ export class BlogDetailPageComponent implements OnInit {
   }
 
   loadArticle(id: string): void {
-    this.article = this.blogService.getArticlesById(id)
-}
+    this.article = this.blogService.getArticlesById(id);
+  }
 
 }

@@ -1,85 +1,133 @@
 <!-- <div class="w-full p-4 md:p-8 py-6 md:py-10 lg:py-8"> -->
   <section class="py-8 container mx-auto flex flex-col items-center p-2 ">
   <!-- <div class="container flex flex-col gap-4 items-center justify-center bg-white :bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full p-4 md:p-8 transition-all duration-300 animate-fade-in"> -->
-    <h1 class="text-3xl font-bold text-center text-indigo-300  mb-2 ">
+    <h1 
+      class="text-3xl font-bold text-center gradient-text-purple mb-2 animate-fade-in">
       {{ animatedTextName }}<span class="border-r-2 border-gray-700  animate-blink"></span>
-
     </h1>
     <!-- <div class="flex flex-col md:flex-col items-center md:items-start md:space-x-6"> -->
-          <img src="images/profile_picture.png"  class="mt-10 mb-10 "/>
+    <img 
+      src="images/profile_picture.png" 
+      class="mt-10 mb-10 rounded-full shadow-2xl shadow-purple-500/20 hover:shadow-purple-500/40 transition-all duration-300 animate-fade-in"/>
 
-          <p class="text-white  mb-6 text-lg text-left">
-            {{ animatedTexDescription }}<span class="border-r-2 border-gray-700  animate-blink"></span>
-          </p>
-
-    <!-- </div> -->
+    <p 
+      class="text-gray-200 dark:text-gray-300 mb-8 text-lg text-left max-w-3xl leading-relaxed animate-fade-in">
+      {{ animatedTexDescription }}<span class="border-r-2 border-gray-700  animate-blink"></span>
+    </p>
 
     <button
-    class="mt-4 bg-indigo-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-300 mb-10"
-    (click)="downloadCVs()">
-    Descargar mi CV (Español e Inglés)
-  </button>
+      class="mt-4 group relative inline-flex items-center justify-center px-8 py-3 
+             overflow-hidden font-bold text-white rounded-full 
+             bg-gradient-to-r from-purple-600 to-pink-600 
+             hover:from-pink-600 hover:to-purple-600
+             transform transition-all duration-300 
+             hover:scale-105 hover:shadow-glow-primary
+             focus:outline-none focus:ring-4 focus:ring-purple-500/50
+             active:scale-95 mb-8 animate-fade-in"
+      (click)="downloadCVs()">
+      <!-- Efecto de brillo al hover -->
+      <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                   transform -skew-x-12 -translate-x-full group-hover:translate-x-full 
+                   transition-transform duration-1000"></span>
+      
+      <!-- Texto del botón -->
+      <span class="relative flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        Descargar mi CV (Español e Inglés)
+      </span>
+    </button>
 
-
-
-<h2 class="font-semibold  text-[#C4B5FD] mb-6 mt-6 text-2xl">Herramientas:</h2>
+    <h2
+      class="font-semibold gradient-text-purple mb-6 text-2xl animate-fade-in">Herramientas:</h2>
 
 <section class="py-10 text-gray-100 ">
   <div class="max-w-7xl mx-auto px-4">
     <div class="grid grid-cols-2  sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- Card: Angular -->
-      <div class="p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-[1.05] hover:bg-[#333333] cursor-pointer bg-gradient-to-t from-[#DD0031] to-[#9C1A27]">
-        <div class="flex justify-center items-center mb-4">
-          <img class="w-12 h-12" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png" alt="Angular logo" />
+      <div
+        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300
+               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer
+               bg-gradient-to-t from-[#DD0031] to-[#9C1A27]
+               hover:shadow-2xl hover:shadow-red-500/30
+               glass-card animate-fade-in">
+        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
+          <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png" alt="Angular logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">Angular</h3>
-        <p class="text-sm text-white hidden sm:block">Framework para frontend</p>
+        <p class="text-sm text-white/80 hidden sm:block">Framework para frontend</p>
       </div>
 
       <!-- Card: TypeScript -->
-      <div class="p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-[1.05] hover:bg-[#333333] cursor-pointer bg-gradient-to-t from-[#3178C6] to-[#1F6BB8]">
-        <div class="flex justify-center items-center mb-4">
-          <img class="w-12 h-12" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png" alt="TypeScript logo" />
+      <div 
+        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300 
+               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer 
+               bg-gradient-to-t from-[#3178C6] to-[#1F6BB8]
+               hover:shadow-2xl hover:shadow-blue-500/30
+               glass-card animate-fade-in">
+        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
+          <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png" alt="TypeScript logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">TypeScript</h3>
-        <p class="text-sm text-white hidden sm:block">Superset de JavaScript</p>
+        <p class="text-sm text-white/80 hidden sm:block">Superset de JavaScript</p>
       </div>
 
       <!-- Card: React -->
-      <div class="p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-[1.05] hover:bg-[#333333] cursor-pointer bg-gradient-to-t from-[#61DAFB] to-[#4fa3d1]">
-        <div class="flex justify-center items-center mb-4">
-          <img class="w-12 h-12" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React logo" />
+      <div 
+        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300 
+               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer 
+               bg-gradient-to-t from-[#61DAFB] to-[#4fa3d1]
+               hover:shadow-2xl hover:shadow-cyan-500/30
+               glass-card animate-fade-in">
+        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
+          <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">React</h3>
-        <p class="text-sm text-white hidden sm:block">Biblioteca para interfaces de usuario</p>
+        <p class="text-sm text-white/80 hidden sm:block">Biblioteca para interfaces de usuario</p>
       </div>
 
       <!-- Card: JavaScript -->
-      <div class="p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-[1.05] hover:bg-[#333333] cursor-pointer bg-gradient-to-t from-[#F7DF1E] to-[#E0C000]">
-        <div class="flex justify-center items-center mb-4">
-          <img class="w-12 h-12" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript logo" />
+      <div 
+        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300 
+               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer 
+               bg-gradient-to-t from-[#F7DF1E] to-[#E0C000]
+               hover:shadow-2xl hover:shadow-yellow-500/30
+               glass-card animate-fade-in">
+        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
+          <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript logo" />
         </div>
-        <h3 class="text-lg font-bold text-gray-900 mb-2 hidden sm:block">JavaScript</h3>
-        <p class="text-sm text-gray-900 hidden sm:block">Lenguaje de programación para web</p>
+        <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">JavaScript</h3>
+        <p class="text-sm text-white/80 hidden sm:block">Lenguaje de programación para web</p>
       </div>
 
       <!-- Card: .NET -->
-      <div class="p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-[1.05] hover:bg-[#333333] cursor-pointer bg-gradient-to-t from-[#5C2D91] to-[#462072]">
-        <div class="flex justify-center items-center mb-4">
-          <img class="w-12 h-12" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Microsoft_.NET_logo.svg/2048px-Microsoft_.NET_logo.svg.png" alt=".NET logo" />
+      <div 
+        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300 
+               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer 
+               bg-gradient-to-t from-[#5C2D91] to-[#462072]
+               hover:shadow-2xl hover:shadow-purple-500/30
+               glass-card animate-fade-in">
+        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
+          <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Microsoft_.NET_logo.svg/2048px-Microsoft_.NET_logo.svg.png" alt=".NET logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">.NET</h3>
-        <p class="text-sm text-gray-300 hidden sm:block">Framework para desarrollo web</p>
+        <p class="text-sm text-gray-300/80 hidden sm:block">Framework para desarrollo web</p>
       </div>
 
       <!-- Card: Node.js -->
-      <div class="p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-[1.05] hover:bg-[#333333] cursor-pointer bg-gradient-to-t from-[#68A063] to-[#528D46]">
-        <div class="flex justify-center items-center mb-4">
-          <img class="w-12 h-12" src="https://www.svgrepo.com/show/452075/node-js.svg" alt="Node.js logo" />
+      <div 
+        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300 
+               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer 
+               bg-gradient-to-t from-[#68A063] to-[#528D46]
+               hover:shadow-2xl hover:shadow-green-500/30
+               glass-card animate-fade-in">
+        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
+          <img class="w-12 h-12 drop-shadow-lg" src="https://www.svgrepo.com/show/452075/node-js.svg" alt="Node.js logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">Node.js</h3>
-        <p class="text-sm text-white hidden sm:block">Entorno de ejecución JavaScript</p>
+        <p class="text-sm text-white/80 hidden sm:block">Entorno de ejecución JavaScript</p>
       </div>
 
     </div>

@@ -9,6 +9,12 @@ export class EducationCoursesComponent {
 
   courses = [
     {
+      title: 'Machine Learning y Data Science: Curso Completo con Python',
+      description: 'Domina las técnicas de Machine Learning y Data Science con Python, incluyendo algoritmos de clasificación, regresión, clustering y visualización de datos',
+      image: 'https://res.cloudinary.com/react-courses-rafa/image/upload/v1761113075/w6q7ltavgebzle4xram0.png',
+      certificateUrl: 'https://www.udemy.com/certificate/UC-8ebf2992-3f66-45aa-9d96-4c66af9f650b/'
+    },
+    {
       title: 'Angular Pro',
       description: 'Aprende las nuevas funcionalidades de Angular 19, SSR, Zoneless, uso de señales y nueva inyección de dependencias',
       image: 'https://res.cloudinary.com/react-courses-rafa/image/upload/v1750575172/jln0weajaaeyloxtjsvx.png',

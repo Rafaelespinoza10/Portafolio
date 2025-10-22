@@ -3,50 +3,89 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- Tarjeta de Correo -->
-      <div class="bg-[#1F1F1F] p-6 rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-[1.05] hover:bg-[#333333] cursor-pointer">
-        <div class="flex justify-center items-center mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" width="80px" height="80px" viewBox="0 0 24 24" fill="none">
-            <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke="#C4B5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="3" y="5" width="18" height="14" rx="2" stroke="#C4B5FD" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+      <div 
+        class="group relative overflow-hidden bg-gradient-to-br from-[#EC4899] via-[#DB2777] to-[#BE185D] rounded-3xl shadow-2xl transform transition-all duration-500 
+               hover:scale-[1.03] hover:-translate-y-3 cursor-pointer 
+               hover:shadow-2xl hover:shadow-pink-500/40
+               glass-card animate-fade-in">
+        
+        <!-- Efecto de brillo de fondo -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
+                    transform -skew-x-12 -translate-x-full group-hover:translate-x-full
+                    transition-transform duration-1000"></div>
+        
+        <!-- Contenido de la tarjeta -->
+        <div class="relative p-8 text-center">
+          <!-- Icono con efecto 3D -->
+          <div class="flex justify-center items-center mb-6 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+            <div class="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48px" height="48px" viewBox="0 0 24 24" fill="none" class="text-white drop-shadow-lg">
+                <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
           </div>
-        <h3 class="text-lg font-semibold text-white mb-2">Correo Electrónico</h3>
-        <p class="text-sm text-gray-300 break-words" style="word-wrap: break-word;">{{email}}</p>
-
+          
+          <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-[#EC4899] to-[#DB2777] bg-clip-text text-transparent group-hover:scale-105 transition-transform">Correo Electrónico</h3>
+          <p class="text-base text-white/90 break-words leading-relaxed">{{email}}</p>
+        </div>
       </div>
 
       <!-- Tarjeta de Teléfono -->
-      <div class="bg-[#1F1F1F] p-6 rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-[1.05] hover:bg-[#333333] cursor-pointer">
-        <div class="flex justify-center items-center mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="80px" height="60px" viewBox="0 0 948.000000 1280.000000" preserveAspectRatio="xMidYMid meet">
-            <metadata>
-            Created by potrace 1.15, written by Peter Selinger 2001-2017
-            </metadata>
-            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="#C4B5FD" stroke="none">
-            <path d="M3102 12793 l-23 -5 5 -151 c3 -84 8 -348 11 -587 17 -1352 53 -2558 85 -2790 7 -52 14 -70 36 -89 26 -21 34 -23 108 -19 46 3 109 15 146 28 91 31 253 114 325 165 67 47 177 159 273 278 l64 78 -1 267 c-1 147 -3 364 -6 482 -3 118 -10 573 -16 1010 l-10 795 -30 61 c-20 43 -52 83 -106 135 -235 224 -639 384 -861 342z"/>
-            <path d="M2605 12779 c-291 -27 -655 -104 -914 -194 -860 -300 -1410 -854 -1606 -1620 -68 -266 -80 -377 -79 -770 2 -615 50 -1339 134 -2015 193 -1539 580 -2865 1091 -3735 82 -140 352 -549 575 -870 1139 -1644 2196 -2695 3236 -3216 650 -327 1335 -437 1873 -303 369 92 802 237 1155 386 267 113 811 400 810 426 -1 4 -370 297 -822 652 -452 355 -1111 873 -1464 1151 l-643 505 -98 -48 c-312 -154 -646 -188 -900 -93 -133 50 -265 145 -365 262 -220 256 -765 1222 -1595 2823 -465 897 -721 1411 -747 1505 -121 430 -71 809 144 1094 98 129 214 225 384 318 l90 48 -3 110 c-1 61 -24 868 -51 1795 -28 927 -50 1711 -50 1743 l0 57 -32 -1 c-18 -1 -73 -5 -123 -10z"/>
-            <path d="M6603 3668 c-221 -117 -402 -216 -403 -219 0 -8 2990 -2383 3005 -2387 10 -3 97 255 222 658 41 134 48 167 48 241 0 81 -2 90 -43 172 -26 53 -65 111 -99 148 -95 102 -1506 1203 -1813 1414 -155 106 -315 170 -453 181 l-62 4 -402 -212z"/>
-            </g>
-            </svg>
+      <div 
+        class="group relative overflow-hidden bg-gradient-to-br from-[#10B981] via-[#059669] to-[#047857] rounded-3xl shadow-2xl transform transition-all duration-500 
+               hover:scale-[1.03] hover:-translate-y-3 cursor-pointer 
+               hover:shadow-2xl hover:shadow-green-500/40
+               glass-card animate-fade-in">
+        
+        <!-- Efecto de brillo de fondo -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
+                    transform -skew-x-12 -translate-x-full group-hover:translate-x-full
+                    transition-transform duration-1000"></div>
+        
+        <!-- Contenido de la tarjeta -->
+        <div class="relative p-8 text-center">
+          <!-- Icono con efecto 3D -->
+          <div class="flex justify-center items-center mb-6 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+            <div class="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48px" height="48px" viewBox="0 0 24 24" fill="none" class="text-white drop-shadow-lg">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent group-hover:scale-105 transition-transform">Teléfono</h3>
+          <p class="text-base text-white/90 leading-relaxed">{{phone}}</p>
         </div>
-        <h3 class="text-lg font-semibold text-white mb-2">Teléfono</h3>
-        <p class="text-sm text-gray-300">{{phone}}</p>
       </div>
 
       <!-- Tarjeta de Ubicación -->
-      <div class="bg-[#1F1F1F] p-6 rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-[1.05] hover:bg-[#333333] cursor-pointer">
-        <div class="flex justify-center items-center mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="60px" height="60px" viewBox="0 0 930.000000 1280.000000" preserveAspectRatio="xMidYMid meet">
-            <metadata>
-            Created by potrace 1.15, written by Peter Selinger 2001-2017
-            </metadata>
-            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="#C4B5FD" stroke="none">
-            <path d="M4335 12789 c-1496 -104 -2843 -915 -3635 -2190 -232 -373 -414 -787 -529 -1204 -305 -1107 -197 -2278 305 -3295 191 -387 372 -660 676 -1020 34 -41 753 -976 1596 -2077 918 -1199 1555 -2022 1588 -2052 186 -170 442 -170 628 0 33 30 670 853 1588 2052 843 1101 1562 2036 1596 2077 304 360 485 633 676 1020 566 1147 629 2502 174 3695 -353 923 -967 1689 -1798 2242 -825 549 -1864 821 -2865 752z m559 -2254 c224 -29 398 -81 601 -180 553 -268 931 -756 1062 -1374 25 -116 27 -145 28 -366 0 -267 -10 -345 -70 -555 -161 -561 -586 -1032 -1130 -1253 -201 -82 -365 -120 -592 -139 -294 -25 -593 23 -878 139 -544 221 -969 692 -1130 1253 -60 210 -70 288 -70 555 1 221 3 250 28 366 112 527 406 965 842 1252 177 116 437 227 637 271 209 46 467 58 672 31z"/>
-            </g>
-            </svg>
+      <div 
+        class="group relative overflow-hidden bg-gradient-to-br from-[#8B5CF6] via-[#7C3AED] to-[#6D28D9] rounded-3xl shadow-2xl transform transition-all duration-500 
+               hover:scale-[1.03] hover:-translate-y-3 cursor-pointer 
+               hover:shadow-2xl hover:shadow-purple-500/40
+               glass-card animate-fade-in">
+        
+        <!-- Efecto de brillo de fondo -->
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
+                    transform -skew-x-12 -translate-x-full group-hover:translate-x-full
+                    transition-transform duration-1000"></div>
+        
+        <!-- Contenido de la tarjeta -->
+        <div class="relative p-8 text-center">
+          <!-- Icono con efecto 3D -->
+          <div class="flex justify-center items-center mb-6 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+            <div class="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48px" height="48px" viewBox="0 0 24 24" fill="none" class="text-white drop-shadow-lg">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          
+          <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-[#8B5CF6] to-[#7C3AED] bg-clip-text text-transparent group-hover:scale-105 transition-transform">Ubicación</h3>
+          <p class="text-base text-white/90 leading-relaxed">{{location}}</p>
         </div>
-        <h3 class="text-lg font-semibold text-white mb-2">Ubicación</h3>
-        <p class="text-sm text-gray-300">{{location}}</p>
       </div>
 
     </div>

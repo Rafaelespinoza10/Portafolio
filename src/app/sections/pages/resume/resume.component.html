@@ -1,28 +1,56 @@
-<div class="space-y-10 py-8 px-8 max-w-4xl mx-auto zoomIn" appScrollAnimation>
-  <!-- Sección Sobre Mí -->
-  <div class="text-center">
-    <h2 class="font-bold text-4xl uppercase text-[#C4B5FD] tracking-wider relative pb-2 mb-8 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-1 after:bg-indigo-500">Curriculum</h2>
-    <p class="text-lg text-white max-w-2xl mx-auto">
-       Ingeniero en Mecatronica |  Experiencia en Industria Automotriz como Desarrollador de Aplicaciones.
+<div class="space-y-12 py-8 px-4 sm:px-8 max-w-7xl mx-auto">
+  
+  <!-- Título principal con efecto -->
+  <div class="text-center mb-12">
+    <h2 class="text-4xl sm:text-5xl font-bold gradient-text-purple mb-4 animate-fade-in">
+      Curriculum Vitae
+    </h2>
+    <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-6 animate-fade-in"></div>
+    <p class="text-lg text-gray-200 dark:text-gray-300 max-w-3xl mx-auto animate-fade-in">
+      Ingeniero en Mecatrónica | Desarrollador Full Stack con experiencia en sistemas de ticketing y aplicaciones web
     </p>
+  </div>
 
-    <p class="text-2xl text-[#C4B5FD]  max-w-4xl mx-auto uppercase text-center mt-14">
-      Experiencia laboral
-    </p>
-
-    <div class="zoom-in" >
+  <!-- Sección Experiencia Laboral -->
+  <section class="mb-16">
+    <div class="text-center mb-12">
+      <h3 class="text-3xl sm:text-4xl font-bold gradient-text-purple mb-4 animate-fade-in">
+        Experiencia Laboral
+      </h3>
+      <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mx-auto animate-fade-in"></div>
+    </div>
+    
+    <div class="animate-fade-in">
       <component-information-experience></component-information-experience>
     </div>
-    <div class="zoom-in" appScrollAnimation>
+  </section>
+
+  <!-- Sección Educación y Cursos -->
+  <section class="mb-16">
+    <div class="text-center mb-12">
+      <h3 class="text-3xl sm:text-4xl font-bold gradient-text-purple mb-4 animate-fade-in">
+        Educación y Cursos
+      </h3>
+      <div class="w-20 h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mx-auto animate-fade-in"></div>
+    </div>
+    
+    <div class="animate-fade-in">
       <component-education-courses></component-education-courses>
     </div>
+  </section>
 
-    <p class="text-2xl text-[#C4B5FD] text-center max-w-4xl mx-auto uppercase  mt-8 mb-6">
-      Habilidades e Idiomas
-    </p>
-
-    <components-skills></components-skills>
-    <!-- <component-about-me></component-about-me> -->
-  </div>
+  <!-- Sección Habilidades e Idiomas -->
+  <section class="mb-16">
+    <div class="text-center mb-12">
+      <h3 class="text-3xl sm:text-4xl font-bold gradient-text-purple mb-4 animate-fade-in">
+        Habilidades e Idiomas
+      </h3>
+      <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mx-auto animate-fade-in"></div>
+    </div>
+    
+    <div class="animate-fade-in">
+      <components-skills></components-skills>
+    </div>
+  </section>
 
 </div>

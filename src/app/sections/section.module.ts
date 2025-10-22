@@ -22,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BlogDetailPageComponent } from './pages/blog-detail-page/blog-detail-page.component';
 import { ContactInfoComponent } from './components/contact-info/contact-info.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ScrollAnimationDirective } from './directives/scroll-animation.directive';
@@ -59,6 +60,7 @@ import { ScrollAnimationDirective } from './directives/scroll-animation.directiv
     SharedModule,
     SectionRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   exports:[
   ]

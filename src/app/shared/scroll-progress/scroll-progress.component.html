@@ -1,0 +1,44 @@
+<!-- Barra de progreso de scroll -->
+<div 
+  class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 z-50 transform origin-left transition-all duration-100"
+  [style.transform]="'scaleX(' + scrollProgress / 100 + ')'"
+></div>
+
+<!-- Botón Back to Top -->
+<button
+  *ngIf="showBackToTop"
+  (click)="scrollToTop()"
+  class="fixed bottom-8 right-8 z-40 
+         w-12 h-12 sm:w-14 sm:h-14
+         bg-gradient-to-r from-purple-600 to-pink-600 
+         hover:from-pink-600 hover:to-purple-600
+         text-white rounded-full 
+         shadow-2xl hover:shadow-glow-primary
+         transform transition-all duration-300 
+         hover:scale-110 active:scale-95
+         flex items-center justify-center
+         focus:outline-none focus:ring-4 focus:ring-purple-500/50
+         animate-fade-in-up group"
+  aria-label="Volver arriba"
+>
+  <!-- Icono de flecha hacia arriba -->
+  <svg 
+    class="w-6 h-6 transform group-hover:-translate-y-1 transition-transform" 
+    fill="none" 
+    stroke="currentColor" 
+    viewBox="0 0 24 24"
+  >
+    <path 
+      stroke-linecap="round" 
+      stroke-linejoin="round" 
+      stroke-width="3" 
+      d="M5 10l7-7m0 0l7 7m-7-7v18"
+    />
+  </svg>
+
+  <!-- Efecto de anillo pulsante -->
+  <span 
+    class="absolute inset-0 rounded-full border-2 border-purple-400 animate-pulse-ring"
+  ></span>
+</button>
+

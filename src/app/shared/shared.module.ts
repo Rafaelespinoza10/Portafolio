@@ -4,6 +4,10 @@ import { SideBarComponent } from './side-bar/sideBar/side-bar.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
 import { RouterModule } from '@angular/router';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ScrollProgressComponent } from './scroll-progress/scroll-progress.component';
+import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
+import { ProjectModalComponent } from './project-modal/project-modal.component';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 @NgModule({
   imports: [
@@ -13,12 +17,20 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   declarations: [
     SideBarComponent,
     ProfilePictureComponent,
-    NavBarComponent
+    NavBarComponent,
+    ScrollProgressComponent,
+    ScrollRevealDirective,
+    ProjectModalComponent,
+    SafeUrlPipe
   ],
   exports: [
     SideBarComponent,
     ProfilePictureComponent,
     NavBarComponent,
+    ScrollProgressComponent,
+    ScrollRevealDirective,
+    ProjectModalComponent,
+    SafeUrlPipe
   ]
 })
 export class SharedModule { }

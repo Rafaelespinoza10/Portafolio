@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProjectModalService, WorkProject } from '../../services/project-modal.service';
 
 @Component({
   selector: 'component-portafolio',
@@ -6,10 +7,42 @@ import { Component } from '@angular/core';
   styleUrls: ['./portafolio.component.css']
 })
 export class PortafolioComponent {
+  
+  constructor(private projectModalService: ProjectModalService) { }
+
+  /**
+   * Abre el modal con el proyecto seleccionado
+   */
+  openModal(project: WorkProject) {
+    this.projectModalService.openModal(project);
+  }
+
+  /**
+   * Maneja el efecto 3D al mover el mouse sobre una tarjeta
+   */
+  onMouseMove(event: MouseEvent, card: HTMLElement) {
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  }
+
+  /**
+   * Resetea el efecto 3D cuando el mouse sale de la tarjeta
+   */
+  onMouseLeave(card: HTMLElement) {
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+  }
 
   // Proyectos de experiencia laboral
-  // Proyectos de experiencia laboral
-projectsWorkExperience = [
+projectsWorkExperience: WorkProject[] = [
   {
     name: 'Monitoreo de sensores en tiempo real',
     imageSrc: 'images/monitoreo_sensores.png',
@@ -18,7 +51,21 @@ projectsWorkExperience = [
       'https://www.svgrepo.com/show/452156/angular.svg', // Angular
       'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
       'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
-    ]
+    ],
+    detailedDescription: 'Sistema de monitoreo en tiempo real de sensores industriales para una planta automotriz. Permite visualizar el estado de múltiples sensores simultáneamente y recibir alertas instantáneas.',
+    features: [
+      'Visualización en tiempo real de datos de sensores usando SignalR',
+      'Dashboard interactivo con gráficos dinámicos',
+      'Sistema de alertas y notificaciones automáticas',
+      'Historial de lecturas y análisis de tendencias',
+      'Panel de administración para configurar umbrales'
+    ],
+    challenges: [
+      'Optimización de rendimiento para manejar miles de actualizaciones por segundo',
+      'Implementación de reconexión automática en caso de pérdida de conexión',
+      'Diseño de base de datos eficiente para almacenar grandes volúmenes de datos históricos'
+    ],
+    impact: 'Reducción del 40% en tiempos de respuesta ante fallos y mejora significativa en la prevención de problemas de producción.'
   },
   {
     name: 'Registros de parámetros de ECOAT',
@@ -28,7 +75,21 @@ projectsWorkExperience = [
       'https://www.svgrepo.com/show/452156/angular.svg', // Angular
       'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
       'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
-    ]
+    ],
+    detailedDescription: 'Aplicación para el registro y análisis de parámetros del proceso ECOAT (pintura electrostática) en la línea de producción automotriz.',
+    features: [
+      'Registro de parámetros de proceso en tiempo real',
+      'Gráficos interactivos para análisis de tendencias',
+      'Generación automática de reportes de calidad',
+      'Sistema de validación de parámetros fuera de especificación',
+      'Exportación de datos en múltiples formatos'
+    ],
+    challenges: [
+      'Integración con múltiples PLCs y sistemas de control',
+      'Validación de datos en tiempo real con reglas complejas',
+      'Diseño de interfaz intuitiva para operadores de planta'
+    ],
+    impact: 'Mejora del 30% en el control de calidad del proceso de pintura y reducción de rechazos.'
   },
   {
     name: 'Monitoreo de Troqueles con conexión a SAP',
@@ -38,7 +99,21 @@ projectsWorkExperience = [
       'https://www.svgrepo.com/show/452156/angular.svg', // Angular
       'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
       'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
-    ]
+    ],
+    detailedDescription: 'Sistema integrado con SAP para el control y seguimiento de mantenimiento preventivo y correctivo de troqueles de estampado.',
+    features: [
+      'Integración bidireccional con SAP PM',
+      'Tracking de órdenes de mantenimiento en tiempo real',
+      'Historial completo de mantenimientos por troquel',
+      'Planificación automática de mantenimientos preventivos',
+      'Dashboard con KPIs de disponibilidad de troqueles'
+    ],
+    challenges: [
+      'Integración con SAP mediante RFC y APIs',
+      'Sincronización de datos entre sistemas',
+      'Manejo de grandes volúmenes de datos históricos'
+    ],
+    impact: 'Incremento del 25% en disponibilidad de troqueles y optimización de costos de mantenimiento.'
   },
   {
     name: 'Reportes de Líneas de Ensamble',
@@ -48,7 +123,21 @@ projectsWorkExperience = [
       'https://www.svgrepo.com/show/452156/angular.svg', // Angular
       'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
       'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
-    ]
+    ],
+    detailedDescription: 'Aplicación para generar reportes de producción y calcular OEE (Overall Equipment Effectiveness) de líneas de ensamblaje automotriz.',
+    features: [
+      'Cálculo automático de OEE y sus componentes',
+      'Reportes detallados de downtime y paros',
+      'Análisis de causas raíz de paros',
+      'Dashboard ejecutivo con indicadores en tiempo real',
+      'Comparativas de rendimiento entre turnos y líneas'
+    ],
+    challenges: [
+      'Procesamiento de grandes volúmenes de datos de producción',
+      'Cálculos complejos de OEE en tiempo real',
+      'Generación dinámica de reportes personalizados'
+    ],
+    impact: 'Mejora del 15% en OEE general de las líneas y visibilidad completa de la producción.'
   },
   {
     name: 'Registro de Tiempo Extra',
@@ -59,7 +148,21 @@ projectsWorkExperience = [
       'https://www.svgrepo.com/show/452075/node-js.svg', // Node.js
       'https://www.svgrepo.com/show/303251/mysql-logo.svg', // MySQL
       'https://miro.medium.com/v2/resize:fit:1400/0*Pb_eiAEdkkDxsZr7.jpeg' // TypeORM
-    ]
+    ],
+    detailedDescription: 'Sistema web para la solicitud, aprobación y seguimiento de horas extras del personal de planta.',
+    features: [
+      'Flujo de aprobación multinivel',
+      'Notificaciones automáticas por correo',
+      'Reportes de horas extras por área y periodo',
+      'Dashboard para supervisores y gerentes',
+      'Integración con sistema de nómina'
+    ],
+    challenges: [
+      'Implementación de flujo de aprobación flexible',
+      'Sistema de notificaciones escalable',
+      'Reportes dinámicos según rol del usuario'
+    ],
+    impact: 'Reducción del 50% en tiempo de procesamiento de solicitudes y mejor control de costos.'
   },
   {
     name: 'Seguimiento y Control de Asistencias',
@@ -68,13 +171,51 @@ projectsWorkExperience = [
     technologies: [
       'https://www.svgrepo.com/show/303251/mysql-logo.svg', // MySQL
       'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
-    ]
+    ],
+    detailedDescription: 'Aplicación de escritorio para el control y seguimiento de asistencias del personal de planta.',
+    features: [
+      'Registro de entradas y salidas del personal',
+      'Gestión de permisos y ausencias',
+      'Reportes de asistencia por periodo',
+      'Integración con relojes checadores',
+      'Alertas de ausentismo'
+    ],
+    challenges: [
+      'Integración con múltiples tipos de relojes checadores',
+      'Manejo de excepciones y casos especiales',
+      'Generación de reportes complejos'
+    ],
+    impact: 'Automatización completa del control de asistencias y reducción de errores manuales.'
   },
 ];
 
 
   // Proyectos personales
   projectsPersonal = [
+    {
+      nameProject: 'Predicción Liga MX - Machine Learning',
+      imageSrc: 'images/machine_learning_project.png',
+      description: 'Sistema de predicción de resultados deportivos usando múltiples algoritmos de Machine Learning. Entrenamiento y comparación de modelos para predecir resultados de partidos de Liga MX.',
+      linkSitioWeb: 'https://github.com/Rafaelespinoza10/machine_learning_project_prediction_liga_mx',
+      technologies: [
+        'https://www.svgrepo.com/show/374016/python.svg',
+        'https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg',
+        'https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png',
+        'https://pandas.pydata.org/docs/_static/pandas.svg'
+      ],
+      resources: [
+        {
+          text: 'Repositorio en GitHub:',
+          github: 'https://www.svgrepo.com/show/512317/github-142.svg',
+          linkRespository: 'https://github.com/Rafaelespinoza10/machine_learning_project_prediction_liga_mx'
+        },
+        {
+          text: 'Ver Notebook',
+          video: 'https://www.svgrepo.com/show/530237/video.svg',
+          linkVideo: 'https://github.com/Rafaelespinoza10/machine_learning_project_prediction_liga_mx'
+        }
+      ]
+    },
     {
       nameProject: 'POS - Ecommerce',
       imageSrc: 'https://res.cloudinary.com/react-courses-rafa/image/upload/v1750573104/fmsntvp41czuotcg2n1a.png',
@@ -195,30 +336,6 @@ projectsWorkExperience = [
           text: 'Proyecto en funcionamiento',
           video: 'https://www.svgrepo.com/show/530237/video.svg',
           linkVideo: 'https://www.linkedin.com/feed/update/urn:li:activity:7270976517499764736/?originTrackingId=OBIIuUC%2FRPu%2FRG77e0hxhQ%3D%3D'
-        }
-      ]
-    },
-    {
-      nameProject: 'RealStateApp',
-      imageSrc: 'https://res.cloudinary.com/react-courses-rafa/image/upload/v1734049198/zzmi4e0rf7hkvs7x1c0c.png',
-      description: 'Aplicación de Bienes Raíces realizada con NodeJs, Template Pug, TailwindCSS, JWT, MySQL, Sequelize.',
-      linkSitioWeb: 'https://bienesraices-node.onrender.com/',
-      technologies: [
-        'https://www.svgrepo.com/show/452075/node-js.svg',
-        'https://www.svgrepo.com/show/374012/pug.svg',
-        'https://www.svgrepo.com/show/374118/tailwind.svg',
-        'https://www.svgrepo.com/show/303251/mysql-logo.svg'
-      ],
-      resources: [
-        {
-          text: 'Repositorio en GitHub:',
-          github: 'https://www.svgrepo.com/show/512317/github-142.svg',
-          linkRespository: ''
-        },
-        {
-          text: 'Proyecto en funcionamiento',
-          video: 'https://www.svgrepo.com/show/530237/video.svg',
-          linkVideo: 'https://www.linkedin.com/feed/update/urn:li:activity:7224288482314125312/?originTrackingId=LFWy9Z0hT12Hh3yoDccT8w%3D%3D'
         }
       ]
     }

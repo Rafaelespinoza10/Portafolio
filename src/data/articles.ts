@@ -9,7 +9,7 @@ export const articles =[{
   date : 'Noviembre, 2024',
   id: 'a8a6b977-425c-432e-98c7-024b81ee12a0',
   author: 'Rafael Moreno',
-  image: 'https://img.freepik.com/foto-gratis/vista-superior-pirata-informatico-irreconocible-que-realiza-ciberataque-noche_1098-18706.jpg?t=st=1731551526~exp=1731555126~hmac=021a52f5ac4e9634112a74a2fc4e37dd435fff142c1e9a65c7b751b3626a07e4&w=360'
+  image: 'images/graduation.png'
 },
 {
 title: 'El proyecto más desafiante y su impacto en mi Carrera Profesional.',
@@ -22,12 +22,43 @@ description: `
         Fue una gran experiencia, aunque no todo fue fácil. Mi equipo y yo pasamos 4 noches en la universidad, enfrentándonos a muchos detalles y problemas con el robot. Finalmente, logramos terminar el proyecto, y me sentí muy orgulloso de haberlo sacado adelante junto a mis compañeros.
 `,
 
-date: 'Noviembre, 2024',
- id: '70567914-b340-4b50-b5ac-4f54e1aa39f5',
- author: 'Rafael Moreno',
- image: 'https://img.freepik.com/foto-gratis/nino-construyendo-robot-usando-partes-electronicas_23-2149357673.jpg?t=st=1731551473~exp=1731555073~hmac=ad066fb6b572e43634818ba5944f40fbe1ed9415fb3e05513674781127306618&w=996'
-},
 
+  date: 'Noviembre, 2024',
+  id: '70567914-b340-4b50-b5ac-4f54e1aa39f5',
+  author: 'Rafael Moreno',
+  image: 'images/flutter_app.png',
+  videoUrl: 'https://www.youtube.com/embed/zES5Dox7VpI?autoplay=0&mute=0&controls=1&playsinline=1&rel=0',
+  videoType: 'youtube'
+},
+{
+  title: 'Explorando Machine Learning y Análisis de Datos: Mi Nueva Especialización',
+  introduction: 'Del desarrollo web al aprendizaje automático: Mi camino hacia la ciencia de datos.',
+  description: `
+      Después de consolidar mi experiencia en desarrollo web full-stack, he decidido expandir mis habilidades hacia un campo que siempre me ha fascinado: Machine Learning y Análisis de Datos. Esta decisión no fue tomada a la ligera, sino que surge de la necesidad de estar preparado para el futuro de la tecnología y de poder crear soluciones más inteligentes y automatizadas.
+      
+      Actualmente me encuentro en proceso de especialización a través de cursos intensivos en Udemy. Recientemente completé el certificado de Machine Learning y Data Science, donde aprendí los fundamentos esenciales de esta disciplina. Este curso me permitió comprender conceptos clave como regresión lineal y logística, clasificación, clustering, redes neuronales y deep learning, así como el uso de bibliotecas fundamentales como NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn y TensorFlow.
+      
+      Lo que más me apasiona de Machine Learning es la capacidad de crear sistemas que aprenden y mejoran con el tiempo. A diferencia del desarrollo tradicional donde programas reglas específicas, en ML entrenas modelos con datos para que descubran patrones por sí mismos. Esta forma de resolver problemas abre un mundo de posibilidades completamente nuevo.
+      
+      Durante mi proceso de aprendizaje, he desarrollado 3 proyectos prácticos aplicando diferentes técnicas de Machine Learning. Cada uno me ha enseñado algo único y me ha ayudado a entender mejor cómo aplicar la teoría en problemas reales. El proyecto que más destaca, y del que estoy particularmente orgulloso, es el de predicción de resultados de la Liga MX.
+      
+      Este proyecto de predicción de la Liga MX me permitió aplicar algoritmos de clasificación y regresión para predecir resultados de partidos basándome en estadísticas históricas, rendimiento de equipos, racha actual y otros factores relevantes. Aunque al principio pensé que sería sencillo, rápidamente me di cuenta de la complejidad detrás del análisis de datos deportivos. Tuve que lidiar con el preprocesamiento de datos, la selección de características relevantes, el manejo de datos desbalanceados y la optimización de hiperparámetros.
+      
+      Los otros dos proyectos me ayudaron a explorar diferentes aspectos del Machine Learning: uno enfocado en análisis de datos y visualización, y otro en predicción de tendencias. Cada proyecto me ha enseñado la importancia de entender bien los datos antes de aplicar cualquier algoritmo, y cómo la limpieza y preparación de datos representa el 80% del trabajo en ciencia de datos.
+      
+      Una de las mayores lecciones que he aprendido es que Machine Learning no es magia, sino matemáticas, estadística y mucha experimentación. Requiere paciencia, comprensión profunda de los algoritmos y, sobre todo, capacidad para interpretar los resultados de manera crítica. No basta con aplicar un modelo; hay que entender por qué funciona, cuándo funciona y cuáles son sus limitaciones.
+      
+      Mi objetivo a corto plazo es seguir especializándome en este campo, completar más certificaciones y desarrollar proyectos más complejos que involucren deep learning y procesamiento de lenguaje natural. A largo plazo, aspiro a combinar mis conocimientos de desarrollo full-stack con Machine Learning para crear aplicaciones inteligentes que resuelvan problemas reales en la industria.
+      
+      El futuro de la tecnología está en la intersección entre el desarrollo de software tradicional y la inteligencia artificial. Como desarrollador que viene del mundo web, tengo una ventaja única: puedo crear no solo los modelos de ML, sino también las aplicaciones completas que los implementan. Esta combinación de habilidades es cada vez más valorada en el mercado laboral.
+      
+      Estoy emocionado por este nuevo capítulo en mi carrera profesional. Machine Learning y Análisis de Datos representan un desafío enorme, pero también una oportunidad increíble para crecer como profesional y contribuir a la creación de soluciones tecnológicas innovadoras. El camino apenas comienza, pero estoy comprometido a seguir aprendiendo, experimentando y compartiendo mi conocimiento con la comunidad.
+  `,
+  date: 'Octubre, 2025',
+  id: 'f8d3c2a1-9b7e-4f5d-a2c8-1e9d4b6f8a3c',
+  author: 'Rafael Moreno',
+  image: 'images/machine_learning.png'
+},
 {
   title: 'Mis metas en Programación.',
   introduction: ' Visión y Futuro en el desarrollo software.',
@@ -38,9 +69,9 @@ date: 'Noviembre, 2024',
               Estoy emocionado por los retos que me depara el futuro y comprometido a seguir mi camino en el mundo del desarrollo de software, con la certeza de que las oportunidades son infinitas si uno se dedica a aprender, adaptarse y nunca dejar de crecer.
   ` ,
   date: 'Noviembre, 2024',
-   id: '20704830-83d6-49fa-87a2-850fbd32beb5',
-   author: 'Rafael Moreno',
-   image: 'https://img.freepik.com/foto-gratis/hombre-negocios-bombilla-hecha-engranajes_1134-654.jpg?t=st=1731551741~exp=1731555341~hmac=0b3d01dc26ef53e17a067ba40666903d6b23a648b849c416d50daddd78762d53&w=996'
+  id: '20704830-83d6-49fa-87a2-850fbd32beb5',
+  author: 'Rafael Moreno',
+  image: 'images/programmin_app.png'
   },
 
 
@@ -58,9 +89,9 @@ date: 'Noviembre, 2024',
     `
   ,
   date: 'Noviembre, 2024',
-   id: 'b8eea21c-ca33-41e7-899e-33d9a31853a2',
-   author: 'Rafael Moreno',
-  image: 'https://img.freepik.com/foto-gratis/concepto-collage-html-css-persona_23-2150061986.jpg?t=st=1731551882~exp=1731555482~hmac=4f2ee6931178abaf0f0ce8d9cb09c8f555e97b2d60dacfe17d96622abe463455&w=996'
+  id: 'b8eea21c-ca33-41e7-899e-33d9a31853a2',
+  author: 'Rafael Moreno',
+  image: 'images/first_job.png'
   },
 
   {
@@ -80,9 +111,9 @@ date: 'Noviembre, 2024',
     `,
 
     date: 'Noviembre, 2024',
-     id: 'dd7f3af9-ec5c-47c3-be4e-e1b554df1fe9',
-     author: 'Rafael Moreno',
-    image: 'https://img.freepik.com/vector-gratis/ilustracion-api-diseno-plano-dibujado-mano_23-2149365021.jpg?t=st=1731551997~exp=1731555597~hmac=9a1309db0325dc07137f1d8d0cd9040c1956305bdc4e8da1389e3e0e4770b3d6&w=740'
+    id: 'dd7f3af9-ec5c-47c3-be4e-e1b554df1fe9',
+    author: 'Rafael Moreno',
+    image: 'images/mi_stack.png'
     },
 
     {
@@ -100,7 +131,8 @@ date: 'Noviembre, 2024',
       id: '236af34e-2dd3-4c5d-afdc-656d33c95de7',
       author: 'Rafael Moreno',
       image: 'https://img.freepik.com/foto-gratis/desarrollador-software-auriculares-eeg-escritura-codigo_482257-91067.jpg?t=st=1731552066~exp=1731555666~hmac=42adcf7351b2a1696b4ce716f536172f3a6b784403c711e084af04ed95358b50&w=360'
-    }
+    },
+
 
 
 ]

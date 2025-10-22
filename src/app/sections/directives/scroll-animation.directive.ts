@@ -11,8 +11,6 @@ export class ScrollAnimationDirective implements AfterViewInit {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log('Elemento visible:', entry.target);
-
             // Reinicia la animación
             this.renderer.removeClass(this.el.nativeElement, 'show');
             setTimeout(() => {

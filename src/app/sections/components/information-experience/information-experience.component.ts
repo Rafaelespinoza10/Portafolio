@@ -13,8 +13,12 @@ export class InformationExperienceComponent {
       logoSrc:'https://play-lh.googleusercontent.com/MsrwSJKoY6Xp9CThBeNKn7dvTwbvBbTpcjxKOp5A-Q5VpgT0NA4zvktTngy2dX8m8mk',
       jobTitle: 'Full Stack Developer',
       description: [
-        'Mantenimiento y creacion de nuevas funcionalidades en React y NodeJs',
-        'Manejo de AWS'
+        'Desarrollo y mantenimiento de sistema de ticketing usando React y Node.js',
+        'Creación y resolución de bugs para mantener el sistema funcionando correctamente',
+        'Implementación de arquitectura serverless para optimizar rendimiento',
+        'Desarrollo de webhooks para integración y monitoreo del sistema',
+        'Creación de nuevos reportes y dashboards interactivos',
+        'Desarrollo de gráficas interactivas para análisis de datos de ventas'
       ],
       duration: 'Jul 2025 - Actual'
     },
