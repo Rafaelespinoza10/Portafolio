@@ -1,53 +1,77 @@
-<section class="py-8">
+<!-- Sección para proyectos de experiencia laboral -->
+<!-- Separador de sección -->
+<div class="my-4">
+  <hr class="border-t-2 border-[#C4B5FD] mx-auto w-1/4">
+</div>
 
-  <!-- Contenedor de proyectos -->
-  <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4" >
+<h2 class="text-3xl font-bold text-indigo-300 text-center mb-8 relative">
+  Proyectos de Experiencia Laboral
+</h2>
 
-    <div *ngFor="let project of projects">
-
-      <!-- Proyecto 1 -->
-      <div
-      class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-transform hover:scale-105"
-      >
-        <a [href]="project.linkSitioWeb!">
-          <img class="w-full h-48 object-cover" [src]="project.imageSrc" alt="Proyecto 1">
+<section class="py-8 text-gray-100">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto px-4">
+    <div *ngFor="let project of projectsWorkExperience">
+      <!-- Tarjeta de Proyecto -->
+      <div class="rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-[1.03] cursor-pointer">
+        <div>
+          <img class="w-full h-48 object-cover" [src]="project.imageSrc" alt="Imagen del proyecto" />
           <div class="p-6">
-            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{{project.nameProject}}</h3>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 text-left">{{project.description}}</p>
+            <h3 class="text-2xl font-bold mb-2 text-[#C4B5FD]">{{ project.name }}</h3>
+            <p class="text-md text-white mb-4 mt-2 text-left">{{ project.description }}</p>
             <div class="flex items-center justify-center gap-4 mt-3">
               <div *ngFor="let technology of project.technologies; index as i">
-                <img [src]="technology" [alt]="i" class="w-10 h-10">
+                <img [src]="technology" [alt]="i" class="w-10 h-10" />
               </div>
-            <!-- <a [href]="project.linkSitioWeb" class="inline-block px-4 py-2 text-sm font-medium text-white bg-indigo-500 rounded hover:bg-indigo-600">Ver Proyecto</a> -->
-            </div>
-
-            <div class="flex items-center justify-between mt-8 gap-7">
-                <div *ngFor="let item of project.resources; index as i">
-                  <!-- <p class="text-white font-bold text-sm">{{item.text}} </p> -->
-                  <!-- <button *ngIf="item.github"  class="rounded-full hover:bg-blue-400">
-                  <a [href]="">
-                      <img
-                      [src]="item.github"
-                      [alt]="i"
-                      class="w-10 h-10 rounded-full"
-                      />
-                    </a>
-                    </button> -->
-
-                  <button *ngIf="item.video" class="rounded-full hover:bg-blue-400">
-                  <a [href]="item.linkVideo">
-                      <img [src]="item.video" [alt]="i" class="w-10 h-10 rounded-full" />
-                    </a>
-                    </button>
-
-                </div>
             </div>
           </div>
-
-        </a>
+        </div>
       </div>
-
     </div>
+  </div>
+</section>
 
+<!-- Separador de sección -->
+<div class="my-4">
+  <hr class="border-t-2 border-[#C4B5FD] mx-auto w-1/4">
+</div>
+
+<h2 class="text-3xl font-bold text-indigo-300 text-center mb-8 relative">
+  Proyectos Personales
+</h2>
+
+<section class="py-8">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+    <div *ngFor="let project of projectsPersonal">
+      <!-- Añadir la clase 'group' aquí para que el hover afecte a los elementos dentro de la tarjeta -->
+      <div class="relative rounded-lg shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-[1.03] cursor-pointer group">
+        <a [href]="project.linkSitioWeb!" target="_blank">
+          <img class="w-full h-48 object-cover" [src]="project.imageSrc" alt="Imagen del proyecto" />
+          <div class="p-6">
+            <h3 class="text-2xl font-bold mb-2 text-[#C4B5FD]">{{ project.nameProject }}</h3>
+            <p class="text-md text-white mb-4 mt-2 text-left">{{ project.description }}</p>
+            <div class="flex items-center justify-center gap-4 mt-3">
+              <div *ngFor="let technology of project.technologies; index as i">
+                <img [src]="technology" [alt]="i" class="w-10 h-10 transform transition duration-300 hover:scale-110" />
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-8 gap-7">
+              <div *ngFor="let item of project.resources; index as i">
+                <button *ngIf="item.video" class="rounded-full hover:opacity-80 transition duration-200">
+                  <a [href]="item.linkVideo" target="_blank">
+                    <img [src]="item.video" [alt]="i" class="w-10 h-10 rounded-full" />
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Botón de Visitar Sitio al hacer hover con 'group-hover' -->
+        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+          <a href="{{ project.linkSitioWeb }}" target="_blank" class="text-white font-semibold text-lg px-4 py-2 bg-indigo-600 rounded-md hover:bg-indigo-700">
+            Visitar Sitio
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

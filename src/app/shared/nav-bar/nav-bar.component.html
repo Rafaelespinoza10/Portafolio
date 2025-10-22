@@ -1,154 +1,222 @@
-<nav class="bg-white border-gray-200 dark:bg-slate-800">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <!-- Botón de usuario con foto -->
+<nav class="bg-gradient-to-r from-[#000000] via-[#1B1B1B]  border-none shadow-sm h-screen">
+  <div class="h-screen max-w-screen-xl flex flex-col items-center justify-between mx-auto p-4 overflow-auto">
 
-
-    <div class="sm:hidden flex items-center justify-between sm:space-x-9">
-
-      <!-- Imagen de usuario a la izquierda -->
-      <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+    <!-- Sección de usuario (versión móvil) -->
+    <div class="sm:hidden flex items-center space-x-4 mt-2">
+      <!-- Imagen de usuario -->
+      <button
+        type="button"
+        class="flex text-sm bg-slate-800 rounded-full focus:ring-4 focus:ring-slate-500"
+        id="user-menu-button"
+        aria-expanded="false"
+      >
         <span class="sr-only">Open user menu</span>
-        <img class="w-24 h-24 rounded-full" src="https://avatars.githubusercontent.com/u/141364183?s=400&u=cbaeda9978950d79fb206227a7abe530b38fd5b2&v=4" alt="user photo">
+        <img
+          class="w-20 h-20 rounded-full"
+          src="https://avatars.githubusercontent.com/u/141364183?s=400&u=cbaeda9978950d79fb206227a7abe530b38fd5b2&v=4"
+          alt="Foto de usuario"
+        />
       </button>
 
-      <!-- Contenedor de texto a la derecha -->
-      <div class="block sm:grid grid-flow-row text-center md:text-left ml-4">
-        <p class="font-bold text-white text-xl sm:text-lg hidden">Alejandro Rafael Moreno Espinoza</p>
-        <p class="font-medium text-white text-xl sm:text-2xl">Rafael Moreno</p>
-        <p class="font-medium text-gray-400 text-xl">Ing. Mecatronica</p>
-
-        <p class="font-medium text-gray-400 text-xl hidden">Ingeniero en Mecatrónica</p>
+      <!-- Texto de usuario -->
+      <div class="block text-left ">
+        <!-- Nombre completo (opcional) -->
+        <!-- <p class="font-bold text-gray-100 text-lg hidden">
+          Alejandro Rafael Moreno Espinoza
+        </p> -->
+        <p class="text-center font-semibold text-gray-100 text-2xl">
+          Rafael Moreno
+        </p>
+        <p class="font-black text-white  text-md">
+          Ing. Mecatrónica
+        </p>
       </div>
     </div>
 
-
-    <!-- Nombre y título del usuario -->
-
-
-    <div class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-white border border-gray-200 rounded-full bottom-4 left-1/2 dark:bg-gray-700 dark:border-gray-600 sm:hidden">
+    <!-- Barra de Navegación fija inferior (versión móvil) -->
+    <div
+      class="fixed z-50 w-full h-16 max-w-lg -translate-x-1/2 bg-slate-700
+             border border-slate-700 rounded-full bottom-4 left-1/2 sm:hidden"
+    >
       <div class="grid h-full max-w-lg grid-cols-6 mx-auto">
-
+        <!-- Home -->
         <a
-        routerLink="/section/home"
-        routerLinkActive="bg-indigo-600"
-
-        data-tooltip-target="tooltip-home" type="button" class="inline-flex flex-col items-center justify-center px-5 rounded-s-full hover:bg-gray-50 dark:hover:bg-gray-800 group">
-              <svg clas="text-gray-400" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 16 16" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0L0 6V8H1V15H4V10H7V15H15V8H16V6L14 4.5V1H11V2.25L8 0ZM9 10H12V13H9V10Z" fill="#9b9b9b"/>
-            </svg>
-            <span class="sr-only">Home</span>
+          routerLink="/section/home"
+          routerLinkActive="bg-indigo-600"
+          data-tooltip-target="tooltip-home"
+          class="inline-flex flex-col items-center justify-center px-5
+                 rounded-s-full hover:bg-slate-700 group transition-colors"
+        >
+          <svg
+            class="w-7 h-7 text-gray-400 transition duration-75 group-hover:text-gray-200"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="none"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8 0L0 6V8H1V15H4V10H7V15H15V8H16V6L14 4.5V1H11V2.25L8 0ZM9 10H12V13H9V10Z"
+              fill="currentColor"
+            />
+          </svg>
+          <span class="sr-only">Home</span>
         </a>
-        <div id="tooltip-home" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-            Home
-            <div class="tooltip-arrow" data-popper-arrow></div>
-        </div>
 
+        <!-- About me -->
+        <a
+          routerLink="/section/about-me"
+          routerLinkActive="bg-indigo-600"
+          data-tooltip-target="tooltip-about"
+          class="inline-flex flex-col items-center justify-center px-5
+                 hover:bg-slate-700 transition-colors group"
+        >
+          <svg
+            width="28"
+            height="28"
+            fill="#9b9b9b"
+            viewBox="0 0 512 512"
+            class="transition duration-75 group-hover:fill-gray-200"
+          >
+            <path
+              d="M213.333333,0 C331.154987,0 426.666667,95.51168 426.666667,213.333333
+                 C426.666667,331.153707 331.154987,426.666667 213.333333,426.666667
+                 C95.51296,426.666667 0,331.153707 0,213.333333
+                 C0,95.51168 95.51296,0 213.333333,0Z
+                 M234.713387,192 L192.04672,192 L192.04672,320 L234.713387,320 L234.713387,192Z
+                 M213.55008,101.333333 C197.99616,101.333333 186.713387,112.5536
+                 186.713387,127.704107 C186.713387,143.46752 197.698773,154.666667
+                 213.55008,154.666667 C228.785067,154.666667 240.04672,143.46752
+                 240.04672,128 C240.04672,112.5536 228.785067,101.333333 213.55008,101.333333Z"
+            />
+          </svg>
+          <span class="sr-only">About me</span>
+        </a>
 
-                  <a
-                  routerLink="/section/about-me"
-                  routerLinkActive="bg-indigo-600"
-                  data-tooltip-target="tooltip-wallet" type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28px" height="28px" viewBox="0 0 512 512" version="1.1">
-                    <title>about-filled</title>
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g id="drop" fill="#9b9b9b" transform="translate(42.666667, 42.666667)">
-                            <path d="M213.333333,3.55271368e-14 C331.154987,3.55271368e-14 426.666667,95.51168 426.666667,213.333333 C426.666667,331.153707 331.154987,426.666667 213.333333,426.666667 C95.51296,426.666667 3.55271368e-14,331.153707 3.55271368e-14,213.333333 C3.55271368e-14,95.51168 95.51296,3.55271368e-14 213.333333,3.55271368e-14 Z M234.713387,192 L192.04672,192 L192.04672,320 L234.713387,320 L234.713387,192 Z M213.55008,101.333333 C197.99616,101.333333 186.713387,112.5536 186.713387,127.704107 C186.713387,143.46752 197.698773,154.666667 213.55008,154.666667 C228.785067,154.666667 240.04672,143.46752 240.04672,128 C240.04672,112.5536 228.785067,101.333333 213.55008,101.333333 Z" id="Shape">
-                          </path>
-                        </g>
-                      </g>
-                    </svg>
-                      <span class="sr-only">About me </span>
-                  </a>
-                  <div id="tooltip-wallet" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                      About me
-                      <div class="tooltip-arrow" data-popper-arrow></div>
-                  </div>
-
-          <a
+        <!-- Resume -->
+        <a
           routerLink="/section/resume"
           routerLinkActive="bg-indigo-600"
-          data-tooltip-target="tooltip-wallet" type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
-          <svg class="flex-shrink-0 w-7 h-7 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-            <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
-           </svg>
-              <span class="sr-only">Resume</span>
-          </a>
-          <div id="tooltip-wallet" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-              Resume
-              <div class="tooltip-arrow" data-popper-arrow></div>
-          </div>
+          data-tooltip-target="tooltip-resume"
+          class="inline-flex flex-col items-center justify-center px-5
+                 hover:bg-slate-700 transition-colors group"
+        >
+          <svg
+            class="w-7 h-7 text-gray-400 group-hover:text-gray-200 transition duration-75"
+            aria-hidden="true"
+            fill="currentColor"
+            viewBox="0 0 20 18"
+          >
+            <path
+              d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331
+                 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1
+                 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006
+                 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0
+                 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0
+                 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"
+            />
+          </svg>
+          <span class="sr-only">Resume</span>
+        </a>
 
-
-
-
-
-          <a
+        <!-- Portafolio -->
+        <a
           routerLink="/section/portafolio"
           routerLinkActive="bg-indigo-600"
-          data-tooltip-target="tooltip-wallet" type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28px" height="28px" viewBox="0 0 512 512" version="1.1">
-                  <title>project-new</title>
-                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="Combined-Shape" fill="#9b9b9b" transform="translate(64.000000, 34.346667)">
-                          <path d="M192,-7.10542736e-15 L384,110.851252 L384,242.986 L341.333,242.986 L341.333,157.655 L213.333,231.555 L213.333,431.088 L192,443.405007 L0,332.553755 L0,110.851252 L192,-7.10542736e-15 Z M341.333333,264.32 L341.333,328.32 L405.333333,328.32 L405.333333,370.986667 L341.333,370.986 L341.333333,434.986667 L298.666667,434.986667 L298.666,370.986 L234.666667,370.986667 L234.666667,328.32 L298.666,328.32 L298.666667,264.32 L341.333333,264.32 Z M42.666,157.654 L42.6666667,307.920144 L170.666,381.82 L170.666,231.555 L42.666,157.654 Z M192,49.267223 L66.1333333,121.936377 L192,194.605531 L317.866667,121.936377 L192,49.267223 Z">
+          data-tooltip-target="tooltip-portafolio"
+          class="inline-flex flex-col items-center justify-center px-5
+                 hover:bg-slate-700 transition-colors group"
+        >
+          <svg
+            width="28" height="28"
+            viewBox="0 0 512 512"
+            fill="#9b9b9b"
+            class="transition duration-75 group-hover:fill-gray-200"
+          >
+            <path
+              d="M192,0 L384,110.851252 L384,242.986 L341.333,242.986
+                 L341.333,157.655 L213.333,231.555 L213.333,431.088
+                 L192,443.405007 L0,332.553755 L0,110.851252 L192,0 Z
+                 M341.333333,264.32 L341.333,328.32 L405.333333,328.32
+                 L405.333333,370.986667 L341.333,370.986
+                 L341.333333,434.986667 L298.666667,434.986667
+                 L298.666,370.986 L234.666667,370.986667
+                 L234.666667,328.32 L298.666,328.32
+                 L298.666667,264.32 L341.333333,264.32 Z"
+            />
+          </svg>
+          <span class="sr-only">Portafolio</span>
+        </a>
 
-              </path>
-                      </g>
-                  </g>
-              </svg>
-              <span class="sr-only">Portafolio</span>
-          </a>
-          <div id="tooltip-wallet" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-              Portafolio
-              <div class="tooltip-arrow" data-popper-arrow></div>
-          </div>
-
-
-
-
-
-
-          <!-- Settings Button -->
-          <a
+        <!-- Blog -->
+        <a
           routerLink="/section/blog"
           routerLinkActive="bg-indigo-600"
-          data-tooltip-target="tooltip-settings" type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" width="28px" height="28px" viewBox="0 0 512 512" xml:space="preserve">
-              <style type="text/css">
-                .st0{fill:#9b9b9b;}
-              </style>
-              <g>
-                <path class="st0" d="M421.073,221.719c-0.578,11.719-9.469,26.188-23.797,40.094v183.25c-0.016,4.719-1.875,8.719-5.016,11.844   c-3.156,3.063-7.25,4.875-12.063,4.906H81.558c-4.781-0.031-8.891-1.844-12.047-4.906c-3.141-3.125-4.984-7.125-5-11.844V152.219   c0.016-4.703,1.859-8.719,5-11.844c3.156-3.063,7.266-4.875,12.047-4.906h158.609c12.828-16.844,27.781-34.094,44.719-49.906   c0.078-0.094,0.141-0.188,0.219-0.281H81.558c-18.75-0.016-35.984,7.531-48.25,19.594c-12.328,12.063-20.016,28.938-20,47.344   v292.844c-0.016,18.406,7.672,35.313,20,47.344C45.573,504.469,62.808,512,81.558,512h298.641c18.781,0,36.016-7.531,48.281-19.594   c12.297-12.031,20-28.938,19.984-47.344V203.469c0,0-0.125-0.156-0.328-0.313C440.37,209.813,431.323,216.156,421.073,221.719z"/>
-                <path class="st0" d="M498.058,0c0,0-15.688,23.438-118.156,58.109C275.417,93.469,211.104,237.313,211.104,237.313   c-15.484,29.469-76.688,151.906-76.688,151.906c-16.859,31.625,14.031,50.313,32.156,17.656   c34.734-62.688,57.156-119.969,109.969-121.594c77.047-2.375,129.734-69.656,113.156-66.531c-21.813,9.5-69.906,0.719-41.578-3.656   c68-5.453,109.906-56.563,96.25-60.031c-24.109,9.281-46.594,0.469-51-2.188C513.386,138.281,498.058,0,498.058,0z"/>
-              </g>
-              </svg>
-              <span class="sr-only">Blog</span>
-          </a>
-          <div id="tooltip-settings" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-              Blog
-              <div class="tooltip-arrow" data-popper-arrow></div>
-          </div>
+          data-tooltip-target="tooltip-blog"
+          class="inline-flex flex-col items-center justify-center px-5
+                 hover:bg-slate-700 transition-colors group"
+        >
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 512 512"
+            fill="#9b9b9b"
+            class="transition duration-75 group-hover:fill-gray-200"
+          >
+            <g>
+              <path
+                d="M421.073,221.719c-0.578,11.719-9.469,26.188-23.797,40.094v183.25
+                   c-0.016,4.719-1.875,8.719-5.016,11.844c-3.156,3.063-7.25,4.875-12.063,4.906H81.558
+                   c-4.781-0.031-8.891-1.844-12.047-4.906c-3.141-3.125-4.984-7.125-5-11.844V152.219
+                   c0.016-4.703,1.859-8.719,5-11.844c3.156-3.063,7.266-4.875,12.047-4.906h158.609
+                   c12.828-16.844,27.781-34.094,44.719-49.906h-203.328
+                   c-18.75-0.016-35.984,7.531-48.25,19.594c-12.328,12.063-20.016,28.938-20,47.344
+                   v292.844c-0.016,18.406,7.672,35.313,20,47.344C45.573,504.469,62.808,512,81.558,512
+                   h298.641c18.781,0,36.016-7.531,48.281-19.594c12.297-12.031,20-28.938,19.984-47.344V203.469
+                   c-0.203-0.156-0.328-0.313-0.328-0.313C440.37,209.813,431.323,216.156,421.073,221.719z"
+              />
+              <path
+                d="M498.058,0c0,0-15.688,23.438-118.156,58.109C275.417,93.469,211.104,237.313,211.104,237.313
+                   c-15.484,29.469-76.688,151.906-76.688,151.906c-16.859,31.625,14.031,50.313,32.156,17.656
+                   c34.734-62.688,57.156-119.969,109.969-121.594c77.047-2.375,129.734-69.656,113.156-66.531
+                   c-21.813,9.5-69.906,0.719-41.578-3.656c68-5.453,109.906-56.563,96.25-60.031
+                   c-24.109,9.281-46.594,0.469-51-2.188C513.386,138.281,498.058,0,498.058,0z"
+              />
+            </g>
+          </svg>
+          <span class="sr-only">Blog</span>
+        </a>
 
-          <!-- Profile Button -->
-          <a
+        <!-- Contacto -->
+        <a
           routerLink="/section/contact"
           routerLinkActive="bg-indigo-600"
-          data-tooltip-target="tooltip-profile" type="button" class="inline-flex flex-col items-center justify-center px-5 rounded-e-full hover:bg-gray-50 dark:hover:bg-gray-800 group">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#9b9b9b" height="28px" width="28px" version="1.1" id="XMLID_199_" viewBox="0 0 24 24" xml:space="preserve">
-              <g id="contact-card">
-                <g>
-                  <path d="M12,20H0v-3.5c0-2.4,1.3-4.5,3.2-5.6C2.5,10.2,2,9.2,2,8.1c0-2.2,1.8-4,4-4s4,1.8,4,4c0,1.1-0.4,2.1-1.2,2.8    c1.9,1.1,3.2,3.3,3.2,5.6V20z M2,18h8v-1.5c0-2.4-1.8-4.5-4-4.5c-2.1,0-4,2.1-4,4.5V18z M6,6C4.9,6,4,6.9,4,8s0.9,2,2,2s2-0.9,2-2    S7.1,6,6,6z M24,17H14v-2h10V17z M21,13h-7v-2h7V13z M24,9H14V7h10V9z"/>
-                </g>
-              </g>
-              </svg>
-              <span class="sr-only">Contacto</span>
-          </a>
-          <div id="tooltip-profile" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-              Contacto
-              <div class="tooltip-arrow" data-popper-arrow></div>
-          </div>
+          data-tooltip-target="tooltip-contact"
+          class="inline-flex flex-col items-center justify-center px-5
+                 rounded-e-full hover:bg-slate-700 transition-colors group"
+        >
+          <svg
+            fill="#9b9b9b"
+            height="28" width="28"
+            viewBox="0 0 24 24"
+            class="transition duration-75 group-hover:fill-gray-200"
+          >
+            <g>
+              <path
+                d="M12,20H0v-3.5c0-2.4,1.3-4.5,3.2-5.6C2.5,10.2,2,9.2,2,8.1c0-2.2,1.8-4,4-4s4,1.8,4,4
+                   c0,1.1-0.4,2.1-1.2,2.8c1.9,1.1,3.2,3.3,3.2,5.6V20z
+                   M2,18h8v-1.5c0-2.4-1.8-4.5-4-4.5c-2.1,0-4,2.1-4,4.5V18z
+                   M6,6C4.9,6,4,6.9,4,8s0.9,2,2,2s2-0.9,2-2S7.1,6,6,6z
+                   M24,17H14v-2h10V17z
+                   M21,13h-7v-2h7V13z
+                   M24,9H14V7h10V9z"
+              />
+            </g>
+          </svg>
+          <span class="sr-only">Contacto</span>
+        </a>
       </div>
-  </div>
+    </div>
 
   </div>
 </nav>

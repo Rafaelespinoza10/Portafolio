@@ -2,25 +2,25 @@
 <!-- drawer component -->
 <!-- <div id="drawer-navigation" class="fixed top-0 left-0 z-40  w-max md:w-auto h-full p-8 overflow-y-auto bg-gray-800"  tabindex="-1" aria-labelledby="drawer-navigation-label"> -->
 
-  <div class="w-max sm:w-auto bg-gray-800 md:w-auto h-screen">
+  <div class="w-max sm:w-auto bg-gradient-to-r from-[#000000]   md:w-auto h-screen">
     <!-- <div class="py-4 overflow-y-auto"> -->
 
     <shared-profile-picture></shared-profile-picture>
 
-    <ul class="space-y-1 font-medium p-6">
+    <ul class="space-y-1 font-medium p-2">
 
       <li>
         <a
         routerLink="/section/home"
         routerLinkActive="bg-indigo-300"
-        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 duration-150 group"
+        class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group"
         >
 
-        <svg clas="text-gray-400" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 16 16" fill="none">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0L0 6V8H1V15H4V10H7V15H15V8H16V6L14 4.5V1H11V2.25L8 0ZM9 10H12V13H9V10Z" fill="#9b9b9b"/>
-          </svg>
-
-           <span class="ms-3 text-md">Home</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#9b9b9b" viewBox="0 0 24 24">
+          <path d="M3 9.857L12 3l9 6.857V21a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1V9.857z"/>
+        </svg>
+        
+           <span class="ms-3 text-md">Inicio</span>
         </a>
      </li>
 
@@ -29,20 +29,14 @@
            <a
            routerLink="/section/about-me"
            routerLinkActive="bg-indigo-300"
-           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 duration-150 group"
+           class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group"
            >
 
-           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28px" height="28px" viewBox="0 0 512 512" version="1.1">
-            <title>about-filled</title>
-            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="drop" fill="#9b9b9b" transform="translate(42.666667, 42.666667)">
-                    <path d="M213.333333,3.55271368e-14 C331.154987,3.55271368e-14 426.666667,95.51168 426.666667,213.333333 C426.666667,331.153707 331.154987,426.666667 213.333333,426.666667 C95.51296,426.666667 3.55271368e-14,331.153707 3.55271368e-14,213.333333 C3.55271368e-14,95.51168 95.51296,3.55271368e-14 213.333333,3.55271368e-14 Z M234.713387,192 L192.04672,192 L192.04672,320 L234.713387,320 L234.713387,192 Z M213.55008,101.333333 C197.99616,101.333333 186.713387,112.5536 186.713387,127.704107 C186.713387,143.46752 197.698773,154.666667 213.55008,154.666667 C228.785067,154.666667 240.04672,143.46752 240.04672,128 C240.04672,112.5536 228.785067,101.333333 213.55008,101.333333 Z" id="Shape">
-                  </path>
-                </g>
-              </g>
-            </svg>
+           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#9b9b9b" viewBox="0 0 24 24">
+            <path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
 
-            <span class="ms-3 text-md">About Me</span>
+            <span class="ms-3 text-md">Sobre mi</span>
            </a>
         </li>
 
@@ -50,31 +44,24 @@
            <a
            routerLink="/section/resume"
            routerLinkActive="bg-indigo-300"
-           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+           class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group"
            >
 
-           <svg class="flex-shrink-0 w-7 h-7 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-            <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
-           </svg>
-              <span class="flex-1 ms-3 whitespace-nowrap text-md">Resume </span>
+           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#9b9b9b" viewBox="0 0 24 24">
+            <path d="M6 2a2 2 0 00-2 2v16a2 2 0 002 2h9a2 2 0 002-2V8l-5-6H6zm7 1.5L17.5 8H13V3.5zM8 13h8v2H8v-2zm0 4h5v2H8v-2z"/>
+          </svg>
+              <span class="flex-1 ms-3 whitespace-nowrap text-md">Resume</span>
            </a>
         </li>
         <li>
            <a
            routerLink="/section/portafolio"
            routerLinkActive="bg-indigo-300"
-           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+           class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group"
            >
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28px" height="28px" viewBox="0 0 512 512" version="1.1">
-                  <title>project-new</title>
-                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                      <g id="Combined-Shape" fill="#9b9b9b" transform="translate(64.000000, 34.346667)">
-                          <path d="M192,-7.10542736e-15 L384,110.851252 L384,242.986 L341.333,242.986 L341.333,157.655 L213.333,231.555 L213.333,431.088 L192,443.405007 L0,332.553755 L0,110.851252 L192,-7.10542736e-15 Z M341.333333,264.32 L341.333,328.32 L405.333333,328.32 L405.333333,370.986667 L341.333,370.986 L341.333333,434.986667 L298.666667,434.986667 L298.666,370.986 L234.666667,370.986667 L234.666667,328.32 L298.666,328.32 L298.666667,264.32 L341.333333,264.32 Z M42.666,157.654 L42.6666667,307.920144 L170.666,381.82 L170.666,231.555 L42.666,157.654 Z M192,49.267223 L66.1333333,121.936377 L192,194.605531 L317.866667,121.936377 L192,49.267223 Z">
-
-              </path>
-                      </g>
-                  </g>
-              </svg>
+           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#9b9b9b" viewBox="0 0 24 24">
+            <path d="M20 6h-4l-2-2h-4l-2 2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2zM4 18V8h16v10H4z"/>
+          </svg>
               <span class="flex-1 ms-3 whitespace-nowrap text-md">Portafolio</span>
            </a>
         </li>
@@ -82,24 +69,19 @@
            <a
            routerLink="/section/blog"
            routerLinkActive="bg-indigo-300"
-           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+           class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group">
 
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" width="28px" height="28px" viewBox="0 0 512 512" xml:space="preserve">
-                <style type="text/css">
-                  .st0{fill:#9b9b9b;}
-                </style>
-                <g>
-                  <path class="st0" d="M421.073,221.719c-0.578,11.719-9.469,26.188-23.797,40.094v183.25c-0.016,4.719-1.875,8.719-5.016,11.844   c-3.156,3.063-7.25,4.875-12.063,4.906H81.558c-4.781-0.031-8.891-1.844-12.047-4.906c-3.141-3.125-4.984-7.125-5-11.844V152.219   c0.016-4.703,1.859-8.719,5-11.844c3.156-3.063,7.266-4.875,12.047-4.906h158.609c12.828-16.844,27.781-34.094,44.719-49.906   c0.078-0.094,0.141-0.188,0.219-0.281H81.558c-18.75-0.016-35.984,7.531-48.25,19.594c-12.328,12.063-20.016,28.938-20,47.344   v292.844c-0.016,18.406,7.672,35.313,20,47.344C45.573,504.469,62.808,512,81.558,512h298.641c18.781,0,36.016-7.531,48.281-19.594   c12.297-12.031,20-28.938,19.984-47.344V203.469c0,0-0.125-0.156-0.328-0.313C440.37,209.813,431.323,216.156,421.073,221.719z"/>
-                  <path class="st0" d="M498.058,0c0,0-15.688,23.438-118.156,58.109C275.417,93.469,211.104,237.313,211.104,237.313   c-15.484,29.469-76.688,151.906-76.688,151.906c-16.859,31.625,14.031,50.313,32.156,17.656   c34.734-62.688,57.156-119.969,109.969-121.594c77.047-2.375,129.734-69.656,113.156-66.531c-21.813,9.5-69.906,0.719-41.578-3.656   c68-5.453,109.906-56.563,96.25-60.031c-24.109,9.281-46.594,0.469-51-2.188C513.386,138.281,498.058,0,498.058,0z"/>
-                </g>
-                </svg>
+           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#9b9b9b" viewBox="0 0 24 24">
+            <path d="M4 4h16v2H4V4zm0 4h10v2H4V8zm0 4h16v2H4v-2zm0 4h10v2H4v-2z"/>
+          </svg>
+          
 
               <span class="flex-1 ms-3 whitespace-nowrap text-md">Blog</span>
            </a>
         </li>
         <li>
            <a
-           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+           class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-300 duration-150 group"
            routerLink="/section/contact"
            routerLinkActive="bg-indigo-300"
            >
@@ -111,7 +93,7 @@
             </g>
             </svg>
 
-              <span class="flex-1 ms-3 whitespace-nowrap text-md">Contact</span>
+              <span class="flex-1 ms-3 whitespace-nowrap text-md">Contacto</span>
            </a>
         </li>
      </ul>

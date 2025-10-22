@@ -1,8 +1,23 @@
-.scroll-container {
-  height: 100%;        /* Asegura que el contenedor ocupe toda la altura del área disponible */
-  overflow-y: auto;
+/* Establecer las alturas necesarias */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.container-bar-nav{
+.container-bar-nav {
   margin-bottom: 5.7rem;
+}
+
+/* Asegúrate de que el contenedor principal y el router-outlet se ajusten bien */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;  /* Elimina scroll principal */
+}
+
+#router-outlet {
+  flex-grow: 1;
+  overflow-y: auto;  /* Solo scroll en esta parte */
 }

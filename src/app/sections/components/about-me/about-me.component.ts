@@ -33,5 +33,21 @@ export class AboutMeComponent implements OnInit{
         clearInterval(interval);
       }
     }, this.typingSpeed);
+
+  }
+  downloadCVs(){
+    const files = [
+      { url: 'files/CV_RafaelMoreno_English.pdf', name: 'CV_RafaelMoreno_EngMechatronics' },
+      { url: 'files/CV_RafaelMoreno_spanish.pdf', name: 'CV_RafaelMoreno_IngMecatronica.pdf' }
+    ];
+
+    files.forEach(file => {
+      const link = document.createElement('a');
+      link.href = file.url;
+      link.download = file.name;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
   }
 }

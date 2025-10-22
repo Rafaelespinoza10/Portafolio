@@ -1,63 +1,110 @@
-<section class="bg-white dark:bg-gray-900">
+<section class=" text-gray-100">
   <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
     <form [formGroup]="emailForm" class="space-y-8">
+
+      <!-- Campo Email -->
       <div>
-        <label for="email" class="block mb-2 text-md font-medium text-gray-900 dark:text-gray-300">
+        <label for="email" class="block mb-2 text-md font-medium text-gray-100">
           Tu correo electrónico
         </label>
         <input
           type="email"
           id="email"
-          class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-          placeholder="name@email.com"
           formControlName="email"
+          placeholder="tucorreo@ejemplo.com"
+          class="shadow-sm bg-gray-700 border border-[#444] text-gray-100 text-md
+                 rounded-lg focus:ring-purple-500 focus:border-purple-500
+                 block w-full p-2.5 placeholder-gray-400"
+        />
+        <div
+          *ngIf="
+            emailForm.get('email')?.touched &&
+            emailForm.get('email')?.invalid
+          "
+          class="text-red-500 text-sm"
         >
-        <div *ngIf="emailForm.get('email')?.touched && emailForm.get('email')?.invalid" class="text-red-500 text-sm">
-          <span *ngIf="emailForm.get('email')?.errors?.['required']">El correo es obligatorio.</span>
+          <span *ngIf="emailForm.get('email')?.errors?.['required']">
+            El correo es obligatorio.
+          </span>
         </div>
       </div>
 
+      <!-- Campo Asunto -->
       <div>
-        <label for="subject" class="block mb-2 text-md font-medium text-gray-900 dark:text-gray-300">
+        <label for="subject" class="block mb-2 text-md font-medium text-gray-100">
           Asunto
         </label>
         <input
           type="text"
           id="subject"
-          class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-md focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
-          placeholder="Asunto"
           formControlName="subject"
+          placeholder="Asunto"
+          class="block p-3 w-full text-md text-gray-100 bg-gray-700
+                 rounded-lg border border-[#444] shadow-md
+                 focus:ring-purple-500 focus:border-purple-500
+                 placeholder-gray-400"
+        />
+        <div
+          *ngIf="
+            emailForm.get('subject')?.touched &&
+            emailForm.get('subject')?.invalid
+          "
+          class="text-red-500 text-sm"
         >
-        <div *ngIf="emailForm.get('subject')?.touched && emailForm.get('subject')?.invalid" class="text-red-500 text-sm">
-          <span *ngIf="emailForm.get('subject')?.errors?.['required']">El asunto es obligatorio.</span>
-          <span *ngIf="emailForm.get('subject')?.errors?.['minlength']">Debe tener al menos 20 caracteres.</span>
+          <span *ngIf="emailForm.get('subject')?.errors?.['required']">
+            El asunto es obligatorio.
+          </span>
+          <span *ngIf="emailForm.get('subject')?.errors?.['minlength']">
+            Debe tener al menos 20 caracteres.
+          </span>
         </div>
       </div>
 
+      <!-- Campo Mensaje -->
       <div class="sm:col-span-2">
-        <label for="message" class="block mb-2 text-md font-medium text-gray-900 dark:text-gray-400">
+        <label for="message" class="block mb-2 text-md font-medium text-gray-100">
           Mensaje
         </label>
         <textarea
           id="message"
           rows="6"
-          class="block p-2.5 w-full text-md text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
           formControlName="message"
           placeholder="Deja un comentario..."
+          class="block p-2.5 w-full text-md text-gray-100 bg-gray-700
+                 rounded-lg shadow-sm border border-[#444]
+                 focus:ring-purple-500 focus:border-purple-500
+                 placeholder-gray-400"
         ></textarea>
-        <div *ngIf="emailForm.get('message')?.touched && emailForm.get('message')?.invalid" class="text-red-500 text-sm">
-          <span *ngIf="emailForm.get('message')?.errors?.['required']">El mensaje es obligatorio.</span>
-          <span *ngIf="emailForm.get('message')?.errors?.['minlength']">Debe tener al menos 50 caracteres.</span>
+        <div
+          *ngIf="
+            emailForm.get('message')?.touched &&
+            emailForm.get('message')?.invalid
+          "
+          class="text-red-500 text-sm"
+        >
+          <span *ngIf="emailForm.get('message')?.errors?.['required']">
+            El mensaje es obligatorio.
+          </span>
+          <span *ngIf="emailForm.get('message')?.errors?.['minlength']">
+            Debe tener al menos 50 caracteres.
+          </span>
         </div>
       </div>
 
+      <!-- Botón Enviar -->
       <button
         [disabled]="emailForm.invalid"
         (click)="onSubmit()"
-        class="disabled:opacity-50 disabled:cursor-not-allowed py-3 px-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-md font-medium text-center text-white rounded-lg sm:w-fit hover:from-pink-500 hover:to-indigo-500 focus:ring-4 focus:outline-none focus:ring-purple-300 transition duration-300 ease-in-out transform hover:scale-105 sm:mb-20"
+        class="disabled:opacity-50 disabled:cursor-not-allowed
+               py-3 px-8 bg-gradient-to-r from-purple-600 to-pink-600
+               text-md font-medium text-center text-white rounded-lg
+               sm:w-fit hover:from-pink-600 hover:to-purple-600
+               focus:ring-4 focus:outline-none focus:ring-purple-300
+               transition duration-300 ease-in-out transform hover:scale-105"
       >
         Enviar mensaje
       </button>
+
     </form>
   </div>
 </section>
