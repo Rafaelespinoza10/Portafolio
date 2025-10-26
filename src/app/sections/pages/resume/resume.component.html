@@ -3,11 +3,11 @@
   <!-- Título principal con efecto -->
   <div class="text-center mb-12">
     <h2 class="text-4xl sm:text-5xl font-bold gradient-text-purple mb-4 animate-fade-in">
-      Curriculum Vitae
+      {{ title }}
     </h2>
     <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-6 animate-fade-in"></div>
     <p class="text-lg text-gray-200 dark:text-gray-300 max-w-3xl mx-auto animate-fade-in">
-      Ingeniero en Mecatrónica | Desarrollador Full Stack con experiencia en sistemas de ticketing y aplicaciones web
+      {{ subtitle }}
     </p>
   </div>
 
@@ -15,7 +15,7 @@
   <section class="mb-16">
     <div class="text-center mb-12">
       <h3 class="text-3xl sm:text-4xl font-bold gradient-text-purple mb-4 animate-fade-in">
-        Experiencia Laboral
+        {{ experienceTitle }}
       </h3>
       <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mx-auto animate-fade-in"></div>
     </div>
@@ -29,7 +29,7 @@
   <section class="mb-16">
     <div class="text-center mb-12">
       <h3 class="text-3xl sm:text-4xl font-bold gradient-text-purple mb-4 animate-fade-in">
-        Educación y Cursos
+        {{ educationTitle }}
       </h3>
       <div class="w-20 h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mx-auto animate-fade-in"></div>
     </div>
@@ -43,7 +43,7 @@
   <section class="mb-16">
     <div class="text-center mb-12">
       <h3 class="text-3xl sm:text-4xl font-bold gradient-text-purple mb-4 animate-fade-in">
-        Habilidades e Idiomas
+        {{ skillsTitle }}
       </h3>
       <div class="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mx-auto animate-fade-in"></div>
     </div>

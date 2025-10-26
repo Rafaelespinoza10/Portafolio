@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <!-- Home Section -->
+      <trans-unit id="welcome" datatype="html">
+        <source>Bienvenido</source>
+        <target>Welcome</target>
+      </trans-unit>
+      
+      <trans-unit id="animatedText" datatype="html">
+        <source>Rafael Moreno</source>
+        <target>Rafael Moreno</target>
+      </trans-unit>
+      
+      <trans-unit id="startButton" datatype="html">
+        <source>Empecemos</source>
+        <target>Let's Start</target>
+      </trans-unit>
+
+      <!-- Sidebar Navigation -->
+      <trans-unit id="nav.home" datatype="html">
+        <source>Inicio</source>
+        <target>Home</target>
+      </trans-unit>
+      
+      <trans-unit id="nav.about" datatype="html">
+        <source>Sobre mi</source>
+        <target>About Me</target>
+      </trans-unit>
+      
+      <trans-unit id="nav.resume" datatype="html">
+        <source>Resume</source>
+        <target>Resume</target>
+      </trans-unit>
+      
+      <trans-unit id="nav.portfolio" datatype="html">
+        <source>Portafolio</source>
+        <target>Portfolio</target>
+      </trans-unit>
+      
+      <trans-unit id="nav.blog" datatype="html">
+        <source>Blog</source>
+        <target>Blog</target>
+      </trans-unit>
+      
+      <trans-unit id="nav.contact" datatype="html">
+        <source>Contacto</source>
+        <target>Contact</target>
+      </trans-unit>
+
+      <!-- Profile Picture -->
+      <trans-unit id="profile.name" datatype="html">
+        <source>Rafael Moreno</source>
+        <target>Rafael Moreno</target>
+      </trans-unit>
+      
+      <trans-unit id="profile.profession" datatype="html">
+        <source>Ingeniero en Mecatronica | Desarrollador de Software</source>
+        <target>Mechatronics Engineer | Software Developer</target>
+      </trans-unit>
+
+      <!-- Contact Form -->
+      <trans-unit id="contact.title" datatype="html">
+        <source>Contacto</source>
+        <target>Contact</target>
+      </trans-unit>
+      
+      <trans-unit id="contact.subtitle" datatype="html">
+        <source>¡Hablemos! Me encantaría conocer tu proyecto</source>
+        <target>Let's talk! I'd love to know about your project</target>
+      </trans-unit>
+      
+      <trans-unit id="contact.email" datatype="html">
+        <source>Correo electrónico</source>
+        <target>Email</target>
+      </trans-unit>
+      
+      <trans-unit id="contact.subject" datatype="html">
+        <source>Asunto</source>
+        <target>Subject</target>
+      </trans-unit>
+      
+      <trans-unit id="contact.message" datatype="html">
+        <source>Tu mensaje</source>
+        <target>Your message</target>
+      </trans-unit>
+      
+      <trans-unit id="contact.send" datatype="html">
+        <source>Enviar mensaje</source>
+        <target>Send message</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

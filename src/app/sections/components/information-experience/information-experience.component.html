@@ -50,7 +50,7 @@
                 <div *ngFor="let item of experience.description" class="flex items-start space-x-2 sm:space-x-3">
                   <div class="flex-shrink-0 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mt-1.5 sm:mt-2"></div>
                   <p class="text-sm sm:text-base text-gray-300 leading-relaxed break-words">
-                    <span class="text-purple-400 font-semibold">{{ item.split(' ')[0] }}</span> {{ item.slice(item.indexOf(' ') + 1) }}
+                    {{ item }}
                   </p>
                 </div>
               </div>

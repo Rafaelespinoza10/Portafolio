@@ -1,6 +1,10 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { gsap } from 'gsap';
+import { Subscription } from 'rxjs';
+import { skip } from 'rxjs/operators';
+import { LanguageService } from '../../../services/language.service';
+import { translations } from '../../../i18n/translations';
 
 @Component({
   selector: 'components-home',
@@ -9,25 +13,47 @@ import { gsap } from 'gsap';
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  constructor(private router:Router,) { }
+  constructor(
+    private router: Router,
+    private languageService: LanguageService
+  ) { }
 
-  messages = [
-    'Hola, soy Rafael',
-    'Soy Ingeniero en Mecatrónica',
-    'Soy desarrollador de software',
-    'Me gusta la programación y el café'
-  ];
-
+  private typingInterval: any = null;
+  private languageSubscription: Subscription = new Subscription();
+  public messages: string[] = [];
   public animatedText = '';
   public typingSpeed: number = 50;
-  public delayBetweenMessages: number = 1000; // Tiempo entre mensajes (en milisegundos)
+  public delayBetweenMessages: number = 1000;
 
   ngOnInit() {
+    // Cargar mensajes iniciales
+    this.loadMessages();
     this.startTypingEffect();
+    
+    // Suscribirse a cambios de idioma (usando skip(1) para saltar el primer valor)
+    this.languageSubscription.add(
+      this.languageService.currentLanguage$.pipe(
+        skip(1)
+      ).subscribe(() => {
+        this.loadMessages();
+        this.clearTypingEffect();
+        setTimeout(() => this.startTypingEffect(), 100);
+      })
+    );
+  }
+
+  private loadMessages() {
+    const currentLang = this.languageService.getCurrentLanguage();
+    
+    this.messages = [
+      translations['home.message1'][currentLang] as string,
+      translations['home.message2'][currentLang] as string,
+      translations['home.message3'][currentLang] as string,
+      translations['home.message4'][currentLang] as string
+    ];
   }
 
   ngAfterViewInit() {
-    // Animaciones GSAP para entrada del hero
     const tl = gsap.timeline();
 
     tl.from('.hero-title', {
@@ -49,7 +75,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       ease: 'back.out(1.7)'
     }, '-=0.3');
 
-    // Animación de partículas flotantes (si tienes un elemento de fondo)
     gsap.to('.floating-element', {
       y: -20,
       duration: 2,
@@ -61,10 +86,17 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // Limpiar animaciones de GSAP
     gsap.killTweensOf('*');
+    this.clearTypingEffect();
+    this.languageSubscription.unsubscribe();
   }
-
+  private clearTypingEffect() {
+    if (this.typingInterval) {
+      clearInterval(this.typingInterval);
+      this.typingInterval = null;
+    }
+    this.animatedText = '';
+  }
   startTypingEffect() {
     let messageIndex = 0;
 
@@ -72,14 +104,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       if (messageIndex < this.messages.length) {
         let index = 0;
         const message = this.messages[messageIndex];
-        this.animatedText = ''; // Limpiar texto previo
+        this.animatedText = '';
 
-        const interval = setInterval(() => {
+        this.typingInterval = setInterval(() => {
           this.animatedText += message[index];
           index++;
 
           if (index === message.length) {
-            clearInterval(interval);
+            clearInterval(this.typingInterval);
+            this.typingInterval = null;
             messageIndex++;
 
             setTimeout(() => typeMessage(), this.delayBetweenMessages);
@@ -92,7 +125,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onSubmit(){
-    // Animación de salida antes de navegar
     gsap.to('.hero-content', {
       scale: 0.8,
       opacity: 0,

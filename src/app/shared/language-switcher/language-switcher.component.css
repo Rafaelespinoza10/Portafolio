@@ -1,0 +1,31 @@
+/* Selector de idioma discreto */
+.relative {
+  position: relative;
+}
+
+/* Efectos sutiles */
+button {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+button:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Responsive: ocultar texto en móviles muy pequeños */
+@media (max-width: 480px) {
+  .hidden {
+    display: none !important;
+  }
+}
+
+/* Transiciones suaves */
+button * {
+  transition: all 0.3s ease;
+}

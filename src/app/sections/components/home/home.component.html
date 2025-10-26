@@ -14,7 +14,7 @@
     
     <!-- Título de bienvenida -->
     <h1 class="hero-title text-pretty text-secondary-light dark:text-secondary text-2xl sm:text-4xl font-bold gradient-text-purple neon-glow">
-      Bienvenido
+      {{ 'welcome' | translate }}
     </h1>
     
     <!-- Texto animado principal -->
@@ -41,7 +41,7 @@
       
       <!-- Texto del botón -->
       <span class="relative flex items-center gap-2 text-lg">
-        Empecemos
+        {{ 'startButton' | translate }}
         <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
              fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>

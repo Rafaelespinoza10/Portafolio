@@ -9,8 +9,6 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class ProfilePictureComponent implements OnInit, OnDestroy {
   
-  public name = 'Rafael Moreno';
-  public profesion = 'Ingeniero en Mecatronica | Desarrollador de Software';
   public isDarkMode = true; // Por defecto tema oscuro
   private themeSubscription: Subscription = new Subscription();
 

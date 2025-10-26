@@ -3,11 +3,11 @@
     <!-- Título del formulario -->
     <div class="text-center mb-8">
       <h2 class="text-4xl sm:text-5xl font-bold gradient-text-purple mb-4 animate-fade-in">
-        ¡Hablemos!
+        {{ title }}
       </h2>
       <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-6 animate-fade-in"></div>
       <p class="text-gray-200 dark:text-gray-300 text-lg animate-fade-in">
-        Envíame un mensaje y te responderé lo antes posible
+        {{ subtitle }}
       </p>
     </div>
 
@@ -19,13 +19,13 @@
       <!-- Campo Email -->
       <div>
         <label for="email" class="block mb-2 text-md font-medium text-gray-100">
-          Tu correo electrónico
+          {{ emailLabel }}
         </label>
         <input
           type="email"
           id="email"
           formControlName="email"
-          placeholder="tucorreo@ejemplo.com"
+          [placeholder]="emailPlaceholder"
           class="shadow-sm bg-gray-700/50 backdrop-blur-sm border border-purple-500/30 text-gray-100 text-md
                  rounded-xl focus:ring-purple-500 focus:border-purple-500 focus:bg-gray-700/70
                  block w-full p-4 placeholder-gray-400 transition-all duration-300
@@ -39,7 +39,7 @@
           class="text-red-500 text-sm"
         >
           <span *ngIf="emailForm.get('email')?.errors?.['required']">
-            El correo es obligatorio.
+            {{ emailError }}
           </span>
         </div>
       </div>
@@ -47,13 +47,13 @@
       <!-- Campo Asunto -->
       <div>
         <label for="subject" class="block mb-2 text-md font-medium text-gray-100">
-          Asunto
+          {{ subjectLabel }}
         </label>
         <input
           type="text"
           id="subject"
           formControlName="subject"
-          placeholder="Asunto"
+          [placeholder]="subjectPlaceholder"
           class="block p-4 w-full text-md text-gray-100 bg-gray-700/50 backdrop-blur-sm
                  rounded-xl border border-purple-500/30 shadow-md
                  focus:ring-purple-500 focus:border-purple-500 focus:bg-gray-700/70
@@ -68,7 +68,7 @@
           class="text-red-500 text-sm"
         >
           <span *ngIf="emailForm.get('subject')?.errors?.['required']">
-            El asunto es obligatorio.
+            {{ subjectError }}
           </span>
         </div>
       </div>
@@ -76,13 +76,13 @@
       <!-- Campo Mensaje -->
       <div class="sm:col-span-2">
         <label for="message" class="block mb-2 text-md font-medium text-gray-100">
-          Mensaje
+          {{ messageLabel }}
         </label>
         <textarea
           id="message"
           rows="6"
           formControlName="message"
-          placeholder="Deja un comentario..."
+          [placeholder]="messagePlaceholder"
           class="block p-4 w-full text-md text-gray-100 bg-gray-700/50 backdrop-blur-sm
                  rounded-xl shadow-sm border border-purple-500/30
                  focus:ring-purple-500 focus:border-purple-500 focus:bg-gray-700/70
@@ -97,7 +97,7 @@
           class="text-red-500 text-sm"
         >
           <span *ngIf="emailForm.get('message')?.errors?.['required']">
-            El mensaje es obligatorio.
+            {{ messageError }}
           </span>
         </div>
       </div>
@@ -124,7 +124,7 @@
           
           <!-- Texto del botón -->
           <span class="relative flex items-center gap-2 text-lg">
-            Enviar mensaje
+            {{ sendButton }}
             <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>

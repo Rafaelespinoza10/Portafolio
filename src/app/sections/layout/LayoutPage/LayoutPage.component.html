@@ -4,6 +4,9 @@
 <!-- Modal de Proyectos Global -->
 <app-project-modal></app-project-modal>
 
+<!-- Modal de Testimonios Global -->
+<app-testimonial-modal></app-testimonial-modal>
+
 <div class="flex bg-gradient-to-r from-[#000000] via-[#1B1B1B] dark:from-slate-950 dark:via-slate-900 min-h-screen transition-theme">
   <div class=" flex flex-col min-h-screen w-full mx-auto">
 
@@ -25,7 +28,7 @@
         </div>
 
         <!-- Contenedor de router-outlet con desplazamiento independiente -->
-        <div class="flex-grow h-full overflow-y-auto max-h-screen
+        <div #scrollContainer class="flex-grow h-full overflow-y-auto max-h-screen
         [&::-webkit-scrollbar]:w-2
         [&::-webkit-scrollbar-track]:bg-gray-100
         [&::-webkit-scrollbar-thumb]:bg-gray-300

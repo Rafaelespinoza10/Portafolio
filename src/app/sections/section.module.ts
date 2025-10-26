@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ScrollAnimationDirective } from './directives/scroll-animation.directive';
+import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 
 
 
@@ -52,6 +53,7 @@ import { ScrollAnimationDirective } from './directives/scroll-animation.directiv
     HomeComponent,
     HomePageComponent,
     ScrollAnimationDirective,
+    TestimonialsComponent,
 
   ],
   imports: [

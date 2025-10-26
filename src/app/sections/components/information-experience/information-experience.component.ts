@@ -1,61 +1,91 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { skip } from 'rxjs/operators';
+import { LanguageService } from '../../../services/language.service';
+import { translations } from '../../../i18n/translations';
 
 @Component({
   selector: 'component-information-experience',
   templateUrl: './information-experience.component.html',
   styleUrl: './information-experience.component.css'
 })
-export class InformationExperienceComponent {
-  experiences = [
+export class InformationExperienceComponent implements OnInit, OnDestroy {
+  private languageSubscription: Subscription = new Subscription();
+  
+  experiences: any[] = [];
 
-    {
-      companyName: 'BoletoMóvil',
-      logoSrc:'https://play-lh.googleusercontent.com/MsrwSJKoY6Xp9CThBeNKn7dvTwbvBbTpcjxKOp5A-Q5VpgT0NA4zvktTngy2dX8m8mk',
-      jobTitle: 'Full Stack Developer',
-      description: [
-        'Desarrollo y mantenimiento de sistema de ticketing usando React y Node.js',
-        'Creación y resolución de bugs para mantener el sistema funcionando correctamente',
-        'Implementación de arquitectura serverless para optimizar rendimiento',
-        'Desarrollo de webhooks para integración y monitoreo del sistema',
-        'Creación de nuevos reportes y dashboards interactivos',
-        'Desarrollo de gráficas interactivas para análisis de datos de ventas'
-      ],
-      duration: 'Jul 2025 - Actual'
-    },
-    {
-      companyName: 'Cosma Magna S.L.P.',
-      logoSrc: 'https://pbs.twimg.com/media/EwN7tXlWUAINJ3z.jpg',
-      jobTitle: 'Desarrollador de Software Industria 4.0',
-      description: [
-        'Desarrollo de APIs REST con ASP.NET y Entity Framework Core 6.',
-        'Creación de Aplicaciones Web con Angular, TailwindCSS y .NET.',
-        'Gestión de bases de datos SQL Server e InfluxDB.',
-        'Desarrollo de plugins en Grafana con React.'
-      ],
-      duration: 'Sep 2024 - Jul 2025'
-    },
-    {
-      companyName: 'PEASA',
-      logoSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5YSaKJMrF2wUapDC2kv73AxiScL5HKMKT2w&s',
-      jobTitle: 'Desarrollador de Aplicaciones en Mejora Continua',
-      description: [
-        'Automatización de procesos en Recursos Humanos.',
-        'Desarrollo de aplicaciones web con JavaScript, React, TailwindCSS, Node.js.',
-        'Creación de app de control de personal con .NET 6.',
-        'Análisis de datos con Python y Excel.'
-      ],
-      duration: 'Ene 2024 - Jul 2024'
-    },
-    {
-      companyName: 'Laboratorio de Ingeniería de Control, UASLP',
-      logoSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQli_bQUEepcIMxQNF5UGbF_JxMcUAxeY7wQ&s',
-      jobTitle: 'Becario de Ingeniería de Control',
-      description: [
-        'Impartí clases y simulaciones de sistemas de control.',
-        'Programación en Scilab, Octave y Matlab para análisis de sistemas.',
-        'Uso de Simulink y librerías para visualización y simulación.'
-      ],
-      duration: 'Ene 2023 - May 2024'
-    }
-  ];
+  constructor(private languageService: LanguageService) { }
+
+  ngOnInit() {
+    this.loadExperiences();
+    
+    this.languageSubscription.add(
+      this.languageService.currentLanguage$.pipe(
+        skip(1)
+      ).subscribe(() => {
+        this.loadExperiences();
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.languageSubscription.unsubscribe();
+  }
+
+  private loadExperiences(): void {
+    const currentLang = this.languageService.getCurrentLanguage();
+    const currentText = translations['experience.duration.current'][currentLang];
+    
+    this.experiences = [
+      {
+        companyName: 'BoletoMóvil',
+        logoSrc:'https://play-lh.googleusercontent.com/MsrwSJKoY6Xp9CThBeNKn7dvTwbvBbTpcjxKOp5A-Q5VpgT0NA4zvktTngy2dX8m8mk',
+        jobTitle: translations['experience.boletoMovil.jobTitle'][currentLang],
+        description: [
+          translations['experience.boletoMovil.desc1'][currentLang],
+          translations['experience.boletoMovil.desc2'][currentLang],
+          translations['experience.boletoMovil.desc3'][currentLang],
+          translations['experience.boletoMovil.desc4'][currentLang],
+          translations['experience.boletoMovil.desc5'][currentLang],
+          translations['experience.boletoMovil.desc6'][currentLang]
+        ],
+        duration: `Jul 2025 - ${currentText}`
+      },
+      {
+        companyName: 'Cosma Magna S.L.P.',
+        logoSrc: 'https://pbs.twimg.com/media/EwN7tXlWUAINJ3z.jpg',
+        jobTitle: translations['experience.cosma.jobTitle'][currentLang],
+        description: [
+          translations['experience.cosma.desc1'][currentLang],
+          translations['experience.cosma.desc2'][currentLang],
+          translations['experience.cosma.desc3'][currentLang],
+          translations['experience.cosma.desc4'][currentLang]
+        ],
+        duration: 'Sep 2024 - Jul 2025'
+      },
+      {
+        companyName: 'PEASA',
+        logoSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5YSaKJMrF2wUapDC2kv73AxiScL5HKMKT2w&s',
+        jobTitle: translations['experience.peasa.jobTitle'][currentLang],
+        description: [
+          translations['experience.peasa.desc1'][currentLang],
+          translations['experience.peasa.desc2'][currentLang],
+          translations['experience.peasa.desc3'][currentLang],
+          translations['experience.peasa.desc4'][currentLang]
+        ],
+        duration: 'Ene 2024 - Jul 2024'
+      },
+      {
+        companyName: 'Laboratorio de Ingeniería de Control, UASLP',
+        logoSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQli_bQUEepcIMxQNF5UGbF_JxMcUAxeY7wQ&s',
+        jobTitle: translations['experience.uaslp.jobTitle'][currentLang],
+        description: [
+          translations['experience.uaslp.desc1'][currentLang],
+          translations['experience.uaslp.desc2'][currentLang],
+          translations['experience.uaslp.desc3'][currentLang]
+        ],
+        duration: 'Ene 2023 - May 2024'
+      }
+    ];
+  }
 }

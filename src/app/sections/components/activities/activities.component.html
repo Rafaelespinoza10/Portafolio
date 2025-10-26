@@ -1,26 +1,23 @@
-<div class="container mx-auto flex flex-col items-center p-2">
+<div class="container mx-auto flex flex-col items-center p-4 sm:p-6 lg:p-8">
   
   <!-- Título principal con efecto -->
-  <div class="text-center mb-8">
-    <h2 class="text-4xl sm:text-5xl font-bold gradient-text-purple mb-4 animate-fade-in">
-      ¿Qué es lo que hago?
+  <div class="text-center mb-6 sm:mb-8">
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text-purple mb-3 sm:mb-4 px-4 animate-fade-in">
+      {{ title }}
     </h2>
-    <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-6 animate-fade-in"></div>
+    <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4 sm:mb-6 animate-fade-in"></div>
   </div>
 
   <p 
-    class="text-center text-gray-200 dark:text-gray-300 mb-12 max-w-2xl text-lg leading-relaxed animate-fade-in">
-    Desarrollo aplicaciones modernas con un enfoque en <span class="gradient-text-purple font-semibold">Frontend</span>, complementando con habilidades en <span class="gradient-text-purple font-semibold">Backend</span> y bases de datos para crear soluciones completas.
+    class="text-center text-gray-200 dark:text-gray-300 mb-8 sm:mb-12 max-w-2xl text-base sm:text-lg leading-relaxed animate-fade-in px-4">
+    {{ subtitle }} <span class="gradient-text-purple font-semibold">{{ subtitleFrontend }}</span>{{ subtitleMid }} <span class="gradient-text-purple font-semibold">{{ subtitleBackend }}</span> {{ subtitleEnd }}
   </p>
   
-  <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-1 lg:grid-cols-1">
+  <div class="grid w-full grid-cols-1 gap-6 sm:gap-8  max-w-7xl">
 
-    <!-- Frontend Card -->
     <div
-      class="group relative overflow-hidden bg-gradient-to-br from-[#61DAFB] via-[#4fa3d1] to-[#3a8bc4] rounded-3xl shadow-2xl transform transition-all duration-500 
-             hover:scale-[1.03] hover:-translate-y-3 cursor-pointer 
-             hover:shadow-2xl hover:shadow-cyan-500/40
-             glass-card animate-fade-in">
+      *ngFor="let activity of activities"
+      [class]="'group relative overflow-hidden bg-gradient-to-br ' + activity.gradientFrom + ' ' + activity.gradientVia + ' ' + activity.gradientTo + ' rounded-3xl shadow-2xl transform transition-all duration-500 hover:scale-[1.03] hover:-translate-y-3 cursor-pointer hover:shadow-2xl ' + activity.hoverShadow + ' glass-card animate-fade-in'">
       
       <!-- Efecto de brillo de fondo -->
       <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
@@ -28,133 +25,36 @@
                   transition-transform duration-1000"></div>
       
       <!-- Contenido de la tarjeta -->
-      <div class="relative p-8">
-        <div class="flex items-start space-x-6">
+      <div class="relative p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6">
           <!-- Icono con efecto 3D -->
-          <div class="flex-shrink-0 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-            <div class="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
-              <svg class="w-12 h-12 text-white drop-shadow-lg" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+          <div class="flex-shrink-0 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 self-center sm:self-start">
+            <div class="p-3 sm:p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
+              <svg class="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="activity.iconPath"></path>
               </svg>
             </div>
           </div>
 
           <!-- Contenido -->
-          <div class="flex-1">
-            <h3 class="text-2xl font-bold mb-3 bg-gradient-to-r from-[#61DAFB] to-[#4fa3d1] bg-clip-text text-transparent group-hover:scale-105 transition-transform">Frontend</h3>
-            <p class="text-base leading-relaxed text-white/90 mb-4">
-              Diseño e implemento interfaces modernas y responsivas utilizando tecnologías como <strong>React</strong>, <strong>Angular</strong> y <strong>Tailwind CSS</strong>, asegurando experiencias de usuario fluidas.
+          <div class="flex-1 w-full">
+            <h3 [class]="'text-xl sm:text-2xl font-bold mb-3 bg-gradient-to-r ' + activity.textGradient + ' bg-clip-text text-transparent group-hover:scale-105 transition-transform text-center sm:text-left'">
+              {{ activity.title }}
+            </h3>
+            <p class="text-sm sm:text-base leading-relaxed text-white/90 mb-4 text-center sm:text-left">
+              {{ activity.description }}
             </p>
             
             <!-- Tecnologías destacadas -->
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gradient-to-r from-[#61DAFB] to-[#4fa3d1] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">React</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-[#DD0031] to-[#9C1A27] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">Angular</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-[#3178C6] to-[#1F6BB8] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">TypeScript</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-[#38BDF8] to-[#0EA5E9] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">Tailwind CSS</span>
+            <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
+              <span *ngFor="let tech of activity.technologies" [class]="'px-2 sm:px-3 py-1 bg-gradient-to-r ' + tech.colors + ' rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform'">
+                {{ tech.name }}
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Backend Card -->
-    <div 
-      class="group relative overflow-hidden bg-gradient-to-br from-[#68A063] via-[#528D46] to-[#3d6b38] rounded-3xl shadow-2xl transform transition-all duration-500 
-             hover:scale-[1.03] hover:-translate-y-3 cursor-pointer 
-             hover:shadow-2xl hover:shadow-green-500/40
-             glass-card animate-fade-in">
-      
-      <!-- Efecto de brillo de fondo -->
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
-                  transform -skew-x-12 -translate-x-full group-hover:translate-x-full
-                  transition-transform duration-1000"></div>
-      
-      <!-- Contenido de la tarjeta -->
-      <div class="relative p-8">
-        <div class="flex items-start space-x-6">
-          <!-- Icono con efecto 3D -->
-          <div class="flex-shrink-0 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-            <div class="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
-              <svg class="w-12 h-12 text-white drop-shadow-lg" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"></path>
-              </svg>
-            </div>
-          </div>
-
-          <!-- Contenido -->
-          <div class="flex-1">
-            <h3 class="text-2xl font-bold mb-3 bg-gradient-to-r from-[#68A063] to-[#528D46] bg-clip-text text-transparent group-hover:scale-105 transition-transform">Backend</h3>
-            <p class="text-base leading-relaxed text-white/90 mb-4">
-              Desarrollo servicios robustos y seguros utilizando <strong>Node.js</strong> con <strong>Express</strong> y <strong>Asp.net Web</strong> con <strong>Entity FrameWork</strong>, creando APIs RESTful y conectándolas con interfaces Frontend.
-            </p>
-            
-            <!-- Tecnologías destacadas -->
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gradient-to-r from-[#68A063] to-[#528D46] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">Node.js</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-[#000000] to-[#333333] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">Express</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-[#512BD4] to-[#3B1A8E] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">ASP.NET</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-[#FF6B35] to-[#E55A2B] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">Entity Framework</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bases de datos Card -->
-    <div 
-      class="group relative overflow-hidden bg-gradient-to-br from-[#5C2D91] via-[#462072] to-[#3a1a5e] rounded-3xl shadow-2xl transform transition-all duration-500 
-             hover:scale-[1.03] hover:-translate-y-3 cursor-pointer 
-             hover:shadow-2xl hover:shadow-purple-500/40
-             glass-card animate-fade-in">
-      
-      <!-- Efecto de brillo de fondo -->
-      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
-                  transform -skew-x-12 -translate-x-full group-hover:translate-x-full
-                  transition-transform duration-1000"></div>
-      
-      <!-- Contenido de la tarjeta -->
-      <div class="relative p-8">
-        <div class="flex items-start space-x-6">
-          <!-- Icono con efecto 3D -->
-          <div class="flex-shrink-0 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-            <div class="p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
-              <svg
-                class="w-12 h-12 text-white drop-shadow-lg"
-                stroke="currentColor"
-                fill="none"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6v14a2 2 0 002 2h12a2 2 0 002-2V6M4 6h16M8 10h8">
-                </path>
-              </svg>
-            </div>
-          </div>
-
-          <!-- Contenido -->
-          <div class="flex-1">
-            <h3 class="text-2xl font-bold mb-3 bg-gradient-to-r from-[#5C2D91] to-[#462072] bg-clip-text text-transparent group-hover:scale-105 transition-transform">Bases de Datos</h3>
-            <p class="text-base leading-relaxed text-white/90 mb-4">
-              Diseño y optimización de bases de datos relacionales utilizando
-              <strong>MySQL y MSSQL</strong> y bases no relacionales
-              <strong>MongoDB</strong>, asegurando integridad y eficiencia en el manejo de datos.
-            </p>
-            
-            <!-- Tecnologías destacadas -->
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gradient-to-r from-[#00758F] to-[#005F73] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">MySQL</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-[#CC2927] to-[#A61E1C] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">MSSQL</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-[#47A248] to-[#388E3C] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">MongoDB</span>
-              <span class="px-3 py-1 bg-gradient-to-r from-[#336791] to-[#2C5282] rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform">PostgreSQL</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

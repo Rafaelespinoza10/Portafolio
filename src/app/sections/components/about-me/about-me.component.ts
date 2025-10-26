@@ -1,23 +1,84 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { skip } from 'rxjs/operators';
+import { LanguageService } from '../../../services/language.service';
+import { translations } from '../../../i18n/translations';
 
 @Component({
   selector: 'component-about-me',
   templateUrl: './about-me.component.html',
   styleUrls: ['./about-me.component.css']
 })
-export class AboutMeComponent implements OnInit{
+export class AboutMeComponent implements OnInit, OnDestroy {
 
-  public name= 'Rafael Moreno'
-  public description =  'Ingeniero en Mecatrónica apasionado por el desarrollo de software, especialmente en el ámbito web y móvil. Disfruto creando aplicaciones innovadoras y resolviendo problemas complejos para ofrecer soluciones efectivas.'
+  private languageSubscription: Subscription = new Subscription();
+  private nameInterval: any = null;
+  private descriptionInterval: any = null;
+  public name = translations['aboutMe.name']['es'];
+  public description = translations['aboutMe.description']['es'];
   public animatedTextName = '';
   public animatedTexDescription = '';
-  public typingSpeed:number = 50;
+  public typingSpeed: number = 50;
+  public downloadCVText = translations['aboutMe.downloadCV']['es'];
+  public toolsText = translations['aboutMe.tools']['es'];
+  public toolDescriptions: any = {};
 
-  constructor() { }
+  constructor(private languageService: LanguageService) { }
 
   ngOnInit(): void {
-      this.startTyppingEffect('name', this.name);
-      this.startTyppingEffect( 'description', this.description);
+    // Cargar mensajes iniciales
+    this.loadTranslations();
+    this.startTyppingEffect('name', this.name as string);
+    this.startTyppingEffect('description', this.description as string);
+    
+    // Suscribirse a cambios de idioma
+    this.languageSubscription.add(
+      this.languageService.currentLanguage$.pipe(
+        skip(1)
+      ).subscribe(() => {
+        this.loadTranslations();
+        this.clearTyppingEffect();
+        setTimeout(() => {
+          this.startTyppingEffect('name', this.name as string);
+          this.startTyppingEffect('description', this.description as string);
+        }, 100);
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.languageSubscription.unsubscribe();
+  }
+
+  private loadTranslations(): void {
+    const currentLang = this.languageService.getCurrentLanguage();
+    this.name = translations['aboutMe.name'][currentLang];
+    this.description = translations['aboutMe.description'][currentLang];
+    this.downloadCVText = translations['aboutMe.downloadCV'][currentLang];
+    this.toolsText = translations['aboutMe.tools'][currentLang];
+    
+    // Cargar descripciones de herramientas
+    this.toolDescriptions = {
+      angular: translations['aboutMe.angular.desc'][currentLang],
+      typescript: translations['aboutMe.typescript.desc'][currentLang],
+      react: translations['aboutMe.react.desc'][currentLang],
+      javascript: translations['aboutMe.javascript.desc'][currentLang],
+      net: translations['aboutMe.net.desc'][currentLang],
+      nodejs: translations['aboutMe.nodejs.desc'][currentLang]
+    };
+  }
+
+  private clearTyppingEffect(): void {
+    if (this.nameInterval) {
+      clearInterval(this.nameInterval);
+      this.nameInterval = null;
+    }
+    if (this.descriptionInterval) {
+      clearInterval(this.descriptionInterval);
+      this.descriptionInterval = null;
+    }
+    this.animatedTextName = '';
+    this.animatedTexDescription = '';
   }
 
   startTyppingEffect(target: 'name' | 'description', text: string){
@@ -31,9 +92,20 @@ export class AboutMeComponent implements OnInit{
       index++;
       if(index === text.length){
         clearInterval(interval);
+        if (target === 'name') {
+          this.nameInterval = null;
+        } else {
+          this.descriptionInterval = null;
+        }
       }
     }, this.typingSpeed);
 
+    // Guardar referencia al intervalo
+    if (target === 'name') {
+      this.nameInterval = interval;
+    } else {
+      this.descriptionInterval = interval;
+    }
   }
   downloadCVs(){
     const files = [

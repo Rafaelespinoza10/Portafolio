@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { skip } from 'rxjs/operators';
+import { LanguageService } from '../../../services/language.service';
+import { translations } from '../../../i18n/translations';
 import { ProjectModalService, WorkProject } from '../../services/project-modal.service';
 
 @Component({
@@ -6,9 +10,25 @@ import { ProjectModalService, WorkProject } from '../../services/project-modal.s
   templateUrl: './portafolio.component.html',
   styleUrls: ['./portafolio.component.css']
 })
-export class PortafolioComponent {
+export class PortafolioComponent implements OnInit, OnDestroy {
+  private languageSubscription: Subscription = new Subscription();
+  public workExperienceTitle = translations['portfolio.workExperience.title']['es'];
+  public personalProjectsTitle = translations['portfolio.personal.title']['es'];
+  public viewDetailsText = translations['portfolio.viewDetails']['es'];
+  public visitText = translations['portfolio.visit']['es'];
+  public viewProjectText = translations['portfolio.viewProject']['es'];
+  public videoText = translations['portfolio.video']['es'];
   
-  constructor(private projectModalService: ProjectModalService) { }
+  constructor(
+    private projectModalService: ProjectModalService,
+    private languageService: LanguageService
+  ) { }
+
+  // Helper function to safely get string translations
+  private getStringTranslation(key: string, lang: string): string {
+    const value = translations[key][lang];
+    return typeof value === 'string' ? value : (value as string[]).join(', ');
+  }
 
   /**
    * Abre el modal con el proyecto seleccionado
@@ -42,160 +62,99 @@ export class PortafolioComponent {
   }
 
   // Proyectos de experiencia laboral
-projectsWorkExperience: WorkProject[] = [
-  {
-    name: 'Monitoreo de sensores en tiempo real',
-    imageSrc: 'images/monitoreo_sensores.png',
-    description: 'Monitoreo de sensores en tiempo real con Angular, .NET 6, SignalR y MSSQL.',
-    technologies: [
-      'https://www.svgrepo.com/show/452156/angular.svg', // Angular
-      'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
-      'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
-    ],
-    detailedDescription: 'Sistema de monitoreo en tiempo real de sensores industriales para una planta automotriz. Permite visualizar el estado de múltiples sensores simultáneamente y recibir alertas instantáneas.',
-    features: [
-      'Visualización en tiempo real de datos de sensores usando SignalR',
-      'Dashboard interactivo con gráficos dinámicos',
-      'Sistema de alertas y notificaciones automáticas',
-      'Historial de lecturas y análisis de tendencias',
-      'Panel de administración para configurar umbrales'
-    ],
-    challenges: [
-      'Optimización de rendimiento para manejar miles de actualizaciones por segundo',
-      'Implementación de reconexión automática en caso de pérdida de conexión',
-      'Diseño de base de datos eficiente para almacenar grandes volúmenes de datos históricos'
-    ],
-    impact: 'Reducción del 40% en tiempos de respuesta ante fallos y mejora significativa en la prevención de problemas de producción.'
-  },
-  {
-    name: 'Registros de parámetros de ECOAT',
-    imageSrc: 'images/ecoat_registros-parametros.png',
-    description: 'Registro de parámetros ECOAT con Angular, .NET 6, MSSQL y gráficos interactivos.',
-    technologies: [
-      'https://www.svgrepo.com/show/452156/angular.svg', // Angular
-      'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
-      'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
-    ],
-    detailedDescription: 'Aplicación para el registro y análisis de parámetros del proceso ECOAT (pintura electrostática) en la línea de producción automotriz.',
-    features: [
-      'Registro de parámetros de proceso en tiempo real',
-      'Gráficos interactivos para análisis de tendencias',
-      'Generación automática de reportes de calidad',
-      'Sistema de validación de parámetros fuera de especificación',
-      'Exportación de datos en múltiples formatos'
-    ],
-    challenges: [
-      'Integración con múltiples PLCs y sistemas de control',
-      'Validación de datos en tiempo real con reglas complejas',
-      'Diseño de interfaz intuitiva para operadores de planta'
-    ],
-    impact: 'Mejora del 30% en el control de calidad del proceso de pintura y reducción de rechazos.'
-  },
-  {
-    name: 'Monitoreo de Troqueles con conexión a SAP',
-    imageSrc: 'images/troqueles_app.png',
-    description: 'Monitoreo de órdenes de mantenimiento de troqueles con Angular, .NET 6, SAP y MSSQL.',
-    technologies: [
-      'https://www.svgrepo.com/show/452156/angular.svg', // Angular
-      'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
-      'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
-    ],
-    detailedDescription: 'Sistema integrado con SAP para el control y seguimiento de mantenimiento preventivo y correctivo de troqueles de estampado.',
-    features: [
-      'Integración bidireccional con SAP PM',
-      'Tracking de órdenes de mantenimiento en tiempo real',
-      'Historial completo de mantenimientos por troquel',
-      'Planificación automática de mantenimientos preventivos',
-      'Dashboard con KPIs de disponibilidad de troqueles'
-    ],
-    challenges: [
-      'Integración con SAP mediante RFC y APIs',
-      'Sincronización de datos entre sistemas',
-      'Manejo de grandes volúmenes de datos históricos'
-    ],
-    impact: 'Incremento del 25% en disponibilidad de troqueles y optimización de costos de mantenimiento.'
-  },
-  {
-    name: 'Reportes de Líneas de Ensamble',
-    imageSrc: 'images/assembly-reports.png',
-    description: 'Generación de reportes y OEE de líneas de ensamble con Angular, .NET y MSSQL.',
-    technologies: [
-      'https://www.svgrepo.com/show/452156/angular.svg', // Angular
-      'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
-      'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
-    ],
-    detailedDescription: 'Aplicación para generar reportes de producción y calcular OEE (Overall Equipment Effectiveness) de líneas de ensamblaje automotriz.',
-    features: [
-      'Cálculo automático de OEE y sus componentes',
-      'Reportes detallados de downtime y paros',
-      'Análisis de causas raíz de paros',
-      'Dashboard ejecutivo con indicadores en tiempo real',
-      'Comparativas de rendimiento entre turnos y líneas'
-    ],
-    challenges: [
-      'Procesamiento de grandes volúmenes de datos de producción',
-      'Cálculos complejos de OEE en tiempo real',
-      'Generación dinámica de reportes personalizados'
-    ],
-    impact: 'Mejora del 15% en OEE general de las líneas y visibilidad completa de la producción.'
-  },
-  {
-    name: 'Registro de Tiempo Extra',
-    imageSrc: 'images/extra_time.PNG',
-    description: 'Gestión de horas extras con React, NodeJs, Express, Sequelize y MSSQL.',
-    technologies: [
-      'https://www.svgrepo.com/show/452092/react.svg', // React
-      'https://www.svgrepo.com/show/452075/node-js.svg', // Node.js
-      'https://www.svgrepo.com/show/303251/mysql-logo.svg', // MySQL
-      'https://miro.medium.com/v2/resize:fit:1400/0*Pb_eiAEdkkDxsZr7.jpeg' // TypeORM
-    ],
-    detailedDescription: 'Sistema web para la solicitud, aprobación y seguimiento de horas extras del personal de planta.',
-    features: [
-      'Flujo de aprobación multinivel',
-      'Notificaciones automáticas por correo',
-      'Reportes de horas extras por área y periodo',
-      'Dashboard para supervisores y gerentes',
-      'Integración con sistema de nómina'
-    ],
-    challenges: [
-      'Implementación de flujo de aprobación flexible',
-      'Sistema de notificaciones escalable',
-      'Reportes dinámicos según rol del usuario'
-    ],
-    impact: 'Reducción del 50% en tiempo de procesamiento de solicitudes y mejor control de costos.'
-  },
-  {
-    name: 'Seguimiento y Control de Asistencias',
-    imageSrc: 'images/peasa_desktop.png',
-    description: 'Control de asistencias con .NET Forms y MSSQL.',
-    technologies: [
-      'https://www.svgrepo.com/show/303251/mysql-logo.svg', // MySQL
-      'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
-    ],
-    detailedDescription: 'Aplicación de escritorio para el control y seguimiento de asistencias del personal de planta.',
-    features: [
-      'Registro de entradas y salidas del personal',
-      'Gestión de permisos y ausencias',
-      'Reportes de asistencia por periodo',
-      'Integración con relojes checadores',
-      'Alertas de ausentismo'
-    ],
-    challenges: [
-      'Integración con múltiples tipos de relojes checadores',
-      'Manejo de excepciones y casos especiales',
-      'Generación de reportes complejos'
-    ],
-    impact: 'Automatización completa del control de asistencias y reducción de errores manuales.'
-  },
-];
-
+  projectsWorkExperience: WorkProject[] = [
+    {
+      name: translations['portfolio.workProjects.sensors.name']['es'] as string,
+      imageSrc: 'images/monitoreo_sensores.png',
+      description: translations['portfolio.workProjects.sensors.description']['es'] as string,
+      technologies: [
+        'https://www.svgrepo.com/show/452156/angular.svg', // Angular
+        'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
+        'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
+      ],
+      detailedDescription: translations['portfolio.workProjects.sensors.detailedDescription']['es'] as string,
+      features: translations['portfolio.workProjects.sensors.features']['es'] as string[],
+      challenges: translations['portfolio.workProjects.sensors.challenges']['es'] as string[],
+      impact: translations['portfolio.workProjects.sensors.impact']['es'] as string
+    },
+    {
+      name: translations['portfolio.workProjects.ecoat.name']['es'] as string,
+      imageSrc: 'images/ecoat_registros-parametros.png',
+      description: translations['portfolio.workProjects.ecoat.description']['es'] as string,
+      technologies: [
+        'https://www.svgrepo.com/show/452156/angular.svg', // Angular
+        'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
+        'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
+      ],
+      detailedDescription: translations['portfolio.workProjects.ecoat.detailedDescription']['es'] as string,
+      features: translations['portfolio.workProjects.ecoat.features']['es'] as string[],
+      challenges: translations['portfolio.workProjects.ecoat.challenges']['es'] as string[],
+      impact: translations['portfolio.workProjects.ecoat.impact']['es'] as string
+    },
+    {
+      name: translations['portfolio.workProjects.dies.name']['es'] as string,
+      imageSrc: 'images/troqueles_app.png',
+      description: translations['portfolio.workProjects.dies.description']['es'] as string,
+      technologies: [
+        'https://www.svgrepo.com/show/452156/angular.svg', // Angular
+        'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
+        'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
+      ],
+      detailedDescription: translations['portfolio.workProjects.dies.detailedDescription']['es'] as string,
+      features: translations['portfolio.workProjects.dies.features']['es'] as string[],
+      challenges: translations['portfolio.workProjects.dies.challenges']['es'] as string[],
+      impact: translations['portfolio.workProjects.dies.impact']['es'] as string
+    },
+    {
+      name: translations['portfolio.workProjects.assembly.name']['es'] as string,
+      imageSrc: 'images/assembly-reports.png',
+      description: translations['portfolio.workProjects.assembly.description']['es'] as string,
+      technologies: [
+        'https://www.svgrepo.com/show/452156/angular.svg', // Angular
+        'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
+        'https://boost.space/wp-content/uploads/2025/02/mssql.png', // MSSQL
+      ],
+      detailedDescription: translations['portfolio.workProjects.assembly.detailedDescription']['es'] as string,
+      features: translations['portfolio.workProjects.assembly.features']['es'] as string[],
+      challenges: translations['portfolio.workProjects.assembly.challenges']['es'] as string[],
+      impact: translations['portfolio.workProjects.assembly.impact']['es'] as string
+    },
+    {
+      name: translations['portfolio.workProjects.overtime.name']['es'] as string,
+      imageSrc: 'images/extra_time.PNG',
+      description: translations['portfolio.workProjects.overtime.description']['es'] as string,
+      technologies: [
+        'https://www.svgrepo.com/show/452092/react.svg', // React
+        'https://www.svgrepo.com/show/452075/node-js.svg', // Node.js
+        'https://www.svgrepo.com/show/303251/mysql-logo.svg', // MySQL
+        'https://miro.medium.com/v2/resize:fit:1400/0*Pb_eiAEdkkDxsZr7.jpeg' // TypeORM
+      ],
+      detailedDescription: translations['portfolio.workProjects.overtime.detailedDescription']['es'] as string,
+      features: translations['portfolio.workProjects.overtime.features']['es'] as string[],
+      challenges: translations['portfolio.workProjects.overtime.challenges']['es'] as string[],
+      impact: translations['portfolio.workProjects.overtime.impact']['es'] as string
+    },
+    {
+      name: translations['portfolio.workProjects.attendance.name']['es'] as string,
+      imageSrc: 'images/peasa_desktop.png',
+      description: translations['portfolio.workProjects.attendance.description']['es'] as string,
+      technologies: [
+        'https://www.svgrepo.com/show/303251/mysql-logo.svg', // MySQL
+        'https://www.svgrepo.com/show/376369/dotnet.svg', // .NET
+      ],
+      detailedDescription: translations['portfolio.workProjects.attendance.detailedDescription']['es'] as string,
+      features: translations['portfolio.workProjects.attendance.features']['es'] as string[],
+      challenges: translations['portfolio.workProjects.attendance.challenges']['es'] as string[],
+      impact: translations['portfolio.workProjects.attendance.impact']['es'] as string
+    }
+  ];
 
   // Proyectos personales
   projectsPersonal = [
     {
-      nameProject: 'Predicción Liga MX - Machine Learning',
+      nameProject: translations['portfolio.personalProjects.ml.name']['es'],
       imageSrc: 'images/machine_learning_project.png',
-      description: 'Sistema de predicción de resultados deportivos usando múltiples algoritmos de Machine Learning. Entrenamiento y comparación de modelos para predecir resultados de partidos de Liga MX.',
+      description: translations['portfolio.personalProjects.ml.description']['es'],
       linkSitioWeb: 'https://github.com/Rafaelespinoza10/machine_learning_project_prediction_liga_mx',
       technologies: [
         'https://www.svgrepo.com/show/374016/python.svg',
@@ -205,21 +164,21 @@ projectsWorkExperience: WorkProject[] = [
       ],
       resources: [
         {
-          text: 'Repositorio en GitHub:',
+          text: translations['portfolio.resources.github']['es'],
           github: 'https://www.svgrepo.com/show/512317/github-142.svg',
           linkRespository: 'https://github.com/Rafaelespinoza10/machine_learning_project_prediction_liga_mx'
         },
         {
-          text: 'Ver Notebook',
+          text: translations['portfolio.resources.notebook']['es'],
           video: 'https://www.svgrepo.com/show/530237/video.svg',
           linkVideo: 'https://github.com/Rafaelespinoza10/machine_learning_project_prediction_liga_mx'
         }
       ]
     },
     {
-      nameProject: 'POS - Ecommerce',
+      nameProject: translations['portfolio.personalProjects.pos.name']['es'],
       imageSrc: 'https://res.cloudinary.com/react-courses-rafa/image/upload/v1750573104/fmsntvp41czuotcg2n1a.png',
-      description: 'Aplicación de tienda virtual y control de compras en un solo lugar, realizada en NextJs, NestJs, TypeOrm, PostgresSQL.',
+      description: translations['portfolio.personalProjects.pos.description']['es'],
       linkSitioWeb: 'https://pos-nextjs-8fuoxt1di-rafael-morenos-projects-c25eb243.vercel.app/19',
       technologies: [
         'https://www.svgrepo.com/show/452092/react.svg',
@@ -229,21 +188,21 @@ projectsWorkExperience: WorkProject[] = [
       ],
       resources: [
         {
-          text: 'Repositorio en GitHub:',
+          text: translations['portfolio.resources.github']['es'],
           github: 'https://www.svgrepo.com/show/512317/github-142.svg',
           linkRespository: ''
         },
         {
-          text: 'Proyecto en funcionamiento',
+          text: translations['portfolio.resources.workingProject']['es'],
           video: 'https://www.svgrepo.com/show/530237/video.svg',
           linkVideo: 'https://www.linkedin.com/feed/update/urn:li:activity:7342429483892699136/'
         }
       ]
     },
     {
-      nameProject: 'DevTree',
+      nameProject: translations['portfolio.personalProjects.devtree.name']['es'],
       imageSrc: 'https://res.cloudinary.com/react-courses-rafa/image/upload/v1742446234/devTree/naymaymv2lsevrvghltf.png',
-      description: 'Aplicación de todas tus redes sociales en un solo link y que podrás compartir con tus amigos y cercanos. Realizada con Nextjs, Nodejs y express, prisma, postgresSql y jwt.',
+      description: translations['portfolio.personalProjects.devtree.description']['es'],
       linkSitioWeb: 'https://devtree-application.netlify.app/',
       technologies: [
         'https://www.svgrepo.com/show/452092/react.svg',
@@ -254,21 +213,21 @@ projectsWorkExperience: WorkProject[] = [
       ],
       resources: [
         {
-          text: 'Repositorio en GitHub:',
+          text: translations['portfolio.resources.github']['es'],
           github: 'https://www.svgrepo.com/show/512317/github-142.svg',
           linkRespository: ''
         },
         {
-          text: 'Proyecto en funcionamiento',
+          text: translations['portfolio.resources.workingProject']['es'],
           video: 'https://www.svgrepo.com/show/530237/video.svg',
           linkVideo: 'https://www.linkedin.com/feed/update/urn:li:activity:7292038677868793856/?originTrackingId=YwQKXU9zSoWiiWN7j6xsgg%3D%3D'
         }
       ]
     },
     {
-      nameProject: 'CashTrackr',
+      nameProject: translations['portfolio.personalProjects.cashtrackr.name']['es'],
       imageSrc: 'https://res.cloudinary.com/react-courses-rafa/image/upload/v1742447486/devTree/izhvtslhhpq4td1azpqs.png',
-      description: 'Aplicación de control de gastos y presupuestos en un solo lugar, realizada en NextJs, Nodejs con express, Prisma, JWT, PostgresSQL.',
+      description: translations['portfolio.personalProjects.cashtrackr.description']['es'],
       linkSitioWeb: 'https://cashtrackr-frontend-nine.vercel.app/',
       technologies: [
         'https://www.svgrepo.com/show/452092/react.svg',
@@ -279,21 +238,21 @@ projectsWorkExperience: WorkProject[] = [
       ],
       resources: [
         {
-          text: 'Repositorio en GitHub:',
+          text: translations['portfolio.resources.github']['es'],
           github: 'https://www.svgrepo.com/show/512317/github-142.svg',
           linkRespository: ''
         },
         {
-          text: 'Proyecto en funcionamiento',
+          text: translations['portfolio.resources.workingProject']['es'],
           video: 'https://www.svgrepo.com/show/530237/video.svg',
           linkVideo: 'https://www.linkedin.com/feed/update/urn:li:activity:7307625271057133568/?originTrackingId=okhdNhUPTIOuV%2FnQ1Ny3yQ%3D%3D'
         }
       ]
     },
     {
-      nameProject: 'SongsApp',
+      nameProject: translations['portfolio.personalProjects.songs.name']['es'],
       imageSrc: 'https://res.cloudinary.com/react-courses-rafa/image/upload/v1734049198/lvpama84ikdbfzyumhop.png',
-      description: 'Aplicación de canciones realizada con Angular, .NET, MySQL, MaterialAngular, TailwindCSS, y uso de API de terceros (API Youtube v3), JWT.',
+      description: translations['portfolio.personalProjects.songs.description']['es'],
       linkSitioWeb: 'https://songsapplications.netlify.app/',
       technologies: [
         'https://www.svgrepo.com/show/452156/angular.svg',
@@ -303,21 +262,21 @@ projectsWorkExperience: WorkProject[] = [
       ],
       resources: [
         {
-          text: 'Repositorio en GitHub:',
+          text: translations['portfolio.resources.github']['es'],
           github: 'https://www.svgrepo.com/show/512317/github-142.svg',
           linkRespository: ''
         },
         {
-          text: 'Proyecto en funcionamiento',
+          text: translations['portfolio.resources.workingProject']['es'],
           video: 'https://www.svgrepo.com/show/530237/video.svg',
           linkVideo: 'https://www.linkedin.com/feed/update/urn:li:activity:7250287666108272640/?originTrackingId=LEjKpm79SUiH8bN8s6VWGQ%3D%3D'
         }
       ]
     },
     {
-      nameProject: 'devJobsApp',
+      nameProject: translations['portfolio.personalProjects.devjobs.name']['es'],
       imageSrc: 'https://res.cloudinary.com/react-courses-rafa/image/upload/v1734049198/fs0c5b8bbv3po4njlqyw.png',
-      description: 'Aplicación de empleos para desarrolladores realizada en Angular, Node.js, Mongoose, Python, TailwindCSS, MongoDB, JWT.',
+      description: translations['portfolio.personalProjects.devjobs.description']['es'],
       linkSitioWeb: 'https://cozy-gumdrop-2aefec.netlify.app/',
       technologies: [
         'https://www.svgrepo.com/show/452156/angular.svg',
@@ -328,16 +287,135 @@ projectsWorkExperience: WorkProject[] = [
       ],
       resources: [
         {
-          text: 'Repositorio en GitHub:',
+          text: translations['portfolio.resources.github']['es'],
           github: 'https://www.svgrepo.com/show/512317/github-142.svg',
           linkRespository: ''
         },
         {
-          text: 'Proyecto en funcionamiento',
+          text: translations['portfolio.resources.workingProject']['es'],
           video: 'https://www.svgrepo.com/show/530237/video.svg',
           linkVideo: 'https://www.linkedin.com/feed/update/urn:li:activity:7270976517499764736/?originTrackingId=OBIIuUC%2FRPu%2FRG77e0hxhQ%3D%3D'
         }
       ]
     }
   ];
+
+  ngOnInit() {
+    this.loadTranslations();
+    
+    this.languageSubscription.add(
+      this.languageService.currentLanguage$.pipe(
+        skip(1)
+      ).subscribe(() => {
+        this.loadTranslations();
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.languageSubscription.unsubscribe();
+  }
+
+  private loadTranslations(): void {
+    const currentLang = this.languageService.getCurrentLanguage();
+    this.workExperienceTitle = translations['portfolio.workExperience.title'][currentLang];
+    this.personalProjectsTitle = translations['portfolio.personal.title'][currentLang];
+    this.viewDetailsText = translations['portfolio.viewDetails'][currentLang];
+    this.visitText = translations['portfolio.visit'][currentLang];
+    this.viewProjectText = translations['portfolio.viewProject'][currentLang];
+    this.videoText = translations['portfolio.video'][currentLang];
+    
+    // Actualizar títulos y descripciones de proyectos de experiencia laboral
+    this.updateWorkExperienceProjects(currentLang);
+    
+    // Actualizar títulos y descripciones de proyectos personales
+    this.updatePersonalProjects(currentLang);
+  }
+
+  private updateWorkExperienceProjects(currentLang: string): void {
+    // Proyecto 0: Sensors
+    this.projectsWorkExperience[0].name = translations['portfolio.workProjects.sensors.name'][currentLang] as string;
+    this.projectsWorkExperience[0].description = translations['portfolio.workProjects.sensors.description'][currentLang] as string;
+    this.projectsWorkExperience[0].detailedDescription = translations['portfolio.workProjects.sensors.detailedDescription'][currentLang] as string;
+    this.projectsWorkExperience[0].features = translations['portfolio.workProjects.sensors.features'][currentLang] as string[];
+    this.projectsWorkExperience[0].challenges = translations['portfolio.workProjects.sensors.challenges'][currentLang] as string[];
+    this.projectsWorkExperience[0].impact = translations['portfolio.workProjects.sensors.impact'][currentLang] as string;
+    
+    // Proyecto 1: ECOAT
+    this.projectsWorkExperience[1].name = translations['portfolio.workProjects.ecoat.name'][currentLang] as string;
+    this.projectsWorkExperience[1].description = translations['portfolio.workProjects.ecoat.description'][currentLang] as string;
+    this.projectsWorkExperience[1].detailedDescription = translations['portfolio.workProjects.ecoat.detailedDescription'][currentLang] as string;
+    this.projectsWorkExperience[1].features = translations['portfolio.workProjects.ecoat.features'][currentLang] as string[];
+    this.projectsWorkExperience[1].challenges = translations['portfolio.workProjects.ecoat.challenges'][currentLang] as string[];
+    this.projectsWorkExperience[1].impact = translations['portfolio.workProjects.ecoat.impact'][currentLang] as string;
+    
+    // Proyecto 2: Dies
+    this.projectsWorkExperience[2].name = translations['portfolio.workProjects.dies.name'][currentLang] as string;
+    this.projectsWorkExperience[2].description = translations['portfolio.workProjects.dies.description'][currentLang] as string;
+    this.projectsWorkExperience[2].detailedDescription = translations['portfolio.workProjects.dies.detailedDescription'][currentLang] as string;
+    this.projectsWorkExperience[2].features = translations['portfolio.workProjects.dies.features'][currentLang] as string[];
+    this.projectsWorkExperience[2].challenges = translations['portfolio.workProjects.dies.challenges'][currentLang] as string[];
+    this.projectsWorkExperience[2].impact = translations['portfolio.workProjects.dies.impact'][currentLang] as string;
+    
+    // Proyecto 3: Assembly
+    this.projectsWorkExperience[3].name = translations['portfolio.workProjects.assembly.name'][currentLang] as string;
+    this.projectsWorkExperience[3].description = translations['portfolio.workProjects.assembly.description'][currentLang] as string;
+    this.projectsWorkExperience[3].detailedDescription = translations['portfolio.workProjects.assembly.detailedDescription'][currentLang] as string;
+    this.projectsWorkExperience[3].features = translations['portfolio.workProjects.assembly.features'][currentLang] as string[];
+    this.projectsWorkExperience[3].challenges = translations['portfolio.workProjects.assembly.challenges'][currentLang] as string[];
+    this.projectsWorkExperience[3].impact = translations['portfolio.workProjects.assembly.impact'][currentLang] as string;
+    
+    // Proyecto 4: Overtime
+    this.projectsWorkExperience[4].name = translations['portfolio.workProjects.overtime.name'][currentLang] as string;
+    this.projectsWorkExperience[4].description = translations['portfolio.workProjects.overtime.description'][currentLang] as string;
+    this.projectsWorkExperience[4].detailedDescription = translations['portfolio.workProjects.overtime.detailedDescription'][currentLang] as string;
+    this.projectsWorkExperience[4].features = translations['portfolio.workProjects.overtime.features'][currentLang] as string[];
+    this.projectsWorkExperience[4].challenges = translations['portfolio.workProjects.overtime.challenges'][currentLang] as string[];
+    this.projectsWorkExperience[4].impact = translations['portfolio.workProjects.overtime.impact'][currentLang] as string;
+    
+    // Proyecto 5: Attendance
+    this.projectsWorkExperience[5].name = translations['portfolio.workProjects.attendance.name'][currentLang] as string;
+    this.projectsWorkExperience[5].description = translations['portfolio.workProjects.attendance.description'][currentLang] as string;
+    this.projectsWorkExperience[5].detailedDescription = translations['portfolio.workProjects.attendance.detailedDescription'][currentLang] as string;
+    this.projectsWorkExperience[5].features = translations['portfolio.workProjects.attendance.features'][currentLang] as string[];
+    this.projectsWorkExperience[5].challenges = translations['portfolio.workProjects.attendance.challenges'][currentLang] as string[];
+    this.projectsWorkExperience[5].impact = translations['portfolio.workProjects.attendance.impact'][currentLang] as string;
+  }
+
+  private updatePersonalProjects(currentLang: string): void {
+    this.projectsPersonal[0].nameProject = translations['portfolio.personalProjects.ml.name'][currentLang];
+    this.projectsPersonal[0].description = translations['portfolio.personalProjects.ml.description'][currentLang];
+    
+    this.projectsPersonal[1].nameProject = translations['portfolio.personalProjects.pos.name'][currentLang];
+    this.projectsPersonal[1].description = translations['portfolio.personalProjects.pos.description'][currentLang];
+    
+    this.projectsPersonal[2].nameProject = translations['portfolio.personalProjects.devtree.name'][currentLang];
+    this.projectsPersonal[2].description = translations['portfolio.personalProjects.devtree.description'][currentLang];
+    
+    this.projectsPersonal[3].nameProject = translations['portfolio.personalProjects.cashtrackr.name'][currentLang];
+    this.projectsPersonal[3].description = translations['portfolio.personalProjects.cashtrackr.description'][currentLang];
+    
+    this.projectsPersonal[4].nameProject = translations['portfolio.personalProjects.songs.name'][currentLang];
+    this.projectsPersonal[4].description = translations['portfolio.personalProjects.songs.description'][currentLang];
+    
+    this.projectsPersonal[5].nameProject = translations['portfolio.personalProjects.devjobs.name'][currentLang];
+    this.projectsPersonal[5].description = translations['portfolio.personalProjects.devjobs.description'][currentLang];
+    
+    // Actualizar textos de recursos
+    this.updatePersonalProjectsResources(currentLang);
+  }
+
+  private updatePersonalProjectsResources(currentLang: string): void {
+    this.projectsPersonal.forEach(project => {
+      project.resources.forEach(resource => {
+        if (resource.text === 'Repositorio en GitHub:') {
+          resource.text = translations['portfolio.resources.github'][currentLang];
+        } else if (resource.text === 'Ver Notebook') {
+          resource.text = translations['portfolio.resources.notebook'][currentLang];
+        } else if (resource.text === 'Proyecto en funcionamiento') {
+          resource.text = translations['portfolio.resources.workingProject'][currentLang];
+        }
+      });
+    });
+  }
 }

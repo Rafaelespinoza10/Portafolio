@@ -35,12 +35,12 @@
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
         </svg>
-        Descargar mi CV (Español e Inglés)
+        {{ downloadCVText }}
       </span>
     </button>
 
     <h2
-      class="font-semibold gradient-text-purple mb-6 text-2xl animate-fade-in">Herramientas:</h2>
+      class="font-semibold gradient-text-purple mb-6 text-2xl animate-fade-in">{{ toolsText }}</h2>
 
 <section class="py-10 text-gray-100 ">
   <div class="max-w-7xl mx-auto px-4">
@@ -57,7 +57,7 @@
           <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png" alt="Angular logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">Angular</h3>
-        <p class="text-sm text-white/80 hidden sm:block">Framework para frontend</p>
+        <p class="text-sm text-white/80 hidden sm:block">{{ toolDescriptions.angular }}</p>
       </div>
 
       <!-- Card: TypeScript -->
@@ -71,7 +71,7 @@
           <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png" alt="TypeScript logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">TypeScript</h3>
-        <p class="text-sm text-white/80 hidden sm:block">Superset de JavaScript</p>
+        <p class="text-sm text-white/80 hidden sm:block">{{ toolDescriptions.typescript }}</p>
       </div>
 
       <!-- Card: React -->
@@ -85,7 +85,7 @@
           <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">React</h3>
-        <p class="text-sm text-white/80 hidden sm:block">Biblioteca para interfaces de usuario</p>
+        <p class="text-sm text-white/80 hidden sm:block">{{ toolDescriptions.react }}</p>
       </div>
 
       <!-- Card: JavaScript -->
@@ -99,7 +99,7 @@
           <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">JavaScript</h3>
-        <p class="text-sm text-white/80 hidden sm:block">Lenguaje de programación para web</p>
+        <p class="text-sm text-white/80 hidden sm:block">{{ toolDescriptions.javascript }}</p>
       </div>
 
       <!-- Card: .NET -->
@@ -113,7 +113,7 @@
           <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Microsoft_.NET_logo.svg/2048px-Microsoft_.NET_logo.svg.png" alt=".NET logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">.NET</h3>
-        <p class="text-sm text-gray-300/80 hidden sm:block">Framework para desarrollo web</p>
+        <p class="text-sm text-gray-300/80 hidden sm:block">{{ toolDescriptions.net }}</p>
       </div>
 
       <!-- Card: Node.js -->
@@ -127,7 +127,7 @@
           <img class="w-12 h-12 drop-shadow-lg" src="https://www.svgrepo.com/show/452075/node-js.svg" alt="Node.js logo" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">Node.js</h3>
-        <p class="text-sm text-white/80 hidden sm:block">Entorno de ejecución JavaScript</p>
+        <p class="text-sm text-white/80 hidden sm:block">{{ toolDescriptions.nodejs }}</p>
       </div>
 
     </div>

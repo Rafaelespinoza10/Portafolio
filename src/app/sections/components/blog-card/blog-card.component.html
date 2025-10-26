@@ -12,7 +12,7 @@ blog-card.component.html
         <h2 class="text-2xl font-semibold text-gray-800">{{ article.title }}</h2>
         <p class="text-gray-600 mt-2">{{ article.description }}</p>
         <p class="text-gray-400 text-sm mt-2">{{ article.date | date }}</p>
-        <a [routerLink]="['/section/blog', article.id]" class="text-indigo-600 hover:text-indigo-800 font-bold mt-4 inline-block">Leer más</a>
+        <a [routerLink]="['/section/blog', article.id]" class="text-indigo-600 hover:text-indigo-800 font-bold mt-4 inline-block">{{ readMore }}</a>
       </div>
     </div>
 
