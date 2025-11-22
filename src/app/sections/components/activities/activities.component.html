@@ -16,14 +16,17 @@
 
     <div
       *ngFor="let activity of activities; let i = index"
+      appHoverOnScroll
       class="group relative overflow-hidden rounded-3xl shadow-2xl transform transition-all duration-500 
-             hover:scale-[1.03] hover:-translate-y-3 cursor-pointer
+             hover:scale-[1.03] hover:-translate-y-3 
+             active:scale-[1.03] active:-translate-y-3
+             touch-manipulation cursor-pointer
              glass-card animate-fade-in"
       [ngClass]="'bg-gradient-to-br ' + activity.gradientFrom + ' ' + activity.gradientVia + ' ' + activity.gradientTo + ' ' + activity.hoverShadow">
       
       <!-- Efecto de brillo de fondo (simple como inicial) -->
       <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
-                  transform -skew-x-12 -translate-x-full group-hover:translate-x-full
+                  transform -skew-x-12 -translate-x-full group-hover:translate-x-full group-active:translate-x-full
                   transition-transform duration-1000"></div>
       
       <!-- Contenido de la tarjeta mejorado -->
@@ -35,6 +38,7 @@
           <div class="relative flex-shrink-0">
             <div class="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center 
                         border-2 border-white/30 shadow-xl transform group-hover:scale-110 group-hover:rotate-12 
+                        group-active:scale-110 group-active:rotate-12
                         transition-all duration-300"
                  [style.border-color]="activity.iconColor + '40'">
               <svg class="w-10 h-10 drop-shadow-lg" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +49,7 @@
             <!-- Badge decorativo -->
             <div class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-white/30 backdrop-blur-sm 
                         border-2 border-white/50 flex items-center justify-center text-xs font-bold text-white
-                        transform group-hover:scale-125 transition-transform duration-300">
+                        transform group-hover:scale-125 group-active:scale-125 transition-transform duration-300">
               {{ i + 1 }}
             </div>
           </div>
@@ -54,11 +58,11 @@
           <div class="flex-1 flex items-center justify-between">
             <div class="flex-1">
               <h3 class="text-2xl sm:text-3xl font-bold drop-shadow-lg 
-                         group-hover:scale-105 transition-transform duration-300 inline-block"
+                         group-hover:scale-105 group-active:scale-105 transition-transform duration-300 inline-block"
                   [attr.style]="'color: ' + activity.titleColor">
                 {{ activity.title }}
               </h3>
-              <div class="h-1 w-12 rounded-full mt-2 transform group-hover:w-20 transition-all duration-300"
+              <div class="h-1 w-12 rounded-full mt-2 transform group-hover:w-20 group-active:w-20 transition-all duration-300"
                    [attr.style]="'background-color: ' + activity.titleColor + '60'"></div>
             </div>
             

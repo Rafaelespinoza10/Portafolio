@@ -22,6 +22,7 @@ export class EducationCoursesComponent implements OnInit, OnDestroy {
   description = translations['education.description']['es'];
   duration = 'Sep 2019 - Actual';
   viewCertificateText = translations['course.viewCertificate']['es'];
+  allCategoriesText = translations['course.all']?.['es'] || 'Todos';
 
   constructor(private languageService: LanguageService) { }
 
@@ -52,6 +53,7 @@ export class EducationCoursesComponent implements OnInit, OnDestroy {
     this.description = translations['education.description'][currentLang];
     this.duration = `Sep 2019 - ${currentText}`;
     this.viewCertificateText = translations['course.viewCertificate'][currentLang];
+    this.allCategoriesText = translations['course.all']?.[currentLang] || (currentLang === 'es' ? 'Todos' : 'All');
     
     // Group courses by category
     this.allCategories = [

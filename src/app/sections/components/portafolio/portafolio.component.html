@@ -15,6 +15,7 @@
       <!-- Tarjeta de Proyecto con efectos 3D y glassmorphism -->
       <div 
         #projectCard
+        appHoverOnScroll
         (click)="openModal(project)"
         (mousemove)="onMouseMove($event, projectCard)"
         (mouseleave)="onMouseLeave(projectCard)"
@@ -22,11 +23,12 @@
                glass-card dark:glass-dark
                transform transition-all duration-500
                hover:shadow-2xl hover:shadow-purple-500/20
-               cursor-pointer"
+               active:shadow-2xl active:shadow-purple-500/20
+               touch-manipulation cursor-pointer"
         style="transform-style: preserve-3d;"
       >
-        <!-- Brillo en hover -->
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <!-- Brillo en hover/touch -->
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300 pointer-events-none">
           <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10"></div>
         </div>
 
@@ -34,7 +36,7 @@
           <!-- Imagen con overlay -->
           <div class="relative overflow-hidden h-56">
             <img 
-              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
+              class="w-full h-full object-cover transform group-hover:scale-110 group-active:scale-110 transition-transform duration-700" 
               [src]="project.imageSrc" 
               alt="Imagen del proyecto" 
             />
@@ -44,7 +46,7 @@
 
           <!-- Contenido -->
           <div class="p-6 space-y-4">
-            <h3 class="text-2xl font-bold gradient-text-purple group-hover:scale-105 transition-transform">
+            <h3 class="text-2xl font-bold gradient-text-purple group-hover:scale-105 group-active:scale-105 transition-transform">
               {{ project.name }}
             </h3>
             <p class="text-md text-gray-200 dark:text-gray-300 leading-relaxed">
@@ -54,7 +56,7 @@
             <!-- Tecnologías -->
             <div class="flex items-center justify-center gap-4 mt-4 flex-wrap">
               <div *ngFor="let technology of project.technologies; index as i" 
-                   class="transform hover:scale-125 hover:-translate-y-1 transition-all duration-300">
+                   class="transform hover:scale-125 hover:-translate-y-1 active:scale-125 active:-translate-y-1 transition-all duration-300">
                 <img [src]="technology" [alt]="i" class="w-12 h-12 drop-shadow-lg" />
               </div>
             </div>
@@ -64,8 +66,9 @@
               <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full 
                          bg-gradient-to-r from-purple-600/20 to-pink-600/20 
                          group-hover:from-purple-600 group-hover:to-pink-600 
-                         border border-purple-500/30 group-hover:border-transparent
-                         transition-all duration-300 transform group-hover:scale-105">
+                         group-active:from-purple-600 group-active:to-pink-600
+                         border border-purple-500/30 group-hover:border-transparent group-active:border-transparent
+                         transition-all duration-300 transform group-hover:scale-105 group-active:scale-105">
                 <svg class="w-5 h-5 text-purple-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
@@ -76,7 +79,7 @@
         </div>
 
         <!-- Efecto de borde brillante -->
-        <div class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-purple-500/50 transition-all duration-300"></div>
+        <div class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-purple-500/50 group-active:border-purple-500/50 transition-all duration-300"></div>
       </div>
     </div>
   </div>
@@ -98,17 +101,19 @@
       <!-- Tarjeta de Proyecto Personal con efectos 3D y glassmorphism -->
       <div 
         #personalCard
+        appHoverOnScroll
         (mousemove)="onMouseMove($event, personalCard)"
         (mouseleave)="onMouseLeave(personalCard)"
         class="group relative rounded-2xl overflow-hidden 
                glass-card dark:glass-dark
                transform transition-all duration-500
                hover:shadow-2xl hover:shadow-pink-500/20
-               cursor-pointer"
+               active:shadow-2xl active:shadow-pink-500/20
+               touch-manipulation cursor-pointer"
         style="transform-style: preserve-3d;"
       >
-        <!-- Brillo en hover -->
-        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+        <!-- Brillo en hover/touch -->
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
           <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-purple-500/10"></div>
         </div>
 
@@ -124,7 +129,7 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
             
             <!-- Badge de "Click to visit" -->
-            <div class="absolute top-4 right-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute top-4 right-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300">
               <span class="flex items-center gap-1">
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -136,7 +141,7 @@
 
           <!-- Contenido -->
           <div class="p-6 space-y-4">
-            <h3 class="text-2xl font-bold gradient-text-purple group-hover:scale-105 transition-transform">
+            <h3 class="text-2xl font-bold gradient-text-purple group-hover:scale-105 group-active:scale-105 transition-transform">
               {{ project.nameProject }}
             </h3>
             <p class="text-md text-gray-200 dark:text-gray-300 leading-relaxed min-h-[4rem]">
@@ -146,7 +151,7 @@
             <!-- Tecnologías -->
             <div class="flex items-center justify-center gap-3 mt-4 flex-wrap">
               <div *ngFor="let technology of project.technologies; index as i" 
-                   class="transform hover:scale-125 hover:-translate-y-1 transition-all duration-300">
+                   class="transform hover:scale-125 hover:-translate-y-1 active:scale-125 active:-translate-y-1 transition-all duration-300">
                 <img [src]="technology" [alt]="i" class="w-10 h-10 drop-shadow-lg" />
               </div>
             </div>
@@ -161,8 +166,9 @@
                   class="group/btn flex items-center gap-2 px-4 py-2 rounded-full 
                          bg-gradient-to-r from-purple-600/20 to-pink-600/20 
                          hover:from-purple-600 hover:to-pink-600 
-                         border border-purple-500/30 hover:border-transparent
-                         transition-all duration-300 transform hover:scale-105"
+                         active:from-purple-600 active:to-pink-600
+                         border border-purple-500/30 hover:border-transparent active:border-transparent
+                         transition-all duration-300 transform hover:scale-105 active:scale-105"
                 >
                   <img [src]="item.video" [alt]="i" class="w-5 h-5" />
                   <span class="text-sm font-medium text-gray-300 group-hover/btn:text-white">{{ videoText }}</span>
@@ -173,8 +179,8 @@
         </a>
 
         <!-- Overlay de visitar sitio (simplificado) -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/60 to-black/80 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300 z-30 pointer-events-none">
-          <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/60 to-black/80 opacity-0 group-hover:opacity-100 group-active:opacity-100 flex items-center justify-center transition-all duration-300 z-30 pointer-events-none">
+          <div class="transform translate-y-4 group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-300">
             <span class="inline-flex items-center gap-2 text-white font-bold text-xl px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-2xl animate-pulse-slow">
               {{ viewProjectText }}
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -185,7 +191,7 @@
         </div>
 
         <!-- Efecto de borde brillante -->
-        <div class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-pink-500/50 transition-all duration-300 pointer-events-none z-40"></div>
+        <div class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-pink-500/50 group-active:border-pink-500/50 transition-all duration-300 pointer-events-none z-40"></div>
       </div>
     </div>
   </div>

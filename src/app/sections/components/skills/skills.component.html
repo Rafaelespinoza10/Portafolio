@@ -5,7 +5,7 @@
       
       <!-- Iterar sobre las habilidades -->
       <div *ngFor="let skill of skills" class="animate-fade-in">
-        <div class="group relative overflow-hidden bg-gradient-to-br from-slate-800/80 via-slate-700/80 to-slate-800/80 rounded-3xl shadow-2xl transform transition-all duration-500 
+        <div appHoverOnScroll class="group relative overflow-hidden bg-gradient-to-br from-slate-800/80 via-slate-700/80 to-slate-800/80 rounded-3xl shadow-2xl transform transition-all duration-500 
                    hover:scale-[1.03] hover:-translate-y-3 cursor-pointer 
                    hover:shadow-2xl border border-slate-600/30"
              [class]="'hover:' + skill.shadowColor + ' glass-card p-8'">

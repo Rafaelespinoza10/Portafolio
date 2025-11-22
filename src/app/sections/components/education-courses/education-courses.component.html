@@ -75,7 +75,7 @@
         [ngStyle]="selectedCategoryId === null ? getActivePillStyle() : {}"
       >
         <span class="mr-2">🎯</span>
-        Todos
+        {{ allCategoriesText }}
       </button>
       
       <button
@@ -109,6 +109,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8">
         <div
           *ngFor="let course of category.courses"
+          appHoverOnScroll
           class="group relative overflow-hidden bg-gradient-to-br from-gray-800/60 via-gray-900/50 to-gray-800/60 rounded-3xl shadow-2xl transform transition-all duration-500 
                  hover:scale-[1.03] hover:-translate-y-3 cursor-pointer 
                  hover:shadow-2xl animate-fade-in border border-gray-700/50 hover:border-transparent"
@@ -160,7 +161,7 @@
                       class="text-xs sm:text-sm font-bold"
                       [class.text-black]="course.platform === 'nvidia'"
                       [class.text-white]="course.platform !== 'nvidia'">
-                  {{ course.platform === 'nvidia' ? 'NVIDIA' : 'DevTalles' }}
+                  {{ getPlatformName(course.platform) }}
                 </span>
               </div>
             </div>

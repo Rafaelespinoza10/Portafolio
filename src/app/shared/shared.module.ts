@@ -8,6 +8,7 @@ import { ProfilePictureComponent } from './profile-picture/profile-picture.compo
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ScrollProgressComponent } from './scroll-progress/scroll-progress.component';
 import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
+import { HoverOnScrollDirective } from './directives/hover-on-scroll.directive';
 import { ProjectModalComponent } from './project-modal/project-modal.component';
 import { TestimonialModalComponent } from './testimonial-modal/testimonial-modal.component';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
@@ -28,6 +29,7 @@ import { LanguageSwitcherBubbleComponent } from './language-switcher-bubble/lang
     NavBarComponent,
     ScrollProgressComponent,
     ScrollRevealDirective,
+    HoverOnScrollDirective,
     ProjectModalComponent,
     TestimonialModalComponent,
     SafeUrlPipe,
@@ -41,6 +43,7 @@ import { LanguageSwitcherBubbleComponent } from './language-switcher-bubble/lang
     NavBarComponent,
     ScrollProgressComponent,
     ScrollRevealDirective,
+    HoverOnScrollDirective,
     ProjectModalComponent,
     TestimonialModalComponent,
     SafeUrlPipe,

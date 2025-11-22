@@ -44,16 +44,21 @@
 
 <section class="py-10 text-gray-100 ">
   <div class="max-w-7xl mx-auto px-4">
-    <div class="grid grid-cols-2  sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6">
 
       <!-- Card: Tools usando *ngFor -->
       <div
         *ngFor="let tool of tools"
+        appHoverOnScroll
         class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300
-               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer
+               hover:scale-[1.08] hover:-translate-y-2 
+               active:scale-[1.08] active:-translate-y-2
+               touch-manipulation cursor-pointer
                glass-card animate-fade-in"
         [ngClass]="[tool.gradientClass, tool.hoverShadowClass]">
-        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
+        <div class="flex justify-center items-center mb-4 transform 
+                    group-hover:rotate-12 group-active:rotate-12 
+                    transition-transform duration-300">
           <img class="w-12 h-12 drop-shadow-lg" [src]="tool.logo" [alt]="tool.name + ' logo'" />
         </div>
         <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">{{ tool.name }}</h3>

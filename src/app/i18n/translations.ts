@@ -451,6 +451,10 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
     'es': 'Aprende a construir aplicaciones de inteligencia artificial de video en tiempo real con NVIDIA.',
     'en': 'Learn to build real-time video artificial intelligence applications with NVIDIA.'
   },
+  'course.all': {
+    'es': 'Todos',
+    'en': 'All'
+  },
   'course.category.machineLearning': {
     'es': 'Machine Learning & Data Science',
     'en': 'Machine Learning & Data Science'
