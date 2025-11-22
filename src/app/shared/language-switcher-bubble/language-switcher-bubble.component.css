@@ -1,0 +1,48 @@
+/* Animación de entrada suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Asegurar que el emoji de la bandera sea visible */
+.emoji-flag {
+  display: inline-block !important;
+  font-size: 2.5rem !important;
+  line-height: 1 !important;
+  vertical-align: middle;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Twemoji Mozilla', 'EmojiOne Color', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal !important;
+  font-weight: normal !important;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga" 1;
+  unicode-bidi: normal;
+}
+
+/* Forzar renderizado de emojis */
+button .emoji-flag {
+  font-size: 3rem !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Asegurar que el botón tenga suficiente espacio */
+button {
+  min-width: 56px;
+  min-height: 56px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+

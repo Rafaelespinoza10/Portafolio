@@ -1,59 +1,109 @@
-<div class="container mx-auto flex flex-col items-center p-4 sm:p-6 lg:p-8">
+<div class="container mx-auto flex flex-col items-center p-4 sm:p-6 lg:p-8 py-10">
   
-  <!-- Título principal con efecto -->
-  <div class="text-center mb-6 sm:mb-8">
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text-purple mb-3 sm:mb-4 px-4 animate-fade-in">
+  <!-- Título principal modernizado -->
+  <div class="text-center mb-8 sm:mb-12">
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text-purple mb-4 px-4 animate-fade-in">
       {{ title }}
     </h2>
-    <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-4 sm:mb-6 animate-fade-in"></div>
+    <p 
+      class="text-gray-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed animate-fade-in px-4 mt-4">
+      {{ subtitle }} <span class="gradient-text-purple font-semibold">{{ subtitleFrontend }}</span>{{ subtitleMid }} <span class="gradient-text-purple font-semibold">{{ subtitleBackend }}</span> {{ subtitleEnd }}
+    </p>
   </div>
-
-  <p 
-    class="text-center text-gray-200 dark:text-gray-300 mb-8 sm:mb-12 max-w-2xl text-base sm:text-lg leading-relaxed animate-fade-in px-4">
-    {{ subtitle }} <span class="gradient-text-purple font-semibold">{{ subtitleFrontend }}</span>{{ subtitleMid }} <span class="gradient-text-purple font-semibold">{{ subtitleBackend }}</span> {{ subtitleEnd }}
-  </p>
   
-  <div class="grid w-full grid-cols-1 gap-6 sm:gap-8  max-w-7xl">
+  <!-- Grid moderno de actividades -->
+  <div class="grid w-full grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-7xl">
 
     <div
-      *ngFor="let activity of activities"
-      [class]="'group relative overflow-hidden bg-gradient-to-br ' + activity.gradientFrom + ' ' + activity.gradientVia + ' ' + activity.gradientTo + ' rounded-3xl shadow-2xl transform transition-all duration-500 hover:scale-[1.03] hover:-translate-y-3 cursor-pointer hover:shadow-2xl ' + activity.hoverShadow + ' glass-card animate-fade-in'">
+      *ngFor="let activity of activities; let i = index"
+      class="group relative overflow-hidden rounded-3xl shadow-2xl transform transition-all duration-500 
+             hover:scale-[1.03] hover:-translate-y-3 cursor-pointer
+             glass-card animate-fade-in"
+      [ngClass]="'bg-gradient-to-br ' + activity.gradientFrom + ' ' + activity.gradientVia + ' ' + activity.gradientTo + ' ' + activity.hoverShadow">
       
-      <!-- Efecto de brillo de fondo -->
+      <!-- Efecto de brillo de fondo (simple como inicial) -->
       <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent 
                   transform -skew-x-12 -translate-x-full group-hover:translate-x-full
                   transition-transform duration-1000"></div>
       
-      <!-- Contenido de la tarjeta -->
-      <div class="relative p-6 sm:p-8">
-        <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-6">
-          <!-- Icono con efecto 3D -->
-          <div class="flex-shrink-0 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 self-center sm:self-start">
-            <div class="p-3 sm:p-4 bg-white/20 rounded-2xl backdrop-blur-sm">
-              <svg class="w-10 h-10 sm:w-12 sm:h-12 text-white drop-shadow-lg" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <!-- Contenido de la tarjeta mejorado -->
+      <div class="relative p-8 h-full flex flex-col z-10">
+        
+        <!-- Header con icono y título en la misma fila -->
+        <div class="flex items-center gap-4 mb-6">
+          <!-- Icono grande y moderno -->
+          <div class="relative flex-shrink-0">
+            <div class="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center 
+                        border-2 border-white/30 shadow-xl transform group-hover:scale-110 group-hover:rotate-12 
+                        transition-all duration-300"
+                 [style.border-color]="activity.iconColor + '40'">
+              <svg class="w-10 h-10 drop-shadow-lg" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                   [attr.style]="'color: ' + activity.iconColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="activity.iconPath"></path>
               </svg>
             </div>
+            <!-- Badge decorativo -->
+            <div class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-white/30 backdrop-blur-sm 
+                        border-2 border-white/50 flex items-center justify-center text-xs font-bold text-white
+                        transform group-hover:scale-125 transition-transform duration-300">
+              {{ i + 1 }}
+            </div>
           </div>
-
-          <!-- Contenido -->
-          <div class="flex-1 w-full">
-            <h3 [class]="'text-xl sm:text-2xl font-bold mb-3 bg-gradient-to-r ' + activity.textGradient + ' bg-clip-text text-transparent group-hover:scale-105 transition-transform text-center sm:text-left'">
-              {{ activity.title }}
-            </h3>
-            <p class="text-sm sm:text-base leading-relaxed text-white/90 mb-4 text-center sm:text-left">
-              {{ activity.description }}
-            </p>
+          
+          <!-- Título y decoración en la misma línea -->
+          <div class="flex-1 flex items-center justify-between">
+            <div class="flex-1">
+              <h3 class="text-2xl sm:text-3xl font-bold drop-shadow-lg 
+                         group-hover:scale-105 transition-transform duration-300 inline-block"
+                  [attr.style]="'color: ' + activity.titleColor">
+                {{ activity.title }}
+              </h3>
+              <div class="h-1 w-12 rounded-full mt-2 transform group-hover:w-20 transition-all duration-300"
+                   [attr.style]="'background-color: ' + activity.titleColor + '60'"></div>
+            </div>
             
-            <!-- Tecnologías destacadas -->
-            <div class="flex flex-wrap gap-2 justify-center sm:justify-start">
-              <span *ngFor="let tech of activity.technologies" [class]="'px-2 sm:px-3 py-1 bg-gradient-to-r ' + tech.colors + ' rounded-full text-xs font-bold text-white shadow-lg transform hover:scale-105 transition-transform'">
+            <!-- Decoración angular -->
+            <div class="relative w-12 h-12 opacity-20 group-hover:opacity-40 transition-opacity duration-300 flex-shrink-0">
+              <div class="absolute top-0 right-0 w-0 h-0 border-t-[24px] border-r-[24px] border-t-transparent border-r-white/50"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="flex-1 flex flex-col">
+          
+          <!-- Descripción con mejor formato -->
+          <p class="text-base sm:text-lg leading-relaxed text-white/95 mb-8 flex-1 
+                    font-light tracking-wide">
+            {{ activity.description }}
+          </p>
+          
+          <!-- Sección de tecnologías mejorada -->
+          <div class="space-y-3 mt-auto">
+            <div class="text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
+              Tecnologías
+            </div>
+            <div class="flex flex-wrap gap-2.5">
+              <span *ngFor="let tech of activity.technologies" 
+                    [ngClass]="'flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white shadow-lg 
+                               hover:scale-110 hover:shadow-xl transition-all duration-300 
+                               bg-gradient-to-r ' + tech.colors + ' border border-white/30 
+                               transform hover:-translate-y-1'">
+                <img *ngIf="tech.logo" [src]="tech.logo" [alt]="tech.name + ' logo'" 
+                     class="w-4 h-4 object-contain"
+                     [ngClass]="{'filter brightness-0 invert': tech.name !== 'Next.js' && tech.name !== 'TypeScript'}">
                 {{ tech.name }}
               </span>
             </div>
           </div>
         </div>
       </div>
+      
+      <!-- Elementos decorativos sutiles -->
+      <div class="absolute top-4 right-4 w-32 h-32 rounded-full blur-3xl bg-white/10 
+                  opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+      <div class="absolute bottom-4 left-4 w-24 h-24 rounded-full blur-2xl bg-white/5 
+                  opacity-50 pointer-events-none"></div>
     </div>
 
   </div>

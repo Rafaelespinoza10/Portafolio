@@ -1,5 +1,5 @@
-<section class="py-16 text-gray-100">
-  <div class="container mx-auto px-4 max-w-4xl">
+<section class=" text-gray-100">
+  <div>
     <!-- Header -->
     <div class="text-center mb-16">
       <h2
@@ -38,88 +38,79 @@
       </button>
     </div>
 
-    <!-- Modern Testimonials Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+    <!-- Testimonials tipo comentarios moderno -->
+    <div class="space-y-4 mb-12">
       <div
         *ngFor="let testimonial of testimonials; let i = index"
-        class="group relative bg-gradient-to-br from-gray-800/40 via-gray-800/30 to-gray-900/40 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-purple-500/20"
+        class="group flex gap-4 p-4 rounded-2xl 
+               bg-gradient-to-br from-gray-800/40 via-gray-800/30 to-gray-900/40 
+               backdrop-blur-sm border border-gray-700/50 
+               hover:border-purple-500/50 hover:shadow-xl hover:shadow-purple-500/10
+               transition-all duration-300 transform hover:-translate-y-1"
       >
-        <!-- Quote Icon Top Right -->
-        <div class="absolute top-3 right-3 sm:top-4 sm:right-4 opacity-20 group-hover:opacity-40 transition-opacity">
-          <svg
-            class="w-12 h-12 sm:w-16 sm:h-16 text-purple-400"
-            fill="currentColor"
-            viewBox="0 0 32 32"
-          >
-            <path
-              d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8zm16 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8z"
-            />
-          </svg>
-        </div>
-
-        <!-- Floating Avatar -->
-        <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+        <!-- Avatar -->
+        <div class="flex-shrink-0">
           <div
-            class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg sm:text-2xl shadow-xl shadow-purple-500/30 group-hover:shadow-purple-500/50 transition-all duration-500 group-hover:scale-110"
+            class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-purple-600 
+                   flex items-center justify-center text-white font-bold text-base 
+                   shadow-lg shadow-purple-500/30 border-2 border-white/20
+                   group-hover:scale-110 group-hover:shadow-purple-500/50 transition-all duration-300"
           >
             {{ testimonial.name.charAt(0).toUpperCase() }}
           </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="text-base sm:text-xl font-bold text-white mb-1 truncate">
-              {{ testimonial.name }}
-            </h3>
-            <p class="text-xs sm:text-sm text-gray-400 truncate">
-              {{ testimonial.position }} • {{ testimonial.company }}
+        </div>
+
+        <!-- Contenido del comentario -->
+        <div class="flex-1 min-w-0">
+          <!-- Header con nombre, fecha y rating -->
+          <div class="flex items-start justify-between gap-3 mb-2">
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap mb-1.5">
+                <span class="text-base font-bold text-white hover:text-purple-400 transition-colors cursor-pointer">
+                  {{ testimonial.name }}
+                </span>
+                <span class="text-sm text-gray-500">•</span>
+                <span class="text-sm text-gray-400">{{ formatDate(testimonial.date) }}</span>
+              </div>
+              
+              <!-- Rating -->
+              <div class="flex gap-1 items-center">
+                <svg
+                  *ngFor="let star of [1, 2, 3, 4, 5]; let j = index"
+                  class="w-5 h-5 transition-transform duration-300"
+                  [class.text-yellow-400]="testimonial.rating ? j < testimonial.rating : j < 5"
+                  [class.text-gray-600]="testimonial.rating ? j >= testimonial.rating : false"
+                  [class.group-hover:scale-110]="testimonial.rating ? j < testimonial.rating : j < 5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Texto del comentario -->
+          <div class="mb-3 pl-2 border-l-2 border-purple-500/30 group-hover:border-purple-500/60 transition-colors">
+            <p class="text-base text-gray-200 leading-relaxed break-words overflow-wrap-anywhere">
+              {{ testimonial.comment }}
             </p>
           </div>
-        </div>
 
-        <!-- Stars Rating -->
-        <div class="flex gap-1 mb-4 sm:mb-6">
-          <svg
-            *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
-            class="w-4 h-4 sm:w-5 sm:h-5 transition-all duration-300"
-            [class.text-yellow-400]="
-              testimonial.rating ? i < testimonial.rating : i < 5
-            "
-            [class.text-gray-700]="
-              testimonial.rating ? i >= testimonial.rating : false
-            "
-            [class.group-hover:scale-110]="testimonial.rating ? i < testimonial.rating : i < 5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-            />
-          </svg>
+          <!-- Footer con info adicional -->
+          <div class="flex items-center gap-2 flex-wrap pt-2 border-t border-gray-700/30">
+            <span class="text-sm font-medium text-gray-300">
+              {{ testimonial.position }}
+            </span>
+            <span class="text-sm text-gray-500">•</span>
+            <span class="text-sm text-gray-400">
+              {{ testimonial.company }}
+            </span>
+          </div>
         </div>
-
-        <!-- Quote Text -->
-        <div class="relative pl-3 sm:pl-4 border-l-4 border-purple-500/30 group-hover:border-purple-500/60 transition-colors mb-4 sm:mb-6">
-          <p class="text-gray-200 text-sm sm:text-base leading-relaxed italic break-words overflow-wrap-anywhere">
-            {{ testimonial.comment }}
-          </p>
-        </div>
-
-                  <!-- Bottom Date Badge -->
-        <div class="flex items-center gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/30 w-fit">
-          <svg
-            class="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span class="text-[10px] sm:text-xs text-gray-400">{{ formatDate(testimonial.date) }}</span>
-        </div>
-       </div>
-     </div>
+      </div>
+    </div>
    </div>
  </section>

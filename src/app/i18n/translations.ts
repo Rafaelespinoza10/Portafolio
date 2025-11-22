@@ -131,6 +131,18 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
     'es': 'Entorno de ejecución JavaScript',
     'en': 'JavaScript runtime environment'
   },
+  'aboutMe.python.desc': {
+    'es': 'Lenguaje para Machine Learning y Data Science',
+    'en': 'Language for Machine Learning and Data Science'
+  },
+  'aboutMe.nestjs.desc': {
+    'es': 'Framework Node.js escalable',
+    'en': 'Scalable Node.js framework'
+  },
+  'aboutMe.nextjs.desc': {
+    'es': 'Framework React para producción',
+    'en': 'React framework for production'
+  },
   'aboutMePage.title': {
     'es': 'Sobre Mí',
     'en': 'About Me'
@@ -186,6 +198,14 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
   'activities.database.description': {
     'es': 'Diseño y optimización de bases de datos relacionales utilizando MySQL y MSSQL y bases no relacionales MongoDB, asegurando integridad y eficiencia en el manejo de datos.',
     'en': 'I design and optimize relational databases using MySQL and MSSQL and non-relational databases MongoDB, ensuring integrity and efficiency in data handling.'
+  },
+  'activities.machineLearning.title': {
+    'es': 'Machine Learning',
+    'en': 'Machine Learning'
+  },
+  'activities.machineLearning.description': {
+    'es': 'Desarrollo modelos de Machine Learning y Deep Learning utilizando Python, TensorFlow y PyTorch para crear soluciones inteligentes y sistemas de predicción.',
+    'en': 'I develop Machine Learning and Deep Learning models using Python, TensorFlow and PyTorch to create intelligent solutions and prediction systems.'
   },
   'contactInfo.title': {
     'es': 'Información de Contacto',
@@ -414,6 +434,34 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
   'course.viewCertificate': {
     'es': 'Ver Certificado',
     'en': 'View Certificate'
+  },
+  'course.aiDeepLearning.title': {
+    'es': 'Inteligencia Artificial y Deep Learning desde cero en Python con Santiago Hernández',
+    'en': 'Artificial Intelligence and Deep Learning from scratch in Python with Santiago Hernández'
+  },
+  'course.aiDeepLearning.description': {
+    'es': 'Aprende los fundamentos de la inteligencia artificial y deep learning desde cero usando Python.',
+    'en': 'Learn artificial intelligence and deep learning fundamentals from scratch using Python.'
+  },
+  'course.nvidiaVideoAI.title': {
+    'es': 'Building Real-Time Video AI Applications by NVIDIA',
+    'en': 'Building Real-Time Video AI Applications by NVIDIA'
+  },
+  'course.nvidiaVideoAI.description': {
+    'es': 'Aprende a construir aplicaciones de inteligencia artificial de video en tiempo real con NVIDIA.',
+    'en': 'Learn to build real-time video artificial intelligence applications with NVIDIA.'
+  },
+  'course.category.machineLearning': {
+    'es': 'Machine Learning & Data Science',
+    'en': 'Machine Learning & Data Science'
+  },
+  'course.category.webDevelopment': {
+    'es': 'Desarrollo Web',
+    'en': 'Web Development'
+  },
+  'course.category.industrial': {
+    'es': 'Robótica Industrial',
+    'en': 'Industrial Robotics'
   },
   'skills.spanish.name': {
     'es': 'Español',
@@ -813,6 +861,14 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
     'es': 'Aplicación de empleos para desarrolladores realizada en Angular, Node.js, Mongoose, Python, TailwindCSS, MongoDB, JWT.',
     'en': 'Developer job application built with Angular, Node.js, Mongoose, Python, TailwindCSS, MongoDB, JWT.'
   },
+  'portfolio.personalProjects.registergains.name': {
+    'es': 'Register Gains',
+    'en': 'Register Gains'
+  },
+  'portfolio.personalProjects.registergains.description': {
+    'es': 'Aplicación completa para el seguimiento del progreso en el gimnasio. Incluye métricas, logros, sistema de login, perfiles de usuario, feed para compartir logros con la comunidad, gestión de rutinas y ejercicios. Desarrollada con React, NestJS, AWS Serverless y MongoDB.',
+    'en': 'Complete application for tracking gym progress. Includes metrics, achievements, login system, user profiles, feed to share achievements with the community, routine and exercise management. Built with React, NestJS, AWS Serverless and MongoDB.'
+  },
   // Modal titles
   'modal.description': {
     'es': 'Descripción del Proyecto',
@@ -931,6 +987,30 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
     'es': 'La Inteligencia Artificial ha experimentado un auge significativo en los últimos dos años, especialmente con la incorporación de ChatGPT de OpenAI. Este avance ha comenzado a transformar de manera significativa diversos aspectos de la vida humana, y la programación no es la excepción. Hoy en día, herramientas impulsadas por IA están cambiando la forma en que trabajamos, mejorando nuestra productividad y abriendo nuevas posibilidades en el mundo del desarrollo de software. A pesar de los comentarios que aseguran que la IA reemplazará a los programadores, estoy completamente en desacuerdo con esta visión. Si bien la inteligencia artificial ha demostrado su capacidad para realizar tareas repetitivas y optimizar ciertos procesos, los programadores aún tienen una ventaja crucial: la capacidad para innovar, interpretar problemas reales y crear soluciones a medida.',
     'en': 'Artificial Intelligence has experienced a significant boom in the last two years, especially with the incorporation of OpenAI\'s ChatGPT. This advance has begun to significantly transform various aspects of human life, and programming is no exception. Today, AI-driven tools are changing the way we work, improving our productivity and opening up new possibilities in the software development world. Despite comments that claim AI will replace programmers, I completely disagree with this view. While artificial intelligence has demonstrated its ability to perform repetitive tasks and optimize certain processes, programmers still have a crucial advantage: the ability to innovate, interpret real problems and create tailored solutions.'
   },
+  'blog.article8.title': {
+    'es': 'Mi Aprendizaje en Machine Learning y Deep Learning: Un Viaje de Continua Especialización',
+    'en': 'My Learning Journey in Machine Learning and Deep Learning: A Path of Continuous Specialization'
+  },
+  'blog.article8.introduction': {
+    'es': 'Explorando el mundo del Machine Learning: Desde certificados en Udemy hasta cursos de NVIDIA y actualmente aprendiendo CNN en Coursera.',
+    'en': 'Exploring the world of Machine Learning: From Udemy certificates to NVIDIA courses and currently learning CNN on Coursera.'
+  },
+  'blog.article8.description': {
+    'es': 'Mi camino en Machine Learning y Deep Learning ha sido una experiencia transformadora que me ha permitido expandir mis habilidades más allá del desarrollo web tradicional. Todo comenzó cuando decidí tomar mis primeros pasos serios en Machine Learning. Busqué cursos que me dieran una base sólida y encontré en Udemy dos certificaciones que marcarían el inicio de este viaje. La primera fue el curso de Machine Learning y Data Science, donde aprendí los fundamentos esenciales. Después completé mi segundo certificado sobre Deep Learning, donde exploré redes neuronales profundas, arquitecturas complejas, y frameworks como TensorFlow y Keras. Busqué complementar mi aprendizaje con cursos de NVIDIA, que me proporcionaron una perspectiva única sobre cómo el hardware y el software trabajan juntos. Actualmente, me encuentro inmerso en un curso de Convolutional Neural Networks (CNN) en Coursera. Mi próximo paso es especializarme aún más mediante una maestría en Inteligencia Artificial. Durante todo este proceso, he mantenido un registro detallado de mis notas, que he digitalizado en un PDF que quiero compartir con la comunidad.',
+    'en': 'My path in Machine Learning and Deep Learning has been a transformative experience that has allowed me to expand my skills beyond traditional web development. It all began when I decided to take my first serious steps in Machine Learning. I searched for courses that would give me a solid foundation and found on Udemy two certifications that would mark the beginning of this journey. The first was the Machine Learning and Data Science course, where I learned the essential fundamentals. Then I completed my second certificate on Deep Learning, where I explored deep neural networks, complex architectures, and frameworks like TensorFlow and Keras. I sought to complement my learning with NVIDIA courses, which provided me with a unique perspective on how hardware and software work together. Currently, I am immersed in a Convolutional Neural Networks (CNN) course on Coursera. My next step is to specialize further through a master\'s degree in Artificial Intelligence. Throughout this process, I have kept a detailed record of my notes, which I have digitized in a PDF that I want to share with the community.'
+  },
+  'blog.article9.title': {
+    'es': 'Mi Meta de Mejorar mi Nivel de Inglés: Un Compromiso Continuo con el Aprendizaje',
+    'en': 'My Goal to Improve my English Level: A Continuous Commitment to Learning'
+  },
+  'blog.article9.introduction': {
+    'es': 'Desde Vocablo Idiomas Premium hasta la preparación para TOEFL: Mi camino hacia la fluidez en inglés y certificación internacional.',
+    'en': 'From Vocablo Idiomas Premium to TOEFL preparation: My path to English fluency and international certification.'
+  },
+  'blog.article9.description': {
+    'es': 'El aprendizaje de idiomas ha sido una de mis prioridades más importantes, especialmente el inglés, que es el idioma universal del mundo de la tecnología y los negocios. Actualmente, estoy inscrito en Vocablo Idiomas Premium, un curso especializado que adquirí específicamente para aumentar mi nivel de inglés de manera sistemática. Me he adaptado completamente al idioma en mi vida diaria, escuchando contenido en inglés constantemente: podcasts sobre tecnología, series, documentales, y conferencias. Recientemente, obtuve un puntaje de 460 puntos en el TOEFL, lo que corresponde a un nivel B1 (Intermedio). Mi progreso ha sido constante y actualmente me encuentro por avanzar a un nivel intermedio-avanzado (B2). El aprendizaje de idiomas requiere disciplina, paciencia y consistencia. Cada mejora en mi nivel de inglés se traduce directamente en mejores oportunidades para mi carrera como desarrollador de software.',
+    'en': 'Language learning has been one of my most important priorities, especially English, which is the universal language of technology and business. Currently, I am enrolled in Vocablo Idiomas Premium, a specialized course I acquired specifically to systematically increase my English level. I have fully adapted to the language in my daily life, constantly listening to English content: technology podcasts, series, documentaries, and conferences. Recently, I obtained a score of 460 points on the TOEFL, which corresponds to a B1 (Intermediate) level. My progress has been constant and I am currently about to advance to an intermediate-advanced level (B2). Language learning requires discipline, patience and consistency. Every improvement in my English level translates directly into better opportunities for my career as a software developer.'
+  },
   // Blog detail page
   'blogDetail.backToBlog': {
     'es': 'Volver al Blog',
@@ -968,13 +1048,57 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
     'es': 'Leer más',
     'en': 'Read more'
   },
+  'blog.latestNews': {
+    'es': 'Últimas Noticias',
+    'en': 'Latest News'
+  },
+  'blog.myBlog': {
+    'es': 'Mi Blog',
+    'en': 'My Blog'
+  },
+  'blog.articlesByCategory': {
+    'es': 'Artículos por Categoría',
+    'en': 'Articles by Category'
+  },
+  'blog.allCategories': {
+    'es': 'Todas las Categorías',
+    'en': 'All Categories'
+  },
+  'blog.category.career': {
+    'es': 'Carrera',
+    'en': 'Career'
+  },
+  'blog.category.projects': {
+    'es': 'Proyectos',
+    'en': 'Projects'
+  },
+  'blog.category.learning': {
+    'es': 'Aprendizaje',
+    'en': 'Learning'
+  },
+  'blog.category.goals': {
+    'es': 'Metas',
+    'en': 'Goals'
+  },
+  'blog.category.experience': {
+    'es': 'Experiencia',
+    'en': 'Experience'
+  },
+  'blog.category.tools': {
+    'es': 'Herramientas',
+    'en': 'Tools'
+  },
+  'blog.category.tech': {
+    'es': 'Tecnología',
+    'en': 'Technology'
+  },
   'blog.article1.date': {
-    'es': 'Noviembre, 2024',
-    'en': 'November, 2024'
+    'es': 'Octubre, 2024',
+    'en': 'October, 2024'
   },
   'blog.article2.date': {
-    'es': 'Noviembre, 2024',
-    'en': 'November, 2024'
+    'es': 'Octubre, 2024',
+    'en': 'October, 2024'
   },
   'blog.article3.date': {
     'es': 'Octubre, 2025',
@@ -992,9 +1116,33 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
     'es': 'Noviembre, 2024',
     'en': 'November, 2024'
   },
-  'blog.article7.date': {
-    'es': 'Noviembre, 2024',
-    'en': 'November, 2024'
+  'blog.article8.date': {
+    'es': 'Noviembre, 2025',
+    'en': 'November, 2025'
+  },
+  'blog.article9.date': {
+    'es': 'Mayo, 2025',
+    'en': 'May, 2025'
+  },
+  'blogDetail.certificatesTitle': {
+    'es': 'Certificados',
+    'en': 'Certificates'
+  },
+  'blogDetail.pdfTitle': {
+    'es': 'Notas de Deep Learning y Machine Learning',
+    'en': 'Deep Learning and Machine Learning Notes'
+  },
+  'blogDetail.viewPdf': {
+    'es': 'Ver PDF',
+    'en': 'View PDF'
+  },
+  'blogDetail.downloadPdf': {
+    'es': 'Descargar PDF',
+    'en': 'Download PDF'
+  },
+  'blogDetail.pdfDescription': {
+    'es': '📚 Notas digitalizadas de mi aprendizaje en Deep Learning y Machine Learning. Este documento contiene conceptos clave, fórmulas importantes, ejemplos prácticos, y reflexiones sobre diferentes técnicas y algoritmos.',
+    'en': '📚 Digitized notes from my learning journey in Deep Learning and Machine Learning. This document contains key concepts, important formulas, practical examples, and reflections on different techniques and algorithms.'
   },
   // Contact form
   'contactForm.title': {

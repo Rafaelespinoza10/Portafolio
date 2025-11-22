@@ -13,6 +13,7 @@ import { TestimonialModalComponent } from './testimonial-modal/testimonial-modal
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { TranslatePipe } from './pipes/translate.pipe';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
+import { LanguageSwitcherBubbleComponent } from './language-switcher-bubble/language-switcher-bubble.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
     TestimonialModalComponent,
     SafeUrlPipe,
     TranslatePipe,
-    LanguageSwitcherComponent
+    LanguageSwitcherComponent,
+    LanguageSwitcherBubbleComponent
   ],
   exports: [
     SideBarComponent,
@@ -43,7 +45,8 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
     TestimonialModalComponent,
     SafeUrlPipe,
     TranslatePipe,
-    LanguageSwitcherComponent
+    LanguageSwitcherComponent,
+    LanguageSwitcherBubbleComponent
   ]
 })
 export class SharedModule { }

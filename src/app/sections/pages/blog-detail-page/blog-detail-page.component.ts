@@ -26,6 +26,11 @@ export class BlogDetailPageComponent implements OnInit, OnDestroy {
   public projectDemo = translations['blogDetail.projectDemo']['es'];
   public shareTwitter = translations['blogDetail.shareTwitter']['es'];
   public copyLinkLabel = translations['blogDetail.copyLink']['es'];
+  public pdfTitle = translations['blogDetail.pdfTitle']['es'];
+  public viewPdf = translations['blogDetail.viewPdf']['es'];
+  public downloadPdf = translations['blogDetail.downloadPdf']['es'];
+  public pdfDescription = translations['blogDetail.pdfDescription']['es'];
+  public certificatesTitle = translations['blogDetail.certificatesTitle']['es'];
 
   constructor(
     private route: ActivatedRoute,
@@ -74,6 +79,11 @@ export class BlogDetailPageComponent implements OnInit, OnDestroy {
     this.projectDemo = translations['blogDetail.projectDemo'][currentLang] as string;
     this.shareTwitter = translations['blogDetail.shareTwitter'][currentLang] as string;
     this.copyLinkLabel = translations['blogDetail.copyLink'][currentLang] as string;
+    this.pdfTitle = translations['blogDetail.pdfTitle'][currentLang] as string;
+    this.viewPdf = translations['blogDetail.viewPdf'][currentLang] as string;
+    this.downloadPdf = translations['blogDetail.downloadPdf'][currentLang] as string;
+    this.pdfDescription = translations['blogDetail.pdfDescription'][currentLang] as string;
+    this.certificatesTitle = translations['blogDetail.certificatesTitle'][currentLang] as string;
   }
 
   ngOnDestroy(): void {
@@ -104,7 +114,10 @@ export class BlogDetailPageComponent implements OnInit, OnDestroy {
       author: baseArticle.author,
       image: baseArticle.image,
       videoUrl: baseArticle.videoUrl,
-      videoType: baseArticle.videoType
+      videoType: baseArticle.videoType,
+      pdfUrl: baseArticle.pdfUrl,
+      pdfType: baseArticle.pdfType,
+      certificates: baseArticle.certificates
     };
   }
 
@@ -116,7 +129,9 @@ export class BlogDetailPageComponent implements OnInit, OnDestroy {
       '20704830-83d6-49fa-87a2-850fbd32beb5': 4,
       'b8eea21c-ca33-41e7-899e-33d9a31853a2': 5,
       'd1e5f8a9-7b4c-4e2f-9a8d-2c5b7e3f9a1d': 6,
-      'a3c7e2b5-9d1f-4a8e-7c3b-5e9f1a7c4d8e': 7
+      'a3c7e2b5-9d1f-4a8e-7c3b-5e9f1a7c4d8e': 7,
+      'm8l3n4t5-9a6b-7c8d-9e0f-1a2b3c4d5e6f': 8,
+      'e9f4n5o6-8b7c-9d0e-1f2a-3b4c5d6e7f8a': 9
     };
     return articleIdMap[id] || 1;
   }
@@ -151,7 +166,7 @@ export class BlogDetailPageComponent implements OnInit, OnDestroy {
   }
 
   copyLink(): void {
-    const urlPage = encodeURIComponent(window.location.href);
+    const urlPage = window.location.href;
     const currentLang = this.languageService.getCurrentLanguage();
     const successMsg = currentLang === 'es' ? 'Enlace copiado al portapapeles' : 'Link copied to clipboard';
     const errorMsg = currentLang === 'es' ? 'Error al copiar el enlace' : 'Error copying link';
@@ -160,6 +175,14 @@ export class BlogDetailPageComponent implements OnInit, OnDestroy {
       () => alert(successMsg),
       () => alert(errorMsg)
     );
+  }
+
+  getReadingTime(text: string): number {
+    // Calcular tiempo de lectura aproximado (palabras promedio por minuto: 200)
+    if (!text) return 1;
+    const words = text.trim().split(/\s+/).length;
+    const readingTime = Math.ceil(words / 200);
+    return readingTime < 1 ? 1 : readingTime;
   }
 }
 

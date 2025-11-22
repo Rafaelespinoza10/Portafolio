@@ -152,6 +152,30 @@ export class PortafolioComponent implements OnInit, OnDestroy {
   // Proyectos personales
   projectsPersonal = [
     {
+      nameProject: translations['portfolio.personalProjects.registergains.name']['es'],
+      imageSrc: 'images/gym_app.png',
+      description: translations['portfolio.personalProjects.registergains.description']['es'],
+      linkSitioWeb: 'https://fitsgains.com/auth/login',
+      technologies: [
+        'https://www.svgrepo.com/show/452092/react.svg',
+        'https://nestjs.com/img/logo-small.svg',
+        'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+        'https://www.svgrepo.com/show/331488/mongodb.svg'
+      ],
+      resources: [
+        {
+          text: translations['portfolio.resources.github']['es'],
+          github: 'https://www.svgrepo.com/show/512317/github-142.svg',
+          linkRespository: ''
+        },
+        {
+          text: translations['portfolio.resources.workingProject']['es'],
+          video: 'https://www.svgrepo.com/show/530237/video.svg',
+          linkVideo: 'https://fitsgains.com/auth/login'
+        }
+      ]
+    },
+    {
       nameProject: translations['portfolio.personalProjects.ml.name']['es'],
       imageSrc: 'images/machine_learning_project.png',
       description: translations['portfolio.personalProjects.ml.description']['es'],
@@ -297,7 +321,8 @@ export class PortafolioComponent implements OnInit, OnDestroy {
           linkVideo: 'https://www.linkedin.com/feed/update/urn:li:activity:7270976517499764736/?originTrackingId=OBIIuUC%2FRPu%2FRG77e0hxhQ%3D%3D'
         }
       ]
-    }
+    },
+   
   ];
 
   ngOnInit() {
@@ -383,23 +408,26 @@ export class PortafolioComponent implements OnInit, OnDestroy {
   }
 
   private updatePersonalProjects(currentLang: string): void {
-    this.projectsPersonal[0].nameProject = translations['portfolio.personalProjects.ml.name'][currentLang];
-    this.projectsPersonal[0].description = translations['portfolio.personalProjects.ml.description'][currentLang];
+    this.projectsPersonal[0].nameProject = translations['portfolio.personalProjects.registergains.name'][currentLang];
+    this.projectsPersonal[0].description = translations['portfolio.personalProjects.registergains.description'][currentLang];
     
-    this.projectsPersonal[1].nameProject = translations['portfolio.personalProjects.pos.name'][currentLang];
-    this.projectsPersonal[1].description = translations['portfolio.personalProjects.pos.description'][currentLang];
+    this.projectsPersonal[1].nameProject = translations['portfolio.personalProjects.ml.name'][currentLang];
+    this.projectsPersonal[1].description = translations['portfolio.personalProjects.ml.description'][currentLang];
     
-    this.projectsPersonal[2].nameProject = translations['portfolio.personalProjects.devtree.name'][currentLang];
-    this.projectsPersonal[2].description = translations['portfolio.personalProjects.devtree.description'][currentLang];
+    this.projectsPersonal[2].nameProject = translations['portfolio.personalProjects.pos.name'][currentLang];
+    this.projectsPersonal[2].description = translations['portfolio.personalProjects.pos.description'][currentLang];
     
-    this.projectsPersonal[3].nameProject = translations['portfolio.personalProjects.cashtrackr.name'][currentLang];
-    this.projectsPersonal[3].description = translations['portfolio.personalProjects.cashtrackr.description'][currentLang];
+    this.projectsPersonal[3].nameProject = translations['portfolio.personalProjects.devtree.name'][currentLang];
+    this.projectsPersonal[3].description = translations['portfolio.personalProjects.devtree.description'][currentLang];
     
-    this.projectsPersonal[4].nameProject = translations['portfolio.personalProjects.songs.name'][currentLang];
-    this.projectsPersonal[4].description = translations['portfolio.personalProjects.songs.description'][currentLang];
+    this.projectsPersonal[4].nameProject = translations['portfolio.personalProjects.cashtrackr.name'][currentLang];
+    this.projectsPersonal[4].description = translations['portfolio.personalProjects.cashtrackr.description'][currentLang];
     
-    this.projectsPersonal[5].nameProject = translations['portfolio.personalProjects.devjobs.name'][currentLang];
-    this.projectsPersonal[5].description = translations['portfolio.personalProjects.devjobs.description'][currentLang];
+    this.projectsPersonal[5].nameProject = translations['portfolio.personalProjects.songs.name'][currentLang];
+    this.projectsPersonal[5].description = translations['portfolio.personalProjects.songs.description'][currentLang];
+    
+    this.projectsPersonal[6].nameProject = translations['portfolio.personalProjects.devjobs.name'][currentLang];
+    this.projectsPersonal[6].description = translations['portfolio.personalProjects.devjobs.description'][currentLang];
     
     // Actualizar textos de recursos
     this.updatePersonalProjectsResources(currentLang);

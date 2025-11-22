@@ -1,76 +1,215 @@
-<section class="py-8">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6">
-
-    <!-- Contenedor grid para las tarjetas -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8">
-
-      <!-- Usamos ngFor para iterar sobre el array 'articles' -->
-      <div *ngFor="let article of articles" class="animate-fade-in">
-        <div class="group relative overflow-hidden bg-gradient-to-br from-gray-800/50 via-gray-900/50 to-gray-800/50 rounded-3xl shadow-2xl transform transition-all duration-500 
-                   hover:scale-[1.03] hover:-translate-y-3 cursor-pointer 
-                   hover:shadow-2xl hover:shadow-purple-500/20
-                   glass-card h-full flex flex-col">
-          
-          <!-- Efecto de brillo de fondo -->
-          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent 
-                      transform -skew-x-12 -translate-x-full group-hover:translate-x-full
-                      transition-transform duration-1000"></div>
-          
-          <!-- Imagen del artículo -->
-          <div class="relative overflow-hidden rounded-t-3xl h-48 sm:h-56">
+<section class="py-6 sm:py-8 lg:py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Header moderno estilo My Blog -->
+    <div class="mb-8 sm:mb-10 lg:mb-12 animate-fade-in text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gradient-text-purple mb-3 sm:mb-4 tracking-tight px-2">
+        {{ myBlog }}
+      </h1>
+      <div class="w-16 sm:w-20 h-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mb-4 sm:mb-6 mx-auto"></div>
+    </div>
+    
+    <!-- Sección Latest News con artículo destacado -->
+    <div class="mb-10 sm:mb-12 lg:mb-16">
+      <!-- Grid dinámico con primer artículo destacado estilo Wealth Wave -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-10 lg:mb-12">
+      
+      <!-- Primer artículo destacado (Featured) -->
+      <div *ngIf="articles.length > 0" class="lg:col-span-8 animate-fade-in">
+        <a [routerLink]="['/section/blog', articles[0].id]" class="group block h-full">
+          <article class="relative overflow-hidden bg-gradient-to-br from-gray-800/60 via-gray-900/60 to-gray-800/60 backdrop-blur-xl rounded-2xl shadow-2xl h-full flex flex-col border border-gray-700/50 hover:border-purple-500/50 transition-all duration-500">
+            
+            <!-- Imagen destacada -->
+            <div class="relative h-56 sm:h-64 md:h-80 lg:h-96 overflow-hidden">
+              <img 
+                [src]="articles[0].image" 
+                [alt]="articles[0].title" 
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+              
+              <!-- Badge de categoría o label estilo Wealth Wave -->
+              <div class="absolute top-3 left-3 sm:top-4 sm:left-4 lg:top-6 lg:left-6 px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-600/90 to-pink-600/90 rounded-full text-white text-xs font-bold backdrop-blur-md shadow-lg uppercase tracking-wide">
+                {{ getCategoryLabel(articles[0].category || 'all') }}
+              </div>
+              
+              <!-- Fecha -->
+              <div class="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 lg:bottom-6 lg:left-6 lg:right-6">
+                <div class="flex items-center gap-2 sm:gap-3 text-white/90">
+                  <div class="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 bg-black/30 backdrop-blur-md rounded-full text-xs font-medium">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                    <span class="hidden sm:inline">{{ articles[0].date }}</span>
+                    <span class="sm:hidden text-xs">{{ articles[0].date.split(',')[1]?.trim() || articles[0].date }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Contenido -->
+            <div class="p-4 sm:p-6 lg:p-8 flex-1 flex flex-col">
+              <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent group-hover:from-purple-300 group-hover:via-pink-300 group-hover:to-purple-300 transition-all line-clamp-2">
+                {{ articles[0].title }}
+              </h2>
+              
+              <p class="text-sm sm:text-base lg:text-lg text-gray-300 leading-relaxed mb-4 sm:mb-6 flex-1 line-clamp-3">
+                {{ articles[0].introduction }}
+              </p>
+              
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 pt-4 border-t border-gray-700/50">
+                <div class="flex items-center gap-2 sm:gap-3">
+                  <img 
+                    src="images/profile_picture.png" 
+                    [alt]="articles[0].author"
+                    class="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover border-2 border-purple-500/50"
+                  />
+                  <div>
+                    <p class="text-xs sm:text-sm font-medium text-gray-200">{{ articles[0].author }}</p>
+                    <p class="text-xs text-gray-400 hidden sm:block">{{ getReadingTime(articles[0].description) }} min read</p>
+                  </div>
+                </div>
+                
+                <div class="inline-flex items-center gap-2 text-purple-400 group-hover:text-purple-300 transition-colors font-semibold text-xs sm:text-sm w-full sm:w-auto justify-center sm:justify-start">
+                  {{ readMore }}
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+      
+      <!-- Grid de artículos secundarios -->
+      <div class="lg:col-span-4 space-y-4 sm:space-y-6 mt-6 lg:mt-0">
+        <div *ngFor="let article of articles.slice(1, 3)" class="animate-fade-in">
+          <a [routerLink]="['/section/blog', article.id]" class="group block h-full">
+            <article class="relative overflow-hidden bg-gradient-to-br from-gray-800/40 via-gray-900/40 to-gray-800/40 backdrop-blur-xl rounded-xl shadow-lg h-full flex flex-col border border-gray-700/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
+              
+              <!-- Imagen -->
+              <div class="relative h-36 sm:h-40 md:h-44 overflow-hidden">
             <img 
               [src]="article.image" 
               [alt]="article.title" 
-              class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
             
-            <!-- Badge de categoría o fecha -->
-            <div class="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white text-xs font-bold backdrop-blur-sm">
-              {{ article.date }}
+                <!-- Fecha y categoría pequeña -->
+                <div class="absolute top-2 right-2 sm:top-3 sm:right-3 flex flex-col gap-1.5 sm:gap-2 items-end">
+                  <div class="px-2 py-1 bg-black/50 backdrop-blur-md rounded-lg text-white text-xs font-medium">
+                    <span class="hidden sm:inline">{{ article.date }}</span>
+                    <span class="sm:hidden">{{ article.date.split(',')[1]?.trim() || article.date }}</span>
+                  </div>
             </div>
           </div>
           
-          <!-- Contenido del artículo -->
-          <div class="relative p-6 flex-1 flex flex-col">
-            <!-- Título -->
-            <h4 class="text-xl sm:text-2xl font-bold mb-3 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform break-words">
+              <!-- Contenido compacto -->
+              <div class="p-4 sm:p-5 flex-1 flex flex-col">
+                <h3 class="text-base sm:text-lg font-bold mb-2 text-gray-200 group-hover:text-purple-400 transition-colors line-clamp-2">
               {{ article.title }}
-            </h4>
+                </h3>
             
-            <!-- Introducción -->
-            <p class="text-sm sm:text-base text-gray-300 leading-relaxed mb-4 flex-1 line-clamp-3">
+                <p class="text-xs sm:text-sm text-gray-400 leading-relaxed mb-3 sm:mb-4 flex-1 line-clamp-2">
               {{ article.introduction }}
             </p>
             
-            <!-- Footer con autor y botón -->
-            <div class="flex items-center justify-between mt-auto pt-4 border-t border-purple-500/20">
-              <div class="flex items-center gap-2">
-                <img 
-                  src="images/profile_picture.png" 
-                  alt="{{ article.author }}"
-                  class="w-8 h-8 rounded-full object-cover border-2 border-purple-500/50"
-                />
-                <span class="text-xs sm:text-sm text-gray-400">{{ article.author }}</span>
+                <div class="flex items-center justify-between pt-3 border-t border-gray-700/30">
+                  <span class="text-xs text-gray-500">{{ getReadingTime(article.description) }} min</span>
+                  <svg class="w-4 h-4 text-purple-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                  </svg>
+                </div>
               </div>
-              
-              <a 
-                [routerLink]="['/section/blog', article.id]" 
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full 
-                       bg-gradient-to-r from-purple-600/20 to-pink-600/20 
-                       group-hover:from-purple-600 group-hover:to-pink-600 
-                       border border-purple-500/30 group-hover:border-transparent
-                       transition-all duration-300 transform hover:scale-105">
-                <span class="text-xs sm:text-sm font-medium text-purple-300 group-hover:text-white transition-colors">{{ readMore }}</span>
-                <svg class="w-4 h-4 text-purple-300 group-hover:text-white transition-all transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                </svg>
-              </a>
-            </div>
-          </div>
+            </article>
+          </a>
         </div>
       </div>
-
+    </div>
+    </div>
+    
+    <!-- Sección con filtros por categorías estilo Wealth Wave -->
+    <div class="mb-8 sm:mb-12 lg:mb-12 mt-10 sm:mt-12 lg:mt-16">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold gradient-text-purple mb-6 sm:mb-8 tracking-tight text-center px-2">
+        {{ articlesByCategory }}
+      </h2>
+      
+      <!-- Filtros estilo pill modernos -->
+      <div class="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10 overflow-x-auto pb-2 sm:pb-4 scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-800">
+        <button
+          *ngFor="let category of categories"
+          (click)="filterByCategory(category)"
+          [class]="selectedCategory === category 
+            ? 'px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-full shadow-lg shadow-purple-500/30 transform transition-all duration-300 hover:scale-105 whitespace-nowrap flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm' 
+            : 'px-4 py-2 sm:px-6 sm:py-3 bg-gray-800/50 text-gray-300 font-medium rounded-full border border-gray-700/50 hover:border-purple-500/50 hover:bg-gray-800/70 hover:text-purple-400 transform transition-all duration-300 hover:scale-105 whitespace-nowrap flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm'">
+          <span class="text-base sm:text-lg">{{ getCategoryEmoji(category) }}</span>
+          <span class="hidden xs:inline">{{ getCategoryLabel(category) }}</span>
+          <span class="xs:hidden">{{ getCategoryLabel(category).split(' ')[0] }}</span>
+        </button>
+      </div>
+      
+      <!-- Grid principal de artículos filtrados -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        <div *ngFor="let article of filteredArticles" class="animate-fade-in">
+          <a [routerLink]="['/section/blog', article.id]" class="group block h-full">
+            <article class="relative overflow-hidden bg-gradient-to-br from-gray-800/40 via-gray-900/40 to-gray-800/40 backdrop-blur-xl rounded-xl shadow-lg h-full flex flex-col border border-gray-700/30 hover:border-purple-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-1">
+              
+              <!-- Imagen -->
+              <div class="relative h-44 sm:h-48 md:h-52 overflow-hidden">
+                <img 
+                  [src]="article.image" 
+                  [alt]="article.title" 
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                
+                <!-- Fecha -->
+                <div class="absolute top-2 right-2 sm:top-3 sm:right-3 lg:top-4 lg:right-4 px-2 py-1 sm:px-3 sm:py-1.5 bg-black/50 backdrop-blur-md rounded-full text-white text-xs font-medium">
+                  <span class="hidden sm:inline">{{ article.date }}</span>
+                  <span class="sm:hidden text-xs">{{ article.date.split(',')[1]?.trim() || article.date }}</span>
+                </div>
+              
+                <!-- Badge de categoría pequeño -->
+                <div *ngIf="article.category" class="absolute top-2 left-2 sm:top-3 sm:left-3 lg:top-4 lg:left-4 px-2 py-1 sm:px-2.5 sm:py-1.5 bg-purple-600/80 backdrop-blur-md rounded-full text-white text-xs font-semibold uppercase tracking-wide hidden sm:block">
+                  {{ getCategoryLabel(article.category) }}
+                </div>
+              </div>
+              
+              <!-- Contenido -->
+              <div class="p-4 sm:p-5 lg:p-6 flex-1 flex flex-col">
+                <h3 class="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-gray-200 group-hover:text-purple-400 transition-colors line-clamp-2">
+                  {{ article.title }}
+                </h3>
+                
+                <p class="text-xs sm:text-sm text-gray-400 leading-relaxed mb-3 sm:mb-4 flex-1 line-clamp-3">
+                  {{ article.introduction }}
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 pt-3 sm:pt-4 border-t border-gray-700/30 mt-auto">
+                  <div class="flex items-center gap-2">
+                    <img 
+                      src="images/profile_picture.png" 
+                      [alt]="article.author"
+                      class="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border border-purple-500/50"
+                    />
+                    <span class="text-xs text-gray-500 hidden sm:inline">{{ article.author }}</span>
+                    <span class="text-xs text-gray-500 sm:hidden">{{ article.author.split(' ')[0] }}</span>
+                  </div>
+                  
+                  <div class="flex items-center gap-1.5 sm:gap-2 text-xs text-gray-500">
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>{{ getReadingTime(article.description) }} min</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </a>
+        </div>
+      </div>
     </div>
 
   </div>

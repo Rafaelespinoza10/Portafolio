@@ -40,94 +40,27 @@
     </button>
 
     <h2
-      class="font-semibold gradient-text-purple mb-6 text-2xl animate-fade-in">{{ toolsText }}</h2>
+      class="font-bold gradient-text-purple mb-8 mt-8 text-3xl md:text-4xl text-center animate-fade-in">{{ toolsText }}</h2>
 
 <section class="py-10 text-gray-100 ">
   <div class="max-w-7xl mx-auto px-4">
     <div class="grid grid-cols-2  sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- Card: Angular -->
+      <!-- Card: Tools usando *ngFor -->
       <div
+        *ngFor="let tool of tools"
         class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300
                hover:scale-[1.08] hover:-translate-y-2 cursor-pointer
-               bg-gradient-to-t from-[#DD0031] to-[#9C1A27]
-               hover:shadow-2xl hover:shadow-red-500/30
-               glass-card animate-fade-in">
+               glass-card animate-fade-in"
+        [ngClass]="[tool.gradientClass, tool.hoverShadowClass]">
         <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
-          <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png" alt="Angular logo" />
+          <img class="w-12 h-12 drop-shadow-lg" [src]="tool.logo" [alt]="tool.name + ' logo'" />
         </div>
-        <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">Angular</h3>
-        <p class="text-sm text-white/80 hidden sm:block">{{ toolDescriptions.angular }}</p>
-      </div>
-
-      <!-- Card: TypeScript -->
-      <div 
-        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300 
-               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer 
-               bg-gradient-to-t from-[#3178C6] to-[#1F6BB8]
-               hover:shadow-2xl hover:shadow-blue-500/30
-               glass-card animate-fade-in">
-        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
-          <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png" alt="TypeScript logo" />
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">TypeScript</h3>
-        <p class="text-sm text-white/80 hidden sm:block">{{ toolDescriptions.typescript }}</p>
-      </div>
-
-      <!-- Card: React -->
-      <div 
-        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300 
-               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer 
-               bg-gradient-to-t from-[#61DAFB] to-[#4fa3d1]
-               hover:shadow-2xl hover:shadow-cyan-500/30
-               glass-card animate-fade-in">
-        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
-          <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React logo" />
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">React</h3>
-        <p class="text-sm text-white/80 hidden sm:block">{{ toolDescriptions.react }}</p>
-      </div>
-
-      <!-- Card: JavaScript -->
-      <div 
-        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300 
-               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer 
-               bg-gradient-to-t from-[#F7DF1E] to-[#E0C000]
-               hover:shadow-2xl hover:shadow-yellow-500/30
-               glass-card animate-fade-in">
-        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
-          <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript logo" />
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">JavaScript</h3>
-        <p class="text-sm text-white/80 hidden sm:block">{{ toolDescriptions.javascript }}</p>
-      </div>
-
-      <!-- Card: .NET -->
-      <div 
-        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300 
-               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer 
-               bg-gradient-to-t from-[#5C2D91] to-[#462072]
-               hover:shadow-2xl hover:shadow-purple-500/30
-               glass-card animate-fade-in">
-        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
-          <img class="w-12 h-12 drop-shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Microsoft_.NET_logo.svg/2048px-Microsoft_.NET_logo.svg.png" alt=".NET logo" />
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">.NET</h3>
-        <p class="text-sm text-gray-300/80 hidden sm:block">{{ toolDescriptions.net }}</p>
-      </div>
-
-      <!-- Card: Node.js -->
-      <div 
-        class="group p-6 rounded-2xl shadow-xl transform transition-all duration-300 
-               hover:scale-[1.08] hover:-translate-y-2 cursor-pointer 
-               bg-gradient-to-t from-[#68A063] to-[#528D46]
-               hover:shadow-2xl hover:shadow-green-500/30
-               glass-card animate-fade-in">
-        <div class="flex justify-center items-center mb-4 transform group-hover:rotate-12 transition-transform duration-300">
-          <img class="w-12 h-12 drop-shadow-lg" src="https://www.svgrepo.com/show/452075/node-js.svg" alt="Node.js logo" />
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">Node.js</h3>
-        <p class="text-sm text-white/80 hidden sm:block">{{ toolDescriptions.nodejs }}</p>
+        <h3 class="text-lg font-bold text-white mb-2 hidden sm:block">{{ tool.name }}</h3>
+        <p class="text-sm hidden sm:block" 
+           [ngClass]="tool.textColor || 'text-white/80'">
+          {{ tool.description }}
+        </p>
       </div>
 
     </div>

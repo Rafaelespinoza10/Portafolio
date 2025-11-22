@@ -19,11 +19,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ) { }
 
   private typingInterval: any = null;
+  private pendingTimeout: any = null;
   private languageSubscription: Subscription = new Subscription();
   public messages: string[] = [];
   public animatedText = '';
   public typingSpeed: number = 50;
   public delayBetweenMessages: number = 1000;
+  private isDestroyed: boolean = false;
 
   ngOnInit() {
     // Cargar mensajes iniciales
@@ -45,12 +47,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private loadMessages() {
     const currentLang = this.languageService.getCurrentLanguage();
     
+    // Cargar mensajes con validación para evitar undefined
+    const message1 = translations['home.message1']?.[currentLang] as string;
+    const message2 = translations['home.message2']?.[currentLang] as string;
+    const message3 = translations['home.message3']?.[currentLang] as string;
+    const message4 = translations['home.message4']?.[currentLang] as string;
+    
+    // Filtrar mensajes válidos (que existan y no sean undefined)
     this.messages = [
-      translations['home.message1'][currentLang] as string,
-      translations['home.message2'][currentLang] as string,
-      translations['home.message3'][currentLang] as string,
-      translations['home.message4'][currentLang] as string
-    ];
+      message1,
+      message2,
+      message3,
+      message4
+    ].filter(msg => msg && typeof msg === 'string' && msg.trim().length > 0);
   }
 
   ngAfterViewInit() {
@@ -91,34 +100,81 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.languageSubscription.unsubscribe();
   }
   private clearTypingEffect() {
+    // Limpiar intervalo de typing
     if (this.typingInterval) {
       clearInterval(this.typingInterval);
       this.typingInterval = null;
     }
+    
+    // Limpiar timeout pendiente
+    if (this.pendingTimeout) {
+      clearTimeout(this.pendingTimeout);
+      this.pendingTimeout = null;
+    }
+    
+    // Resetear texto animado
     this.animatedText = '';
   }
   startTypingEffect() {
+    // Validar que hay mensajes antes de empezar
+    if (!this.messages || this.messages.length === 0) {
+      return;
+    }
+
     let messageIndex = 0;
 
     const typeMessage = () => {
-      if (messageIndex < this.messages.length) {
-        let index = 0;
-        const message = this.messages[messageIndex];
-        this.animatedText = '';
+      // Validar que no esté destruido y que haya mensajes
+      if (this.isDestroyed || !this.messages || messageIndex >= this.messages.length) {
+        return;
+      }
 
-        this.typingInterval = setInterval(() => {
+      const message = this.messages[messageIndex];
+      
+      // Validar que el mensaje existe y es válido
+      if (!message || typeof message !== 'string' || message.trim().length === 0) {
+        messageIndex++;
+        // Intentar con el siguiente mensaje si existe
+        if (messageIndex < this.messages.length) {
+          this.pendingTimeout = setTimeout(() => typeMessage(), this.delayBetweenMessages);
+        }
+        return;
+      }
+
+      let index = 0;
+      this.animatedText = '';
+
+      // Limpiar cualquier intervalo previo antes de crear uno nuevo
+      if (this.typingInterval) {
+        clearInterval(this.typingInterval);
+        this.typingInterval = null;
+      }
+
+      this.typingInterval = setInterval(() => {
+        // Validar que no esté destruido
+        if (this.isDestroyed) {
+          clearInterval(this.typingInterval);
+          this.typingInterval = null;
+          return;
+        }
+
+        // Validar que el índice sea válido
+        if (index < message.length) {
           this.animatedText += message[index];
           index++;
+        }
 
-          if (index === message.length) {
-            clearInterval(this.typingInterval);
-            this.typingInterval = null;
-            messageIndex++;
+        if (index >= message.length) {
+          clearInterval(this.typingInterval);
+          this.typingInterval = null;
+          messageIndex++;
 
-            setTimeout(() => typeMessage(), this.delayBetweenMessages);
+          // Si hay más mensajes, continuar después del delay
+          if (messageIndex < this.messages.length) {
+            this.pendingTimeout = setTimeout(() => typeMessage(), this.delayBetweenMessages);
           }
-        }, this.typingSpeed);
-      }
+        }
+      }, this.typingSpeed);
     };
 
     typeMessage();

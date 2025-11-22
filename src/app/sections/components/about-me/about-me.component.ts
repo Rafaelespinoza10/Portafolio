@@ -22,6 +22,7 @@ export class AboutMeComponent implements OnInit, OnDestroy {
   public downloadCVText = translations['aboutMe.downloadCV']['es'];
   public toolsText = translations['aboutMe.tools']['es'];
   public toolDescriptions: any = {};
+  public tools: any[] = [];
 
   constructor(private languageService: LanguageService) { }
 
@@ -64,8 +65,88 @@ export class AboutMeComponent implements OnInit, OnDestroy {
       react: translations['aboutMe.react.desc'][currentLang],
       javascript: translations['aboutMe.javascript.desc'][currentLang],
       net: translations['aboutMe.net.desc'][currentLang],
-      nodejs: translations['aboutMe.nodejs.desc'][currentLang]
+      nodejs: translations['aboutMe.nodejs.desc'][currentLang],
+      python: translations['aboutMe.python.desc'][currentLang],
+      nestjs: translations['aboutMe.nestjs.desc'][currentLang],
+      nextjs: translations['aboutMe.nextjs.desc'][currentLang]
     };
+
+    // Crear array de herramientas
+    this.tools = [
+      {
+        id: 'angular',
+        name: 'Angular',
+        description: this.toolDescriptions.angular,
+        gradientClass: 'bg-gradient-to-t from-[#DD0031] to-[#9C1A27]',
+        hoverShadowClass: 'hover:shadow-2xl hover:shadow-red-500/30',
+        logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg'
+      },
+      {
+        id: 'typescript',
+        name: 'TypeScript',
+        description: this.toolDescriptions.typescript,
+        gradientClass: 'bg-gradient-to-t from-[#3178C6] to-[#1F6BB8]',
+        hoverShadowClass: 'hover:shadow-2xl hover:shadow-blue-500/30',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png'
+      },
+      {
+        id: 'react',
+        name: 'React',
+        description: this.toolDescriptions.react,
+        gradientClass: 'bg-gradient-to-t from-[#61DAFB] to-[#4fa3d1]',
+        hoverShadowClass: 'hover:shadow-2xl hover:shadow-cyan-500/30',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg'
+      },
+      {
+        id: 'javascript',
+        name: 'JavaScript',
+        description: this.toolDescriptions.javascript,
+        gradientClass: 'bg-gradient-to-t from-[#F7DF1E] to-[#E0C000]',
+        hoverShadowClass: 'hover:shadow-2xl hover:shadow-yellow-500/30',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png'
+      },
+      {
+        id: 'net',
+        name: '.NET',
+        description: this.toolDescriptions.net,
+        gradientClass: 'bg-gradient-to-t from-[#5C2D91] to-[#462072]',
+        hoverShadowClass: 'hover:shadow-2xl hover:shadow-purple-500/30',
+        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Microsoft_.NET_logo.svg/2048px-Microsoft_.NET_logo.svg.png',
+        textColor: 'text-gray-300/80'
+      },
+      {
+        id: 'nodejs',
+        name: 'Node.js',
+        description: this.toolDescriptions.nodejs,
+        gradientClass: 'bg-gradient-to-t from-[#68A063] to-[#528D46]',
+        hoverShadowClass: 'hover:shadow-2xl hover:shadow-green-500/30',
+        logo: 'https://www.svgrepo.com/show/452075/node-js.svg'
+      },
+      {
+        id: 'python',
+        name: 'Python',
+        description: this.toolDescriptions.python,
+        gradientClass: 'bg-gradient-to-t from-[#3776AB] to-[#2D5F8F]',
+        hoverShadowClass: 'hover:shadow-2xl hover:shadow-blue-500/30',
+        logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
+      },
+      {
+        id: 'nestjs',
+        name: 'NestJS',
+        description: this.toolDescriptions.nestjs,
+        gradientClass: 'bg-gradient-to-t from-[#E0234E] to-[#B71C3C]',
+        hoverShadowClass: 'hover:shadow-2xl hover:shadow-red-500/30',
+        logo: 'https://nestjs.com/img/logo-small.svg'
+      },
+      {
+        id: 'nextjs',
+        name: 'Next.js',
+        description: this.toolDescriptions.nextjs,
+        gradientClass: 'bg-gradient-to-t from-[#000000] to-[#1a1a1a]',
+        hoverShadowClass: 'hover:shadow-2xl hover:shadow-gray-500/30',
+        logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg'
+      }
+    ];
   }
 
   private clearTyppingEffect(): void {
@@ -122,4 +203,5 @@ export class AboutMeComponent implements OnInit, OnDestroy {
       document.body.removeChild(link);
     });
   }
+
 }

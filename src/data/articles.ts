@@ -1,12 +1,13 @@
 export const articles =[{
-  title: 'De la Mecatrónica al Desarrollo de Software: Mi Camino hacia la Programación.',
-  introduction: 'Ingenieria Mecatronica: Una carrera multidisciplinaria y fascinante...',
-  description: `
+      title: 'De la Mecatrónica al Desarrollo de Software: Mi Camino hacia la Programación.',
+      introduction: 'Ingenieria Mecatronica: Una carrera multidisciplinaria y fascinante...',
+      category: 'career',
+      description: `
         Desde mis primeros años en la universidad, siempre soñé con construir robots y manejar todo tipo de dispositivos electrónicos. Sin embargo, nunca imaginé que me convertiría en un desarrollador de software.
         Tomé algunas clases de programación, y mi primer lenguaje fue C. Al principio, me pareció muy pesado, ya que no tenía experiencia previa en programación y terminé desaprobando la materia en el examen ordinario
         (cosas de la vida).No obstante, descubrí que un Ingeniero en Mecatrónica puede especializarse como desarrollador de software. Esto fue una excelente opción, porque como mecatrónico ya estás familiarizado con conceptos como el Internet de las Cosas y el funcionamiento de los dispositivos a nivel de hardware.
         Si alguna vez tienes la oportunidad de especializarte como desarrollador o si simplemente quieres empezar en este increíble mundo, te lo recomendaría al 100%. Estoy orgulloso de ser ingeniero en Mecatrónica y de haber tomado este camino. Aunque es complejo, me ha dado una gran satisfacción, ya que te permite crear, innovar e imaginar. `,
-  date : 'Noviembre, 2024',
+      date : 'Octubre, 2024',
   id: 'a8a6b977-425c-432e-98c7-024b81ee12a0',
   author: 'Rafael Moreno',
   image: 'images/graduation.png'
@@ -14,6 +15,7 @@ export const articles =[{
 {
 title: 'El proyecto más desafiante y su impacto en mi Carrera Profesional.',
 introduction: 'CleanBot: Robot Limpiador de Ventanas y su gran impacto en mi toma de decision.',
+category: 'projects',
 description: `
          En los últimos semestres de mi carrera universitaria, es requisito realizar un proyecto en equipo que integre todos los conocimientos adquiridos a lo largo de la carrera. Mi equipo estaba compuesto por 5 mecatrónicos (incluyéndome), y decidimos desarrollar un robot limpiador de ventanas. Así es, un robot que se desplaza de manera vertical.
         ¿Por qué se nos hizo tan fácil elegir este proyecto? Durante el proceso de desarrollo y construcción, nos dimos cuenta de lo desafiante que realmente era. Cada miembro del equipo eligió un área de especialización, y en mi caso, me encargué del área de desarrollo, control y electrónica.
@@ -23,7 +25,7 @@ description: `
 `,
 
 
-  date: 'Noviembre, 2024',
+  date: 'Octubre, 2024',
   id: '70567914-b340-4b50-b5ac-4f54e1aa39f5',
   author: 'Rafael Moreno',
   image: 'images/flutter_app.png',
@@ -33,6 +35,7 @@ description: `
 {
   title: 'Explorando Machine Learning y Análisis de Datos: Mi Nueva Especialización',
   introduction: 'Del desarrollo web al aprendizaje automático: Mi camino hacia la ciencia de datos.',
+  category: 'learning',
   description: `
       Después de consolidar mi experiencia en desarrollo web full-stack, he decidido expandir mis habilidades hacia un campo que siempre me ha fascinado: Machine Learning y Análisis de Datos. Esta decisión no fue tomada a la ligera, sino que surge de la necesidad de estar preparado para el futuro de la tecnología y de poder crear soluciones más inteligentes y automatizadas.
       
@@ -62,6 +65,7 @@ description: `
 {
   title: 'Mis metas en Programación.',
   introduction: ' Visión y Futuro en el desarrollo software.',
+  category: 'goals',
   description: `
              Desde agosto de 2023, tomé la decisión de seguir el camino como desarrollador de software. A lo largo de este tiempo, he descubierto que la programación es una de las mejores oportunidades para explotar todo el potencial y las habilidades técnicas que he adquirido. Esta disciplina está llena de retos, pero también de grandes oportunidades. En este primer año, he logrado adquirir experiencia laboral como programador y he aprendido que, aunque el camino es desafiante, cada obstáculo es una oportunidad para crecer.
               Mi objetivo a corto y largo plazo es continuar preparándome y manteniéndome actualizado en las diferentes tecnologías que están en constante evolución. Soy consciente de lo cambiante que es el mundo de la programación, pero la pasión y dedicación que pongo en cada proyecto son herramientas clave para seguir avanzando en mi desarrollo profesional. En este camino, uno de mis mayores deseos es poder formar parte de una empresa grande, donde pueda seguir desarrollándome como profesional, aprender de los expertos en la industria y aportar mi granito de arena al desarrollo de soluciones innovadoras.
@@ -78,6 +82,7 @@ description: `
 {
   title: 'Mi Primera Experiencia Profesional en Programacion.',
   introduction : 'Retos y Aprendizajes en el comienzo de mi carrera Profesional.',
+  category: 'experience',
   description:
     `
         A principios de este año, encontré una vacante para el desarrollo de aplicaciones en la empresa PEASA. Fue ahí donde se presentó la oportunidad de realizar mis prácticas profesionales. Este fue un mundo completamente distinto al que estaba acostumbrado, ya que venía de la universidad, donde mi trabajo se centraba principalmente en seguir instrucciones o resolver problemas no tan complejos. Sin embargo, al ingresar al ámbito del desarrollo de software, me encontré con una serie de obstáculos que me desafiaron a adaptarme rápidamente.
@@ -97,6 +102,7 @@ description: `
   {
     title: 'Mis Herramientas Escenciales para programar.',
     introduction: 'Mi Stack y lenguajes favoritos.',
+    category: 'tools',
     description: `
       El mundo de la programación es vasto y diverso, como he mencionado en varias secciones de este blog. Sin embargo, el desarrollo web se ha consolidado como una de las opciones más viables y demandadas en el campo laboral actual. Mi camino en la programación comenzó a través de cursos autodidactas, y si algo te puedo recomendar, es que empieces poco a poco, dominando lo básico, como la lógica de programación, y siendo constante en tu aprendizaje independiente.
 
@@ -120,6 +126,7 @@ description: `
 
       title: 'IA y Programacion.',
       introduction: 'Mi Perspectiva sobre el Futuro de la Inteligencia Artificial.',
+      category: 'tech',
       description: `
           La Inteligencia Artificial ha experimentado un auge significativo en los últimos dos años, especialmente con la incorporación de ChatGPT de OpenAI. Este avance ha comenzado a transformar de manera significativa diversos aspectos de la vida humana, y la programación no es la excepción. Hoy en día, herramientas impulsadas por IA están cambiando la forma en que trabajamos, mejorando nuestra productividad y abriendo nuevas posibilidades en el mundo del desarrollo de software.
           A pesar de los comentarios que aseguran que la IA reemplazará a los programadores, estoy completamente en desacuerdo con esta visión. Si bien la inteligencia artificial ha demostrado su capacidad para realizar tareas repetitivas y optimizar ciertos procesos, los programadores aún tienen una ventaja crucial: la capacidad para innovar, interpretar problemas reales y crear soluciones a medida. En este sentido, la IA no debe verse como una amenaza, sino como una herramienta poderosa que, cuando se utiliza adecuadamente, puede potenciar el trabajo de los desarrolladores.
@@ -131,6 +138,76 @@ description: `
       id: '236af34e-2dd3-4c5d-afdc-656d33c95de7',
       author: 'Rafael Moreno',
       image: 'https://img.freepik.com/foto-gratis/desarrollador-software-auriculares-eeg-escritura-codigo_482257-91067.jpg?t=st=1731552066~exp=1731555666~hmac=42adcf7351b2a1696b4ce716f536172f3a6b784403c711e084af04ed95358b50&w=360'
+    },
+    {
+      title: 'Mi Aprendizaje en Machine Learning y Deep Learning: Un Viaje de Continua Especialización',
+      introduction: 'Explorando el mundo del Machine Learning: Desde certificados en Udemy hasta cursos de NVIDIA y actualmente aprendiendo CNN en Coursera.',
+      category: 'learning',
+      description: `
+        Mi camino en Machine Learning y Deep Learning ha sido una experiencia transformadora que me ha permitido expandir mis habilidades más allá del desarrollo web tradicional. Esta especialización no surgió de la nada, sino como una evolución natural de mi interés en crear soluciones más inteligentes y automatizadas.
+        
+        Todo comenzó cuando decidí tomar mis primeros pasos serios en Machine Learning. Busqué cursos que me dieran una base sólida y encontré en Udemy dos certificaciones que marcarían el inicio de este viaje. La primera fue el curso de Machine Learning y Data Science, donde aprendí los fundamentos esenciales de esta disciplina fascinante. Este curso me permitió comprender conceptos clave como regresión lineal y logística, clasificación, clustering, y el uso de bibliotecas fundamentales como NumPy, Pandas, Matplotlib, Seaborn y Scikit-learn.
+        
+        Pero no me quedé ahí. Sabía que para realmente entender el potencial del Machine Learning, necesitaba profundizar en Deep Learning. Por eso, completé mi segundo certificado en Udemy sobre Deep Learning, donde exploré redes neuronales profundas, arquitecturas complejas, y frameworks como TensorFlow y Keras. Este curso me abrió las puertas a un mundo completamente nuevo donde los modelos pueden aprender representaciones complejas de los datos por sí mismos.
+        
+        Sin embargo, no quería limitarme solo a plataformas de cursos en línea. Busqué complementar mi aprendizaje con cursos de empresas líderes en tecnología. Es así como llegué a los cursos de NVIDIA. Los cursos de NVIDIA me proporcionaron una perspectiva única sobre cómo el hardware y el software trabajan juntos para hacer posible el Deep Learning a escala. Aprendí sobre GPUs, optimización de modelos, y aplicaciones prácticas de la IA en diferentes industrias. Esta experiencia me mostró que el Machine Learning no es solo teoría, sino una tecnología real que está transformando el mundo.
+        
+        Actualmente, me encuentro inmerso en un curso de Convolutional Neural Networks (CNN) en Coursera. Las CNN son fundamentales para el procesamiento de imágenes y visión por computadora, campos que me fascinan particularmente. Este curso me está enseñando a construir redes neuronales que pueden reconocer patrones en imágenes, algo que tiene aplicaciones increíbles desde el reconocimiento facial hasta la medicina diagnóstica.
+        
+        Mi próximo paso es claro: especializarme aún más mediante una maestría en Inteligencia Artificial. Sé que esto requiere preparación adicional y estoy comprometido a completar mi formación actual antes de dar ese paso. Una maestría no solo me dará conocimientos más profundos, sino que me permitirá participar en investigación y trabajar en proyectos de mayor impacto.
+        
+        Durante todo este proceso de aprendizaje, he mantenido un registro detallado de mis notas. Creo firmemente en que la documentación es parte esencial del aprendizaje. Por eso, he digitalizado mis notas de Deep Learning y Machine Learning en un PDF que quiero compartir con la comunidad. Este documento contiene conceptos clave, fórmulas importantes, ejemplos prácticos, y reflexiones sobre diferentes técnicas y algoritmos que he aprendido.
+        
+        Compartir estas notas no solo es una forma de contribuir a la comunidad, sino también una manera de documentar mi propio crecimiento. Espero que estas notas puedan ser útiles para otros que estén comenzando su viaje en Machine Learning, así como para aquellos que quieran revisar conceptos fundamentales.
+        
+        El mundo del Machine Learning es vasto y en constante evolución. Cada día aprendo algo nuevo, y eso es lo que más me emociona de este campo. No se trata solo de seguir tendencias, sino de entender realmente cómo la inteligencia artificial puede resolver problemas reales y mejorar la vida de las personas.
+        
+        Si estás pensando en adentrarte en el mundo del Machine Learning, mi consejo es: comienza con los fundamentos, practica constantemente, no tengas miedo de hacer preguntas, y documenta tu aprendizaje. El camino puede ser desafiante, pero es increíblemente gratificante cuando ves tus modelos aprender y mejorar.
+        
+        Mi viaje en Machine Learning continúa, y estoy emocionado por lo que el futuro tiene preparado. Con cada certificado, cada curso, y cada proyecto, me acerco más a mi objetivo de convertirme en un experto en Inteligencia Artificial y poder aplicar estos conocimientos para crear soluciones que realmente marquen la diferencia.
+      `,
+      date: 'Noviembre, 2025',
+      id: 'm8l3n4t5-9a6b-7c8d-9e0f-1a2b3c4d5e6f',
+      author: 'Rafael Moreno',
+      image: 'images/deep_learning_blog.png',
+      pdfUrl: 'files/deep-learning-course.pdf',
+      pdfType: 'notes'
+    },
+    {
+      title: 'Mi Meta de Mejorar mi Nivel de Inglés: Un Compromiso Continuo con el Aprendizaje',
+      introduction: 'Desde Vocablo Idiomas Premium hasta la preparación para TOEFL: Mi camino hacia la fluidez en inglés y certificación internacional.',
+      category: 'learning',
+      description: `
+        El aprendizaje de idiomas ha sido una de mis prioridades más importantes, especialmente el inglés, que es el idioma universal del mundo de la tecnología y los negocios. Reconociendo la importancia fundamental del inglés para mi desarrollo profesional, me he comprometido seriamente a mejorar mis habilidades lingüísticas de manera constante y estructurada.
+        
+        Actualmente, estoy inscrito en Vocablo Idiomas Premium, un curso especializado que adquirí específicamente para aumentar mi nivel de inglés de manera sistemática. Este curso me ha proporcionado una base sólida y un enfoque estructurado para el aprendizaje del idioma, cubriendo todos los aspectos fundamentales: gramática, vocabulario, comprensión auditiva, expresión oral y escrita.
+        
+        Sin embargo, mi preparación no se limita solo al curso. Me he adaptado completamente al idioma en mi vida diaria, haciendo del inglés una parte integral de mi rutina. Escucho contenido en inglés constantemente: podcasts sobre tecnología, series, documentales, y conferencias. Esta inmersión diaria me ha permitido familiarizarme más con el ritmo natural del idioma, los acentos diversos, y las expresiones coloquiales que no siempre se enseñan en los cursos tradicionales.
+        
+        Una de mis metas principales ha sido certificar mi nivel de inglés a través del TOEFL (Test of English as a Foreign Language), uno de los exámenes de certificación más reconocidos internacionalmente. El TOEFL es especialmente importante para mi carrera profesional, ya que muchas empresas tecnológicas y programas académicos de posgrado lo requieren como requisito de admisión.
+        
+        Recientemente, obtuve un puntaje de 460 puntos en el TOEFL, lo que corresponde a un nivel B1 (Intermedio) según el Marco Común Europeo de Referencia para las Lenguas. Este logro representa un paso importante en mi camino, pero estoy consciente de que mi viaje de aprendizaje apenas continúa. Cada día dedico tiempo a mejorar mi comprensión, expandir mi vocabulario, y practicar tanto la expresión oral como escrita.
+        
+        Mi progreso ha sido constante. Actualmente me encuentro por avanzar a un nivel intermedio-avanzado (B2), lo cual representa un nuevo desafío y una nueva meta. Para alcanzar este nivel, continúo con mi preparación diaria, practicando ejercicios específicos del TOEFL, leyendo artículos técnicos en inglés, y manteniendo conversaciones en el idioma siempre que tengo la oportunidad.
+        
+        Lo que más valoro de este proceso de aprendizaje es que va más allá de simplemente aprobar un examen. El inglés me ha abierto puertas a recursos, documentación técnica, comunidades de desarrolladores internacionales, y oportunidades profesionales que de otra manera no estarían disponibles. Cada mejora en mi nivel de inglés se traduce directamente en mejores oportunidades para mi carrera como desarrollador de software.
+        
+        El aprendizaje de idiomas requiere disciplina, paciencia y consistencia. No es algo que se logre de la noche a la mañana, sino un proceso continuo que requiere dedicación diaria. Me he dado cuenta de que la clave está en hacer del inglés parte de mi vida diaria, no solo algo que estudio en momentos específicos.
+        
+        Mi objetivo a corto plazo es continuar mejorando mi puntaje en el TOEFL y alcanzar un nivel B2 sólido. A largo plazo, aspiro a alcanzar un nivel C1 o superior, lo que me permitiría comunicarme con fluidez en contextos profesionales y académicos complejos. Esto será especialmente importante si decido realizar una maestría en el extranjero o trabajar para empresas tecnológicas internacionales.
+        
+        El aprendizaje de idiomas es una inversión en uno mismo que siempre da frutos. Cada hora que dedico a mejorar mi inglés es una inversión en mi futuro profesional. Estoy emocionado por continuar este viaje y por los desafíos que vendrán. Con dedicación, práctica constante, y el apoyo de recursos como Vocablo Idiomas Premium, estoy confiado en que alcanzaré mis metas y seguiré mejorando día a día.
+        
+        Si estás pensando en mejorar tu nivel de inglés o cualquier otro idioma, mi consejo es: empieza hoy, sé consistente, y haz del idioma parte de tu vida diaria. Los resultados pueden tardar en llegar, pero con dedicación y el enfoque correcto, definitivamente llegarán.
+      `,
+      date: 'Mayo, 2025',
+      id: 'e9f4n5o6-8b7c-9d0e-1f2a-3b4c5d6e7f8a',
+      author: 'Rafael Moreno',
+      image: 'images/english_time.png',
+      certificates: [
+        'images/vocablo_1.png',
+        'images/vocablo_2.png'
+      ]
     },
 
 
