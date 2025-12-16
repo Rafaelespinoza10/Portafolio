@@ -47,11 +47,11 @@ export class BlogDetailPageComponent implements OnInit, OnDestroy {
     
     // Subscribe to route params to load specific article
     this.route.paramMap.subscribe(
-      (params) => {
+      (params: any) => {
         const id = params.get('id');
         if (id) {
           this.articleId = id;
-          this.loadArticle(this.articleId);
+          this.loadArticle(id);
         }
       }
     );

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, getDocs, Firestore } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, Firestore, QueryDocumentSnapshot, DocumentData } from 'firebase/firestore';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -30,7 +30,7 @@ export class FirebaseService {
     try {
       const testimonialsRef = collection(this.db, 'testimonials');
       const querySnapshot = await getDocs(testimonialsRef);
-      return querySnapshot.docs.map(doc => ({
+      return querySnapshot.docs.map((doc: QueryDocumentSnapshot<DocumentData>) => ({
         id: doc.id,
         ...doc.data()
       }));

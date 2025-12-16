@@ -16,7 +16,7 @@ export class LanguageSwitcherBubbleComponent implements OnInit {
     this.currentLanguage = this.languageService.getCurrentLanguage();
     
     // Suscribirse a cambios de idioma
-    this.languageService.currentLanguage$.subscribe(lang => {
+    this.languageService.currentLanguage$.subscribe((lang: 'es' | 'en') => {
       this.currentLanguage = lang;
     });
   }

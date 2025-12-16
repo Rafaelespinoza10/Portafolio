@@ -17,7 +17,7 @@ export class ProfilePictureComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // Suscribirse a los cambios de tema
     this.themeSubscription.add(
-      this.themeService.theme$.subscribe(theme => {
+      this.themeService.theme$.subscribe((theme: 'light' | 'dark') => {
         this.isDarkMode = theme === 'dark';
       })
     );

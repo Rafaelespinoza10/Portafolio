@@ -68,7 +68,7 @@ export class TestimonialModalComponent implements OnInit, OnDestroy {
     this.loadTranslations();
     
     this.subscription = this.testimonialModalService.showModal$.subscribe(
-      (show) => {
+      (show: boolean) => {
         this.showModal = show;
       }
     );

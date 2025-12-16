@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface WorkProject {
   name: string;
@@ -20,8 +20,8 @@ export class ProjectModalService {
   private isModalOpenSubject = new BehaviorSubject<boolean>(false);
   private selectedProjectSubject = new BehaviorSubject<WorkProject | null>(null);
   
-  public isModalOpen$ = this.isModalOpenSubject.asObservable();
-  public selectedProject$ = this.selectedProjectSubject.asObservable();
+  public isModalOpen$: Observable<boolean> = this.isModalOpenSubject;
+  public selectedProject$: Observable<WorkProject | null> = this.selectedProjectSubject;
 
   constructor() { }
 

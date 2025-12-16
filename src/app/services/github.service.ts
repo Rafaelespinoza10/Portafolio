@@ -42,18 +42,18 @@ export class GithubService {
    */
   getLanguagesStats(username: string = this.username): Observable<any> {
     return this.getUserRepos(username).pipe(
-      map(repos => {
+      map((repos: any[]) => {
         const languages: any = {};
         
         // Get languages for each repo
-        const languageRequests = repos.map(repo => 
+        const languageRequests = repos.map((repo: any) => 
           this.http.get(`${this.apiUrl}/repos/${username}/${repo.name}/languages`).pipe(
             catchError(() => of({}))
           )
         );
 
         return forkJoin(languageRequests).pipe(
-          map(repoLanguages => {
+          map((repoLanguages: any[]) => {
             repoLanguages.forEach((langs: any) => {
               Object.keys(langs).forEach(lang => {
                 languages[lang] = (languages[lang] || 0) + langs[lang];
@@ -63,13 +63,13 @@ export class GithubService {
           })
         );
       }),
-      map(obs => obs),
+      map((obs: any) => obs),
       catchError(error => {
         console.error('Error fetching languages:', error);
         return of({});
       })
     ).pipe(
-      map(obs => obs),
+      map((obs: any) => obs),
       // Flatten the nested observable
       map((obs: any) => {
         // This is a workaround - we'll handle it differently
@@ -83,7 +83,7 @@ export class GithubService {
    */
   getLanguagesStatsSimple(username: string = this.username): Observable<any> {
     return this.getUserRepos(username).pipe(
-      map(repos => {
+      map((repos: any[]) => {
         // For now, return empty object - we'll implement async version
         return {};
       })
@@ -95,8 +95,8 @@ export class GithubService {
    */
   getTotalStars(username: string = this.username): Observable<number> {
     return this.getUserRepos(username).pipe(
-      map(repos => {
-        return repos.reduce((total, repo) => total + (repo.stargazers_count || 0), 0);
+      map((repos: any[]) => {
+        return repos.reduce((total: number, repo: any) => total + (repo.stargazers_count || 0), 0);
       })
     );
   }

@@ -4,6 +4,7 @@
 
 Tu proyecto ya está listo. Asegúrate de que:
 - ✅ El archivo `_redirects` está en la raíz del proyecto
+- ✅ El archivo `.npmrc` está configurado (ya creado con `legacy-peer-deps=true`)
 - ✅ El build de producción funciona: `npm run build`
 
 ## Paso 2: Subir tu código a GitHub
@@ -76,6 +77,8 @@ Si aún no lo has hecho:
 - El SSL/HTTPS es automático y gratuito
 - Los deployments son automáticos cuando haces push a tu repositorio
 - Puedes configurar preview deployments para pull requests
+- El archivo `.npmrc` está configurado para resolver conflictos de dependencias
+- Si tienes problemas de build, verifica que todas las versiones de Angular estén sincronizadas
 
 ## Comandos útiles
 

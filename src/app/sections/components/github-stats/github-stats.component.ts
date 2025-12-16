@@ -89,11 +89,11 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
     
     // Load user stats
     this.githubService.getUserStats('rafaelespinoza10').subscribe({
-      next: (stats) => {
+      next: (stats: any) => {
         this.userStats = stats;
         this.loadRepos();
       },
-      error: (err) => {
+      error: (err: any) => {
         this.error = err.message || 'Error al cargar datos de GitHub';
         this.loading = false;
         console.error('Error loading user stats:', err);
@@ -103,11 +103,11 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
 
   private loadRepos(): void {
     this.githubService.getUserRepos('rafaelespinoza10').subscribe({
-      next: (repos) => {
+      next: (repos: any[]) => {
         this.repos = repos || [];
         this.loadLanguages();
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Error loading repos:', err);
         this.loadLanguages();
       }

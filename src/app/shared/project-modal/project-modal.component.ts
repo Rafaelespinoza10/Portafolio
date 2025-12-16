@@ -47,13 +47,13 @@ export class ProjectModalComponent implements OnInit, OnDestroy {
     // Suscribirse a los observables del servicio
     this.projectModalService.isModalOpen$
       .pipe(takeUntil(this.destroy$))
-      .subscribe(isOpen => {
+      .subscribe((isOpen: boolean) => {
         this.isModalOpen = isOpen;
       });
 
     this.projectModalService.selectedProject$
       .pipe(takeUntil(this.destroy$))
-      .subscribe(project => {
+      .subscribe((project: any) => {
         this.selectedProject = project;
       });
   }

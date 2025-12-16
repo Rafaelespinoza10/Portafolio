@@ -107,7 +107,7 @@ export class ContactInfoComponent implements OnInit, OnDestroy {
     };
 
     this.http.post(this.formspreeEndpoint, formDataToSend).subscribe({
-      next: (response) => {
+      next: (response: any) => {
         Swal.close();
         Swal.fire({
           title: translations['contactForm.successTitle'][currentLang] as string,
@@ -119,7 +119,7 @@ export class ContactInfoComponent implements OnInit, OnDestroy {
         this.emailForm.reset();
         document.getElementById('email')?.focus();
       },
-      error: (error) => {
+      error: (error: any) => {
         Swal.close();
         console.error('Formspree Error:', error);
         

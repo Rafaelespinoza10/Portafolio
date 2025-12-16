@@ -14,7 +14,7 @@ export class ThemeService {
   constructor() {
     const savedTheme = this.getSavedTheme();
     this.themeSubject = new BehaviorSubject<Theme>(savedTheme);
-    this.theme$ = this.themeSubject.asObservable();
+    this.theme$ = this.themeSubject;
     this.applyTheme(savedTheme);
   }
 

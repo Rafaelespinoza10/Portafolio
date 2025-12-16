@@ -56,7 +56,7 @@ export class TestimonialsComponent implements OnInit, OnDestroy {
 
     // Suscribirse a los testimonios agregados
     this.testimonialAddedSubscription = this.testimonialModalService.testimonialAdded$.subscribe(
-      (newTestimonial) => {
+      (newTestimonial: any) => {
         this.onTestimonialAdded(newTestimonial);
       }
     );

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestimonialModalService {
   private showModalSubject = new BehaviorSubject<boolean>(false);
-  public showModal$ = this.showModalSubject.asObservable();
+  public showModal$: Observable<boolean> = this.showModalSubject;
 
   private testimonialAddedSubject = new Subject<any>();
-  public testimonialAdded$ = this.testimonialAddedSubject.asObservable();
+  public testimonialAdded$: Observable<any> = this.testimonialAddedSubject;
 
   constructor() { }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export type Language = 'es' | 'en';
 
@@ -8,7 +8,7 @@ export type Language = 'es' | 'en';
 })
 export class LanguageService {
   private currentLanguage = new BehaviorSubject<Language>('es');
-  public currentLanguage$ = this.currentLanguage.asObservable();
+  public currentLanguage$: Observable<Language> = this.currentLanguage;
 
   constructor() {
     // 1. Verificar si hay preferencia guardada

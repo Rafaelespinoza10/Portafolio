@@ -18,7 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.modalSubscription = this.testimonialModalService.showModal$.subscribe(
-      (show) => {
+      (show: boolean) => {
         this.showTestimonialModal = show;
       }
     );
