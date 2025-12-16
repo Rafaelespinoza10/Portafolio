@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
-import { map, catchError, switchMap, timeout } from 'rxjs/operators';
+import { map, catchError, switchMap, timeout, retry } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -10,6 +10,7 @@ import { of } from 'rxjs';
 export class GithubService {
   private apiUrl = 'https://api.github.com';
   private username = 'rafaelespinoza10';
+  private readonly TIMEOUT_MS = 8000; // 8 segundos - más corto para evitar bloqueos
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +19,8 @@ export class GithubService {
    */
   getUserStats(username: string = this.username): Observable<any> {
     return this.http.get(`${this.apiUrl}/users/${username}`).pipe(
-      timeout(10000), // 10 second timeout
+      timeout(this.TIMEOUT_MS),
+      retry(1), // Reintentar una vez si falla
       catchError(error => {
         console.error('Error fetching user stats:', error);
         return of(null);
@@ -31,7 +33,8 @@ export class GithubService {
    */
   getUserRepos(username: string = this.username, perPage: number = 100): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/users/${username}/repos?per_page=${perPage}&sort=updated`).pipe(
-      timeout(10000), // 10 second timeout
+      timeout(this.TIMEOUT_MS),
+      retry(1), // Reintentar una vez si falla
       catchError(error => {
         console.error('Error fetching repos:', error);
         return of([]);

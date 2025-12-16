@@ -13,6 +13,7 @@ import { translations } from '../../../i18n/translations';
 export class GithubStatsComponent implements OnInit, OnDestroy {
   private languageSubscription: Subscription = new Subscription();
   private destroy$ = new Subject<void>();
+  private isLoading = false; // Flag para evitar múltiples cargas simultáneas
   
   // Stats data
   userStats: any = null;
@@ -88,6 +89,12 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
   }
 
   private loadGitHubData(): void {
+    // Evitar múltiples cargas simultáneas
+    if (this.isLoading) {
+      return;
+    }
+    
+    this.isLoading = true;
     this.loading = true;
     this.error = null;
     
@@ -102,11 +109,13 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
           } else {
             this.error = 'No se pudieron cargar las estadísticas de GitHub';
             this.loading = false;
+            this.isLoading = false;
           }
         },
         error: (err: any) => {
           this.error = err.message || 'Error al cargar datos de GitHub. Por favor, intenta más tarde.';
           this.loading = false;
+          this.isLoading = false;
           console.error('Error loading user stats:', err);
         }
       });
@@ -144,6 +153,7 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
     this.contributionsPageUrl = `https://github.com/rafaelespinoza10`;
     
     this.loading = false;
+    this.isLoading = false; // Resetear flag
   }
 
   getTotalStars(): number {
