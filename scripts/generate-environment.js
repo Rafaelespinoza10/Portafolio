@@ -27,6 +27,7 @@ console.log('🔍 Variables de entorno detectadas:');
 Object.keys(requiredEnvVars).forEach(key => {
   const isSet = requiredEnvVars[key] !== undefined && requiredEnvVars[key] !== '';
   console.log(`   ${key}: ${isSet ? '✅' : '❌'}`);
+  console.log('value', requiredEnvVars[key]);
 });
 console.log('fireBase api key', requiredEnvVars.FIREBASE_API_KEY);
 // Verificar que todas las variables estén configuradas
@@ -35,7 +36,7 @@ const missingVars = Object.entries(requiredEnvVars)
   .map(([key]) => key);
 
 if (missingVars.length > 0) {
-  console.error('❌ ERROR: Faltan las siguientes variables de entorno:');
+  console.error(' ERROR: Faltan las siguientes variables de entorno:');
   missingVars.forEach(variable => console.error(`   - ${variable}`));
   console.error('\nPor favor, configura estas variables en Cloudflare Pages (Settings → Environment variables)');
   process.exit(1);
