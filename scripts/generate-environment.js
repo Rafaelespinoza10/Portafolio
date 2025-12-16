@@ -21,7 +21,7 @@ const requiredEnvVars = {
   FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
   FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID
 };
-
+console.log('fireBase api key', requiredEnvVars.FIREBASE_API_KEY);
 // Verificar que todas las variables estén configuradas
 const missingVars = Object.entries(requiredEnvVars)
   .filter(([key, value]) => !value)
@@ -51,7 +51,7 @@ const environment = {
     measurementId: requiredEnvVars.FIREBASE_MEASUREMENT_ID
   }
 };
-
+console.log('environment', environment);
 // Generar el contenido del archivo
 const fileContent = `export const environment = {
   emailJsSeviceId: '${environment.emailJsSeviceId}',
