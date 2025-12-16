@@ -146,16 +146,31 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
   }
 
   private loadRepos(): void {
+    // Verificar que no esté destruido
+    if (this.isDestroyed) {
+      return;
+    }
+    
     this.githubService.getUserRepos('rafaelespinoza10')
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (repos: any[]) => {
+          // Verificar que no esté destruido antes de actualizar
+          if (this.isDestroyed) {
+            return;
+          }
+          
           this.repos = repos || [];
           this.loadLanguages();
         },
         error: (err: any) => {
+          // Verificar que no esté destruido antes de actualizar
+          if (this.isDestroyed) {
+            return;
+          }
+          
           console.error('Error loading repos:', err);
-          this.loadLanguages();
+          this.loadLanguages(); // Continuar aunque falle
         }
       });
   }
