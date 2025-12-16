@@ -43,3 +43,5 @@ Thumbs.db
 
 # Environment files (contain sensitive data)
 /src/environments/environment.ts
+.env
+.env.local

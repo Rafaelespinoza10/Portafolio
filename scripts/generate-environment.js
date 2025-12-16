@@ -4,22 +4,51 @@ const path = require('path');
 // Ruta del archivo environment.ts
 const envPath = path.join(__dirname, '../src/environments/environment.ts');
 
-// Obtener variables de entorno o usar valores por defecto
+// Obtener variables de entorno (requeridas)
+// Si no están configuradas, el build fallará para evitar exponer credenciales
+const requiredEnvVars = {
+  EMAILJS_SERVICE_ID: process.env.EMAILJS_SERVICE_ID,
+  EMAILJS_TEMPLATE_ID: process.env.EMAILJS_TEMPLATE_ID,
+  EMAILJS_PUBLIC_KEY: process.env.EMAILJS_PUBLIC_KEY,
+  EMAILJS_PRIVATE_KEY: process.env.EMAILJS_PRIVATE_KEY,
+  FORMSPREE_ENDPOINT: process.env.FORMSPREE_ENDPOINT,
+  FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
+  FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
+  FIREBASE_DATABASE_URL: process.env.FIREBASE_DATABASE_URL,
+  FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
+  FIREBASE_STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
+  FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
+  FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID
+};
+
+// Verificar que todas las variables estén configuradas
+const missingVars = Object.entries(requiredEnvVars)
+  .filter(([key, value]) => !value)
+  .map(([key]) => key);
+
+if (missingVars.length > 0) {
+  console.error('❌ ERROR: Faltan las siguientes variables de entorno:');
+  missingVars.forEach(variable => console.error(`   - ${variable}`));
+  console.error('\nPor favor, configura estas variables en Cloudflare Pages (Settings → Environment variables)');
+  process.exit(1);
+}
+
 const environment = {
-  emailJsSeviceId: process.env.EMAILJS_SERVICE_ID || 'service_6khjdrk',
-  emailJsTemplateId: process.env.EMAILJS_TEMPLATE_ID || 'template_7yzpu3g',
-  publicApikey: process.env.EMAILJS_PUBLIC_KEY || '4mSmR4MaseE3MY00o',
-  privateApiKey: process.env.EMAILJS_PRIVATE_KEY || 'JeC8sF7HuEyg9SA240ktB',
-  formspreeEndpoint: process.env.FORMSPREE_ENDPOINT || 'https://formspree.io/f/mzzjlzkn',
+  emailJsSeviceId: requiredEnvVars.EMAILJS_SERVICE_ID,
+  emailJsTemplateId: requiredEnvVars.EMAILJS_TEMPLATE_ID,
+  publicApikey: requiredEnvVars.EMAILJS_PUBLIC_KEY,
+  privateApiKey: requiredEnvVars.EMAILJS_PRIVATE_KEY,
+  formspreeEndpoint: requiredEnvVars.FORMSPREE_ENDPOINT,
   firebase: {
-    apiKey: process.env.FIREBASE_API_KEY || "AIzaSyCKvKLNWU-0VTLfTSHSCkvucbc0TQCLcTk",
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN || "portfolio-back-a6021.firebaseapp.com",
-    databaseURL: process.env.FIREBASE_DATABASE_URL || "https://portfolio-back-a6021-default-rtdb.firebaseio.com",
-    projectId: process.env.FIREBASE_PROJECT_ID || "portfolio-back-a6021",
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET || "portfolio-back-a6021.firebasestorage.app",
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || "425540100611",
-    appId: process.env.FIREBASE_APP_ID || "1:425540100611:web:c74e171a3a28c13ee66436",
-    measurementId: process.env.FIREBASE_MEASUREMENT_ID || "G-RTJT2X8H1S"
+    apiKey: requiredEnvVars.FIREBASE_API_KEY,
+    authDomain: requiredEnvVars.FIREBASE_AUTH_DOMAIN,
+    databaseURL: requiredEnvVars.FIREBASE_DATABASE_URL,
+    projectId: requiredEnvVars.FIREBASE_PROJECT_ID,
+    storageBucket: requiredEnvVars.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: requiredEnvVars.FIREBASE_MESSAGING_SENDER_ID,
+    appId: requiredEnvVars.FIREBASE_APP_ID,
+    measurementId: requiredEnvVars.FIREBASE_MEASUREMENT_ID
   }
 };
 
