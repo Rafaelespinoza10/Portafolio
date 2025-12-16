@@ -154,15 +154,25 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
     const langArray = Object.keys(this.languages).map(lang => ({
       name: lang,
       count: this.languages[lang],
-      bytes: this.languages[lang] * 1000, // Placeholder
-      percentage: 0
+      percentage: 0,
+      percentageFormatted: '0%'
     }));
 
     const total = langArray.reduce((sum, lang) => sum + lang.count, 0);
     langArray.forEach(lang => {
-      lang.percentage = total > 0 ? Math.round((lang.count / total) * 100) : 0;
+      // Calcular porcentaje con precisión
+      const rawPercentage = total > 0 ? (lang.count / total) * 100 : 0;
+      lang.percentage = rawPercentage;
+      
+      // Formatear porcentaje: sin decimales si es entero, 1 decimal si es necesario
+      if (rawPercentage % 1 === 0) {
+        lang.percentageFormatted = `${Math.round(rawPercentage)}%`;
+      } else {
+        lang.percentageFormatted = `${rawPercentage.toFixed(1)}%`;
+      }
     });
 
+    // Ordenar por count descendente y tomar los top 6
     return langArray
       .sort((a, b) => b.count - a.count)
       .slice(0, 6);
