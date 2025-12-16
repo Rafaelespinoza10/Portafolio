@@ -112,8 +112,8 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.error = null;
     
-    // Load user stats with timeout handling
-    this.githubService.getUserStats('rafaelespinoza10')
+    // Load user stats with cache (primero intenta desde cache, luego API)
+    this.githubService.getUserStats('rafaelespinoza10', true)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (stats: any) => {
@@ -151,7 +151,8 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
       return;
     }
     
-    this.githubService.getUserRepos('rafaelespinoza10')
+    // Load repos with cache (primero intenta desde cache, luego API)
+    this.githubService.getUserRepos('rafaelespinoza10', 100, true)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (repos: any[]) => {
