@@ -21,6 +21,13 @@ const requiredEnvVars = {
   FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
   FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID
 };
+
+// Debug: mostrar qué variables están disponibles (sin mostrar valores)
+console.log('🔍 Variables de entorno detectadas:');
+Object.keys(requiredEnvVars).forEach(key => {
+  const isSet = requiredEnvVars[key] !== undefined && requiredEnvVars[key] !== '';
+  console.log(`   ${key}: ${isSet ? '✅' : '❌'}`);
+});
 console.log('fireBase api key', requiredEnvVars.FIREBASE_API_KEY);
 // Verificar que todas las variables estén configuradas
 const missingVars = Object.entries(requiredEnvVars)
