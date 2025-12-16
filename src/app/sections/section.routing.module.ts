@@ -7,6 +7,7 @@ import { PortafolioPageComponent } from './pages/portafolio/portafolio.component
 import { ResumePageComponent } from './pages/resume/resume.component';
 import { BlogDetailPageComponent } from './pages/blog-detail-page/blog-detail-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { GithubStatsPageComponent } from './pages/github-stats/github-stats.component';
 
 const routes: Routes = [
 
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'blog', component: BlogPageComponent },
       { path: 'contact', component: ContactPageComponent },
       { path: 'portafolio', component: PortafolioPageComponent },
+      { path: 'github-stats', component: GithubStatsPageComponent },
       { path: 'resume', component: ResumePageComponent },
       { path: '**', redirectTo: 'home'}
     ]

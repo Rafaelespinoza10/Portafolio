@@ -27,6 +27,8 @@ import { HomeComponent } from './components/home/home.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ScrollAnimationDirective } from './directives/scroll-animation.directive';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { GithubStatsPageComponent } from './pages/github-stats/github-stats.component';
+import { GithubStatsComponent } from './components/github-stats/github-stats.component';
 
 
 
@@ -54,6 +56,8 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     HomePageComponent,
     ScrollAnimationDirective,
     TestimonialsComponent,
+    GithubStatsPageComponent,
+    GithubStatsComponent,
 
   ],
   imports: [

@@ -31,9 +31,77 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
     'es': 'Blog',
     'en': 'Blog'
   },
+  'nav.githubStats': {
+    'es': 'Estadísticas',
+    'en': 'Statistics'
+  },
   'nav.contact': {
     'es': 'Contacto',
     'en': 'Contact'
+  },
+  'githubStats.title': {
+    'es': 'Estadísticas',
+    'en': 'Statistics'
+  },
+  'githubStats.subtitle': {
+    'es': 'Mi actividad y contribuciones en GitHub',
+    'en': 'My GitHub activity and contributions'
+  },
+  'githubStats.contributions': {
+    'es': 'Contribuciones',
+    'en': 'Contributions'
+  },
+  'githubStats.activity': {
+    'es': 'Actividad de Contribuciones',
+    'en': 'Contribution Activity'
+  },
+  'githubStats.activityTooltip': {
+    'es': 'Muestra tus contribuciones diarias del último año',
+    'en': 'Shows your daily contributions from the last year'
+  },
+  'githubStats.heatmapTooltip': {
+    'es': 'Cada cuadrado representa un día con contribuciones',
+    'en': 'Each square represents a day with contributions'
+  },
+  'githubStats.lastYear': {
+    'es': 'Último año',
+    'en': 'Last year'
+  },
+  'githubStats.less': {
+    'es': 'Menos',
+    'en': 'Less'
+  },
+  'githubStats.more': {
+    'es': 'Más',
+    'en': 'More'
+  },
+  'githubStats.languages': {
+    'es': 'Lenguajes Más Usados',
+    'en': 'Most Used Languages'
+  },
+  'githubStats.repositories': {
+    'es': 'Repositorios Destacados',
+    'en': 'Featured Repositories'
+  },
+  'githubStats.viewProfile': {
+    'es': 'Ver Perfil Completo en GitHub',
+    'en': 'View Full Profile on GitHub'
+  },
+  'githubStats.publicRepos': {
+    'es': 'Repositorios Públicos',
+    'en': 'Public Repositories'
+  },
+  'githubStats.followers': {
+    'es': 'Seguidores',
+    'en': 'Followers'
+  },
+  'githubStats.following': {
+    'es': 'Siguiendo',
+    'en': 'Following'
+  },
+  'githubStats.totalStars': {
+    'es': 'Estrellas Totales',
+    'en': 'Total Stars'
   },
   'profile.name': {
     'es': 'Rafael Moreno',
