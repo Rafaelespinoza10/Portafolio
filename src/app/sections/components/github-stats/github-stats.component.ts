@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { GithubService } from '../../../services/github.service';
 import { LanguageService } from '../../../services/language.service';
 import { translations } from '../../../i18n/translations';
@@ -11,6 +12,7 @@ import { translations } from '../../../i18n/translations';
 })
 export class GithubStatsComponent implements OnInit, OnDestroy {
   private languageSubscription: Subscription = new Subscription();
+  private destroy$ = new Subject<void>();
   
   // Stats data
   userStats: any = null;
@@ -61,6 +63,8 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.languageSubscription.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   private loadTranslations(): void {
@@ -88,59 +92,52 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
     this.error = null;
     
     // Load user stats with timeout handling
-    this.githubService.getUserStats('rafaelespinoza10').subscribe({
-      next: (stats: any) => {
-        if (stats) {
-          this.userStats = stats;
-          this.loadRepos();
-        } else {
-          this.error = 'No se pudieron cargar las estadísticas de GitHub';
+    this.githubService.getUserStats('rafaelespinoza10')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (stats: any) => {
+          if (stats) {
+            this.userStats = stats;
+            this.loadRepos();
+          } else {
+            this.error = 'No se pudieron cargar las estadísticas de GitHub';
+            this.loading = false;
+          }
+        },
+        error: (err: any) => {
+          this.error = err.message || 'Error al cargar datos de GitHub. Por favor, intenta más tarde.';
           this.loading = false;
+          console.error('Error loading user stats:', err);
         }
-      },
-      error: (err: any) => {
-        this.error = err.message || 'Error al cargar datos de GitHub. Por favor, intenta más tarde.';
-        this.loading = false;
-        console.error('Error loading user stats:', err);
-      }
-    });
+      });
   }
 
   private loadRepos(): void {
-    this.githubService.getUserRepos('rafaelespinoza10').subscribe({
-      next: (repos: any[]) => {
-        this.repos = repos || [];
-        this.loadLanguages();
-      },
-      error: (err: any) => {
-        console.error('Error loading repos:', err);
-        this.loadLanguages();
-      }
-    });
+    this.githubService.getUserRepos('rafaelespinoza10')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (repos: any[]) => {
+          this.repos = repos || [];
+          this.loadLanguages();
+        },
+        error: (err: any) => {
+          console.error('Error loading repos:', err);
+          this.loadLanguages();
+        }
+      });
   }
 
   private loadLanguages(): void {
-    // Load languages from repos using the service
-    this.githubService.getLanguagesStats('rafaelespinoza10').subscribe({
-      next: (languages: any) => {
-        this.languages = languages || {};
-        this.loading = false;
-      },
-      error: (err: any) => {
-        console.error('Error loading languages:', err);
-        // Fallback to simple counting from repos
-        const languageMap: any = {};
-        this.repos.forEach((repo: any) => {
-          if (repo.language) {
-            languageMap[repo.language] = (languageMap[repo.language] || 0) + 1;
-          }
-        });
-        this.languages = languageMap;
-        this.loading = false;
+    // Use simple counting from repos to avoid rate limiting and blocking
+    const languageMap: any = {};
+    this.repos.forEach((repo: any) => {
+      if (repo.language) {
+        languageMap[repo.language] = (languageMap[repo.language] || 0) + 1;
       }
     });
+    this.languages = languageMap;
     
-    // Load contributions URLs
+    // Load contributions URLs (these are just strings, no API calls)
     this.contributionsIframeUrl = this.githubService.getContributionsGraphUrl('rafaelespinoza10');
     this.contributionsHeatmapUrl = this.githubService.getContributionsHeatmapUrl('rafaelespinoza10');
     this.activityGraphUrl = this.githubService.getActivityGraphUrl('rafaelespinoza10');

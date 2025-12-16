@@ -40,35 +40,21 @@ export class GithubService {
   }
 
   /**
-   * Get languages stats from all repositories
+   * Get languages stats from all repositories (simplified - uses repo.language field)
+   * This avoids making multiple API calls that can cause rate limiting
    */
   getLanguagesStats(username: string = this.username): Observable<any> {
     return this.getUserRepos(username).pipe(
       map((repos: any[]) => {
-        // Limit to first 10 repos to avoid rate limiting
-        const reposToProcess = repos.slice(0, 10);
         const languages: any = {};
-        
-        // Get languages for each repo
-        const languageRequests = reposToProcess.map((repo: any) => 
-          this.http.get(`${this.apiUrl}/repos/${username}/${repo.name}/languages`).pipe(
-            catchError(() => of({}))
-          )
-        );
-
-        return forkJoin(languageRequests).pipe(
-          map((repoLanguages: any[]) => {
-            repoLanguages.forEach((langs: any) => {
-              Object.keys(langs).forEach(lang => {
-                languages[lang] = (languages[lang] || 0) + langs[lang];
-              });
-            });
-            return languages;
-          })
-        );
+        // Count languages from repo.language field (available in repo list)
+        repos.forEach((repo: any) => {
+          if (repo.language) {
+            languages[repo.language] = (languages[repo.language] || 0) + 1;
+          }
+        });
+        return languages;
       }),
-      // Flatten nested observable using switchMap
-      switchMap((obs: Observable<any>) => obs),
       catchError(error => {
         console.error('Error fetching languages:', error);
         return of({});
