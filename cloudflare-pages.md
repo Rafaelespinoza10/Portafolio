@@ -43,7 +43,22 @@ Si aún no lo has hecho:
    - **Build output directory**: `dist/persona-project/browser`
      - ✅ Esta es la ruta correcta verificada en tu proyecto
    - **Root directory**: `/` (dejar por defecto)
-   - **Environment variables**: (opcional, si necesitas variables de entorno)
+   - **Environment variables**: ⚠️ **IMPORTANTE** - Configura las siguientes variables:
+     - `EMAILJS_SERVICE_ID`: Tu service ID de EmailJS
+     - `EMAILJS_TEMPLATE_ID`: Tu template ID de EmailJS
+     - `EMAILJS_PUBLIC_KEY`: Tu public key de EmailJS
+     - `EMAILJS_PRIVATE_KEY`: Tu private key de EmailJS
+     - `FORMSPREE_ENDPOINT`: Tu endpoint de Formspree
+     - `FIREBASE_API_KEY`: Tu API key de Firebase
+     - `FIREBASE_AUTH_DOMAIN`: Tu auth domain de Firebase
+     - `FIREBASE_DATABASE_URL`: Tu database URL de Firebase
+     - `FIREBASE_PROJECT_ID`: Tu project ID de Firebase
+     - `FIREBASE_STORAGE_BUCKET`: Tu storage bucket de Firebase
+     - `FIREBASE_MESSAGING_SENDER_ID`: Tu messaging sender ID de Firebase
+     - `FIREBASE_APP_ID`: Tu app ID de Firebase
+     - `FIREBASE_MEASUREMENT_ID`: Tu measurement ID de Firebase
+     
+     **Nota:** Si no configuras estas variables, se usarán los valores por defecto del script. Para mayor seguridad, configura todas las variables en Cloudflare Pages.
 
 5. **Hacer clic en "Save and Deploy"**
 
