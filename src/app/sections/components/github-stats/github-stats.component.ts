@@ -87,14 +87,19 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.error = null;
     
-    // Load user stats
+    // Load user stats with timeout handling
     this.githubService.getUserStats('rafaelespinoza10').subscribe({
       next: (stats: any) => {
-        this.userStats = stats;
-        this.loadRepos();
+        if (stats) {
+          this.userStats = stats;
+          this.loadRepos();
+        } else {
+          this.error = 'No se pudieron cargar las estadísticas de GitHub';
+          this.loading = false;
+        }
       },
       error: (err: any) => {
-        this.error = err.message || 'Error al cargar datos de GitHub';
+        this.error = err.message || 'Error al cargar datos de GitHub. Por favor, intenta más tarde.';
         this.loading = false;
         console.error('Error loading user stats:', err);
       }
@@ -115,18 +120,25 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
   }
 
   private loadLanguages(): void {
-    // Load languages from repos
-    const languageMap: any = {};
-    let totalBytes = 0;
-    
-    this.repos.forEach(repo => {
-      if (repo.language) {
-        languageMap[repo.language] = (languageMap[repo.language] || 0) + 1;
+    // Load languages from repos using the service
+    this.githubService.getLanguagesStats('rafaelespinoza10').subscribe({
+      next: (languages: any) => {
+        this.languages = languages || {};
+        this.loading = false;
+      },
+      error: (err: any) => {
+        console.error('Error loading languages:', err);
+        // Fallback to simple counting from repos
+        const languageMap: any = {};
+        this.repos.forEach((repo: any) => {
+          if (repo.language) {
+            languageMap[repo.language] = (languageMap[repo.language] || 0) + 1;
+          }
+        });
+        this.languages = languageMap;
+        this.loading = false;
       }
     });
-    
-    // For now, use simple counting. Full implementation would need to fetch language bytes
-    this.languages = languageMap;
     
     // Load contributions URLs
     this.contributionsIframeUrl = this.githubService.getContributionsGraphUrl('rafaelespinoza10');

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, switchMap, timeout } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -18,6 +18,7 @@ export class GithubService {
    */
   getUserStats(username: string = this.username): Observable<any> {
     return this.http.get(`${this.apiUrl}/users/${username}`).pipe(
+      timeout(10000), // 10 second timeout
       catchError(error => {
         console.error('Error fetching user stats:', error);
         return of(null);
@@ -30,6 +31,7 @@ export class GithubService {
    */
   getUserRepos(username: string = this.username, perPage: number = 100): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/users/${username}/repos?per_page=${perPage}&sort=updated`).pipe(
+      timeout(10000), // 10 second timeout
       catchError(error => {
         console.error('Error fetching repos:', error);
         return of([]);
@@ -43,10 +45,12 @@ export class GithubService {
   getLanguagesStats(username: string = this.username): Observable<any> {
     return this.getUserRepos(username).pipe(
       map((repos: any[]) => {
+        // Limit to first 10 repos to avoid rate limiting
+        const reposToProcess = repos.slice(0, 10);
         const languages: any = {};
         
         // Get languages for each repo
-        const languageRequests = repos.map((repo: any) => 
+        const languageRequests = reposToProcess.map((repo: any) => 
           this.http.get(`${this.apiUrl}/repos/${username}/${repo.name}/languages`).pipe(
             catchError(() => of({}))
           )
@@ -63,17 +67,11 @@ export class GithubService {
           })
         );
       }),
-      map((obs: any) => obs),
+      // Flatten nested observable using switchMap
+      switchMap((obs: Observable<any>) => obs),
       catchError(error => {
         console.error('Error fetching languages:', error);
         return of({});
-      })
-    ).pipe(
-      map((obs: any) => obs),
-      // Flatten the nested observable
-      map((obs: any) => {
-        // This is a workaround - we'll handle it differently
-        return obs;
       })
     );
   }
