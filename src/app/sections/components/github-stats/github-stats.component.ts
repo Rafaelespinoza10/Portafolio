@@ -14,6 +14,7 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
   private languageSubscription: Subscription = new Subscription();
   private destroy$ = new Subject<void>();
   private isLoading = false; // Flag para evitar múltiples cargas simultáneas
+  private isDestroyed = false; // Flag para verificar si el componente está destruido
   
   // Stats data
   userStats: any = null;
@@ -53,16 +54,29 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    // Verificar que no esté destruido
+    if (this.isDestroyed) {
+      return;
+    }
+    
     this.loadTranslations();
     this.loadGitHubData();
     
     // Subscribe to language changes
-    this.languageSubscription = this.languageService.currentLanguage$.subscribe(() => {
-      this.loadTranslations();
-    });
+    this.languageSubscription = this.languageService.currentLanguage$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        if (!this.isDestroyed) {
+          this.loadTranslations();
+        }
+      });
   }
 
   ngOnDestroy(): void {
+    this.isDestroyed = true;
+    this.isLoading = false;
+    
+    // Cancelar todas las suscripciones
     this.languageSubscription.unsubscribe();
     this.destroy$.next();
     this.destroy$.complete();
@@ -89,8 +103,8 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
   }
 
   private loadGitHubData(): void {
-    // Evitar múltiples cargas simultáneas
-    if (this.isLoading) {
+    // Evitar múltiples cargas simultáneas o si está destruido
+    if (this.isLoading || this.isDestroyed) {
       return;
     }
     
@@ -103,6 +117,11 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (stats: any) => {
+          // Verificar que no esté destruido antes de actualizar
+          if (this.isDestroyed) {
+            return;
+          }
+          
           if (stats) {
             this.userStats = stats;
             this.loadRepos();
@@ -113,6 +132,11 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
           }
         },
         error: (err: any) => {
+          // Verificar que no esté destruido antes de actualizar
+          if (this.isDestroyed) {
+            return;
+          }
+          
           this.error = err.message || 'Error al cargar datos de GitHub. Por favor, intenta más tarde.';
           this.loading = false;
           this.isLoading = false;
@@ -137,6 +161,11 @@ export class GithubStatsComponent implements OnInit, OnDestroy {
   }
 
   private loadLanguages(): void {
+    // Verificar que no esté destruido
+    if (this.isDestroyed) {
+      return;
+    }
+    
     // Use simple counting from repos to avoid rate limiting and blocking
     const languageMap: any = {};
     this.repos.forEach((repo: any) => {
