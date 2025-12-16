@@ -88,8 +88,16 @@ export class EducationCoursesComponent implements OnInit, OnDestroy {
             title: translations['course.nvidiaVideoAI.title'][currentLang],
             description: translations['course.nvidiaVideoAI.description'][currentLang],
             image: 'https://res.cloudinary.com/react-courses-rafa/image/upload/v1763780820/yff4gzbsz6hseeckvmxd.png',
-            certificateUrl: 'https://learn.nvidia.com/certificates?id=YOUR_CERTIFICATE_ID',
+            certificateUrl: 'https://learn.nvidia.com/certificates?id=iGOZLKjNQiiKhSo3wqMRKg',
             platform: 'nvidia'
+          },
+          {
+            title: translations['course.cnnDeepLearning.title'][currentLang],
+            description: translations['course.cnnDeepLearning.description'][currentLang],
+            image: 'images/convolutional_network_certifiction.png',
+            certificateUrl: 'https://www.coursera.org/account/accomplishments/verify/SI8KMJRTWDA4',
+            platform: 'deeplearning',
+            date: 'Dec 2025'
           }
         ]
       },
@@ -340,7 +348,8 @@ export class EducationCoursesComponent implements OnInit, OnDestroy {
       'udemy': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Udemy_logo.svg/2560px-Udemy_logo.svg.png',
       'devtalles': 'https://img-c.udemycdn.com/user/200_H/267457580_ae55.jpg',
       'freecodecamp': 'https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg',
-      'nvidia': 'https://cdn.simpleicons.org/nvidia/76b900'
+      'nvidia': 'https://cdn.simpleicons.org/nvidia/76b900',
+      'deeplearning': 'images/deep_learningai.png'
     };
     return logoMap[platform] || '';
   }
@@ -350,7 +359,8 @@ export class EducationCoursesComponent implements OnInit, OnDestroy {
       'udemy': 'Udemy',
       'devtalles': 'DevTalles',
       'freecodecamp': 'FreeCodeCamp',
-      'nvidia': 'NVIDIA'
+      'nvidia': 'NVIDIA',
+      'deeplearning': 'deepLearning.AI'
     };
     return nameMap[platform] || '';
   }
@@ -376,6 +386,11 @@ export class EducationCoursesComponent implements OnInit, OnDestroy {
         'background': 'rgba(55, 65, 81, 0.6)',
         'border': '1px solid rgba(55, 65, 81, 0.5)',
         'padding': '0.375rem 0.5rem'
+      },
+      'deeplearning': {
+        'background': 'rgba(255, 255, 255, 0.8)',
+        'border': '1px solid rgba(255, 255, 255, 0.5)',
+        'padding': '0.375rem 0.75rem'
       }
     };
     return styleMap[platform] || {
@@ -386,6 +401,6 @@ export class EducationCoursesComponent implements OnInit, OnDestroy {
   }
 
   shouldShowPlatformText(platform: string): boolean {
-    return platform === 'nvidia' || platform === 'devtalles';
+    return platform === 'nvidia' || platform === 'devtalles' 
   }
 }

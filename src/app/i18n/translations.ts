@@ -519,6 +519,14 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
     'es': 'Aprende a construir aplicaciones de inteligencia artificial de video en tiempo real con NVIDIA.',
     'en': 'Learn to build real-time video artificial intelligence applications with NVIDIA.'
   },
+  'course.cnnDeepLearning.title': {
+    'es': 'Convolutional Neural Networks',
+    'en': 'Convolutional Neural Networks'
+  },
+  'course.cnnDeepLearning.description': {
+    'es': 'Aprende a construir y entrenar redes neuronales convolucionales para tareas de visión por computadora con deepLearning.AI.',
+    'en': 'Learn to build and train convolutional neural networks for computer vision tasks with deepLearning.AI.'
+  },
   'course.all': {
     'es': 'Todos',
     'en': 'All'
