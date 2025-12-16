@@ -548,8 +548,8 @@ export const translations: { [key: string]: { [lang: string]: string | string[] 
     'en': 'English'
   },
   'skills.english.level': {
-    'es': 'Conversacional',
-    'en': 'Conversational'
+    'es': 'B1 (470 PUNTOS EN TOEFL ITP)',
+    'en': 'B1 (470 POINTS ON TOEFL ITP)'
   },
   'skills.ml.name': {
     'es': 'Machine Learning',
