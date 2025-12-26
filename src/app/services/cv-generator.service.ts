@@ -50,10 +50,8 @@ export class CVGeneratorService {
 
     private loadCustomFonts(pdf: jsPDF): Observable<void> {
         return new Observable((observer: any) => {
-            console.log('Starting to load custom fonts...');
             this.fontLoaderService.loadFonts(pdf)
                 .then(() => {
-                    console.log('Fonts loaded successfully, setting currentFontFamily to:', CV_GENERATOR_CONFIG.typography.fontFamily);
                     this.currentFontFamily = CV_GENERATOR_CONFIG.typography.fontFamily;
                     observer.next();
                     observer.complete();
@@ -436,13 +434,9 @@ export class CVGeneratorService {
             currentY += config.spacing.afterDate;
         }
     
-        console.log('item', item);
-        console.log('item description', item.description);
-        console.log('item summary', item.summary);
         // Description/Summary
         if (item.description || item.summary) {
             //pdf.setFont('EBGaramond-Regular', 'normal');
-            console.log('item description', item.description);
             this.setBodyFont(pdf);
             pdf.setFontSize(config.typography.sizes.bodyText);
             pdf.setTextColor(...getRGB(config.colors.textBody));

@@ -54,56 +54,39 @@ export class FontLoaderService {
           if (fontFamily === 'EBGaramond-Regular') {
             fontFamily = 'EBGaramond-Bold';
             fontStyle = 'bold';
-            console.log('✅ Swapped: EBGaramond-Regular → EBGaramond-Bold (bold)');
           } else if (fontFamily === 'EBGaramond-Bold') {
             fontFamily = 'EBGaramond-Regular';
             fontStyle = 'normal';
-            console.log('✅ Swapped: EBGaramond-Bold → EBGaramond-Regular (normal)');
           }
         }
         
         // Registrar directamente en la instancia del PDF
-        console.log(`📝 Registering font: ${fontFamily}, style: ${fontStyle}, file: ${ttfFileName}`);
         (pdf as any).addFileToVFS(ttfFileName, fontBase64);
         (pdf as any).addFont(ttfFileName, fontFamily, fontStyle);
-        console.log(`✅ Font registered: ${fontFamily} (${fontStyle})`);
       };
       
-      console.log('⚠️ Loading fonts with SWAPPED IDs (TTF files are physically swapped)');
-      extractAndRegisterFont(regular, true);  // ⚠️ SWAP: archivo Regular contiene Bold físico
-      extractAndRegisterFont(italic, false);  // ✅ OK: archivo Italic es correcto
-      extractAndRegisterFont(bold, true);     // ⚠️ SWAP: archivo Bold contiene Regular físico
+      extractAndRegisterFont(regular, true);  
+      extractAndRegisterFont(italic, false);  
+      extractAndRegisterFont(bold, true);   
       
       await new Promise(resolve => setTimeout(resolve, 100));
       
-      // ✅ Verificar que las fuentes se registraron correctamente (SIN re-registrar)
       const availableFonts = (pdf as any).getFontList ? (pdf as any).getFontList() : {};
-      console.log('📋 Available fonts (Font IDs):', availableFonts);
       
       const fontNames = Object.keys(availableFonts);
-      console.log('🔍 All registered Font IDs:', fontNames);
       
       const hasGaramondRegular = fontNames.includes('EBGaramond-Regular');
       const hasGaramondBold = fontNames.includes('EBGaramond-Bold');
       const hasGaramondItalic = fontNames.includes('EBGaramond-Italic');
       
-      console.log('✅ Font IDs verification:');
-      console.log('  - EBGaramond-Regular:', hasGaramondRegular ? '✅' : '❌');
-      console.log('  - EBGaramond-Bold:', hasGaramondBold ? '✅' : '❌');
-      console.log('  - EBGaramond-Italic:', hasGaramondItalic ? '✅' : '❌');
-      
-      // 🔍 Probar establecer la fuente para verificar que funciona
+ 
       if (hasGaramondBold) {
-        console.log('🧪 Testing EBGaramond-Bold with style bold...');
         pdf.setFont('EBGaramond-Bold', 'bold');
         const currentFont = (pdf as any).internal.getFont();
-        console.log('  Current font after setFont:', currentFont);
       }
       if (hasGaramondRegular) {
-        console.log('🧪 Testing EBGaramond-Regular with style normal...');
         pdf.setFont('EBGaramond-Regular', 'normal');
         const currentFont = (pdf as any).internal.getFont();
-        console.log('  Current font after setFont:', currentFont);
       }
       
       if (!hasGaramondRegular || !hasGaramondBold || !hasGaramondItalic) {
