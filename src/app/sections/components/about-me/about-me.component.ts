@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { LanguageService } from '../../../services/language.service';
 import { translations } from '../../../i18n/translations';
+import { CVGeneratorService } from '../../../services/cv-generator.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'component-about-me',
@@ -23,8 +25,11 @@ export class AboutMeComponent implements OnInit, OnDestroy {
   public toolsText = translations['aboutMe.tools']['es'];
   public toolDescriptions: any = {};
   public tools: any[] = [];
-
-  constructor(private languageService: LanguageService) { }
+  public isGeneratingCV: boolean = false;
+  constructor(
+    private languageService: LanguageService,
+    private cvGeneratorService: CVGeneratorService
+  ) { }
 
   ngOnInit(): void {
     // Cargar mensajes iniciales
@@ -189,19 +194,26 @@ export class AboutMeComponent implements OnInit, OnDestroy {
     }
   }
   downloadCVs(){
-    const files = [
-      { url: 'files/CV_RafaelMoreno_English.pdf', name: 'CV_RafaelMoreno_EngMechatronics' },
-      { url: 'files/CV_RafaelMoreno_spanish.pdf', name: 'CV_RafaelMoreno_IngMecatronica.pdf' }
-    ];
+    if (this.isGeneratingCV) return;
+    this.isGeneratingCV = true;
+    this.cvGeneratorService.generateAndDownloadAllCVs().subscribe({
+      next: () => {
+        console.log('CVs generated successfully');
+        this.isGeneratingCV = false;
+        
+      },
+      error: (error: any) => {
+        console.error('Error generating CVs:', error);
+        this.isGeneratingCV = false;
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error generating CVs',
+          confirmButtonText: 'OK'
+        });
+      }
+    })
 
-    files.forEach(file => {
-      const link = document.createElement('a');
-      link.href = file.url;
-      link.download = file.name;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
   }
 
 }

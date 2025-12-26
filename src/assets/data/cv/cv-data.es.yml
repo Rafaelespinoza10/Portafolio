@@ -1,0 +1,103 @@
+cv:
+  name: Alejandro Rafael Moreno Espinoza
+  label: Ingeniero en Mecatrónica
+  location: San Luis Potosí, S.L.P., México
+  email: rafael.moreno.espinoza10@gmail.com
+  phone: +52 (444) 225-6573
+  website: https://rafaelespinoza10.github.io/Portafolio/
+  social_networks:
+    - network: LinkedIn
+      username: alejandro-rafael-moreno-espinoza10
+    - network: GitHub
+      username: Rafaelespinoza10
+  
+  sections:
+    Experiencia:
+      - company: BoletoMóvil
+        position: Full Stack Developer
+        start_date: 2025-07
+        end_date: present
+        location: San Luis Potosí, S.L.P.
+        highlights:
+          - Desarrollo y mantenimiento de sistema de ticketing con React y Node.js manejando 5,000+ transacciones diarias
+          - Implementación de arquitectura serverless optimizando rendimiento en 40% y reduciendo costos de infraestructura
+          - Desarrollo de webhooks para integración con sistemas de pago y monitoreo en tiempo real
+          - Creación de dashboards interactivos y gráficas de análisis de ventas con React y Chart.js
+          - Resolución proactiva de bugs manteniendo 99.8% de uptime del sistema
+      
+      - company: Magna International
+        position: Ingeniero de Software Industria 4.0
+        start_date: 2024-09
+        end_date: 2025-07
+        location: San Luis Potosí, S.L.P.
+        highlights:
+          - Automatización integral con Angular, .NET y SAP eliminando procesos manuales y reduciendo tiempo de operación 60%
+          - Desarrollo de plugin personalizado en Grafana con React mostrando métricas operativas en tiempo real
+          - Creación de reportes dinámicos en Power BI integrados con SAP para visibilidad estratégica ejecutiva
+          - Implementación de sistema predictivo de monitoreo de sensores (Node.js, Angular, .NET) reduciendo downtime 35%
+          - Diseño de aplicación de optimización de línea de pintura asegurando consistencia de producción
+          - Desarrollo de dashboard centralizado de calidad consolidando alertas y agilizando auditorías
+          - Sistema automatizado de registro de asistencia con Angular y .NET mejorando precisión administrativa 95%
+      
+      - company: Peasa Autopartes S.A. de C.V.
+        position: Ingeniero de Software y Analista de Datos
+        start_date: 2024-01
+        end_date: 2024-07
+        location: San Luis Potosí, S.L.P.
+        highlights:
+          - Migración completa de datos de RH de Excel a bases de datos estructuradas (.NET, MySQL) mejorando integridad
+          - Desarrollo de sistema automatizado de registro de asistencia (VBA, Excel) capturando datos de múltiples fuentes
+          - Entrenamiento de modelos predictivos de Machine Learning (Python, scikit-learn) optimizando reclutamiento
+          - Creación de herramienta de registro de tiempos operativos mejorando productividad y precisión de datos
+      
+    
+    Educación:
+      - institution: Universidad Autónoma de San Luis Potosí (UASLP)
+        area: Ingeniería en Mecatrónica
+        degree: Licenciatura
+        start_date: 2019-09
+        end_date: present
+        location: San Luis Potosí, S.L.P.
+        highlights:
+          - Promedio general de 88.93/100
+    
+    Certificaciones:
+      - title: Angular Pro - Implementaciones Angular 19
+        institution: DevTalles
+        date: 2025-05
+      - title: Convolutional Neural Networks
+        institution: deepLearning.AI
+        date: 2024-12
+      - title: Angular de Cero a Experto
+        institution: DevTalles
+        date: 2024-10
+      - title: Desarrollo Web Full Stack - NestJs, NextJs, ReactJs
+        institution: Udemy
+        date: 2024-10
+      - title: React de Cero a Experto - Hooks y MERN
+        institution: DevTalles
+        date: 2024-08
+      - title: Node.js - Desarrollo Web MVC y API Rest
+        institution: Udemy
+        date: 2024-08
+      - title: JavaScript Moderno - Programación Web
+        institution: Udemy
+        date: 2024-05
+      - title: C# Fundamentals
+        institution: Microsoft
+        date: 2024-05
+      - title: Introduction to Deep Learning
+        institution: NVIDIA
+        date: 2023-10
+    
+    Habilidades:
+      - label: Desarrollo Web
+        details: Angular, React, Next.js | Sólido en Node.js, NestJS, TypeScript, JavaScript, HTML, CSS, Tailwind
+      - label: Backend & Bases de Datos
+        details: Competente en .NET (C#), Node.js, Express | Experiencia con MySQL, PostgreSQL, MongoDB, SQL Server, InfluxDB
+      - label: Machine Learning & Datos
+        details: Python (NumPy, Pandas, scikit-learn, TensorFlow, Keras) | Análisis de datos y visualización (Power BI, Grafana)
+      - label: DevOps & Tools
+        details: Docker, Git, SAP Integration, Serverless Architecture, APIs REST, Webhooks
+      - label: Idiomas
+        details: Español (nativo), Inglés (B1 - 470 puntos TOEFL ITP)
