@@ -24,7 +24,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.seoService.updateSEO({
       title: 'Rafael Moreno | Full Stack Developer - Portafolio',
       description: 'Full Stack Developer especializado en Angular, React, Node.js, Machine Learning y desarrollo de aplicaciones web modernas.',
-      url: 'https://rafaelespinozadev.com/'
+      url: 'https://rafaelespinozadev.com/',
+      image: 'https://rafaelespinozadev.com/images/profile_raf2.png'
     });
     
     this.seoService.addPersonSchema();

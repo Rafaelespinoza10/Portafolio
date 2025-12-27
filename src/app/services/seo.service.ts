@@ -45,9 +45,13 @@ export class SEOService {
            this.updateOrCreateTag('property', 'og:title', title);
            this.updateOrCreateTag('property', 'og:description', description);
            this.updateOrCreateTag('property', 'og:image', image);
+           this.updateOrCreateTag('property', 'og:image:url', image);
+           this.updateOrCreateTag('property', 'og:image:secure_url', image);
+           this.updateOrCreateTag('property', 'og:image:type', 'image/png');
            this.updateOrCreateTag('property', 'og:url', url);
            this.updateOrCreateTag('property', 'og:type', type);
            this.updateOrCreateTag('property', 'og:site_name', 'Rafael Moreno - Portafolio');
+           this.updateOrCreateTag('property', 'og:locale', 'es_ES');
    
            // Twitter Cards
            this.updateOrCreateTag('name', 'twitter:card', 'summary_large_image');
