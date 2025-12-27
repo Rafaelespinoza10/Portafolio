@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { LanguageService } from '../../../services/language.service';
+import { SEOService } from '../../../services/seo.service';
 import { translations } from '../../../i18n/translations';
 
 @Component({
@@ -18,9 +19,19 @@ export class ResumePageComponent implements OnInit, OnDestroy {
   public educationTitle = translations['resume.education.title']['es'];
   public skillsTitle = translations['resume.skills.title']['es'];
 
-  constructor(private languageService: LanguageService) { }
+  constructor(
+    private languageService: LanguageService,
+    private seoService: SEOService
+  ) { }
 
   ngOnInit() {
+    // SEO
+    this.seoService.updateSEO({
+      title: 'Resumen | CV de Rafael Moreno - Full Stack Developer',
+      description: 'Resumen profesional de Rafael Moreno: experiencia, educación, habilidades técnicas y certificaciones como Full Stack Developer.',
+      url: 'https://rafaelespinozadev.com/section/resume'
+    });
+
     // Cargar traducciones iniciales
     this.loadTranslations();
     
