@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { LanguageService } from '../../../services/language.service';
 import { translations } from '../../../i18n/translations';
+import { SEOService } from '../../../services/seo.service';
 
 @Component({
   selector: 'app-portafolio',
@@ -14,9 +15,18 @@ export class PortafolioPageComponent implements OnInit, OnDestroy {
   public title = translations['portfolio.title']['es'];
   public subtitle = translations['portfolio.subtitle']['es'];
 
-  constructor(private languageService: LanguageService) { }
+  constructor(
+    private languageService: LanguageService,
+    private seoService: SEOService
+  ) { }
 
   ngOnInit() {
+    this.seoService.updateSEO({
+      title: 'Portafolio | Proyectos de Rafael Moreno',
+      description: 'Explora los proyectos de Rafael Moreno: aplicaciones web, sistemas de automatización, dashboards y soluciones de Machine Learning.',
+      url: 'https://rafaelespinozadev.com/section/portafolio'
+    });
+
     this.loadTranslations();
     
     this.languageSubscription.add(

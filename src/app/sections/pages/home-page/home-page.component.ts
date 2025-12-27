@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SEOService } from '../../../services/seo.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private seoService: SEOService) { }
 
   ngOnInit() {
+    this.seoService.updateSEO({
+      title: 'Rafael Moreno | Full Stack Developer - Website',
+      description: 'Bienvenido al website de Rafael Moreno. Full Stack Developer especializado en Angular, React, Node.js y Machine Learning.',
+      url: 'https://rafaelespinozadev.com/section/home'
+    });
   }
 
 }

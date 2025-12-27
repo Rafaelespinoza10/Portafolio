@@ -3,6 +3,7 @@ import { LanguageService } from '../../../services/language.service';
 import { Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { translations } from '../../../i18n/translations';
+import { SEOService } from '../../../services/seo.service';
 
 @Component({
   selector: 'app-blog',
@@ -14,9 +15,18 @@ export class BlogPageComponent implements OnInit, OnDestroy {
   public title = '';
   public description = '';
 
-  constructor(private languageService: LanguageService) {}
+  constructor(
+    private languageService: LanguageService,
+    private seoService: SEOService
+  ) {}
 
   ngOnInit(): void {
+    this.seoService.updateSEO({
+      title: 'Blog | Artículos de Rafael Moreno',
+      description: 'Lee los artículos y publicaciones de Rafael Moreno sobre desarrollo web, Machine Learning, proyectos y experiencias profesionales.',
+      url: 'https://rafaelespinozadev.com/section/blog'
+    });
+    
     this.loadTranslations();
     
     this.languageSubscription.add(

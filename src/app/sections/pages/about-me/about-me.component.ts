@@ -5,6 +5,7 @@ import { skip } from 'rxjs/operators';
 import { LanguageService } from '../../../services/language.service';
 import { translations } from '../../../i18n/translations';
 import * as Aos from 'aos';
+import { SEOService } from '../../../services/seo.service';
 
 @Component({
   selector: 'app-about-me',
@@ -25,10 +26,21 @@ export class AboutMePageComponent implements OnInit, OnDestroy {
   public title = translations['aboutMePage.title']['es'];
   public subtitle = translations['aboutMePage.subtitle']['es'];
 
-  constructor(private languageService: LanguageService) { }
+  constructor(
+    private languageService: LanguageService,
+    private seoService: SEOService
+  ) { }
 
   ngOnInit(): void {
     // Cargar traducciones iniciales
+
+    this.seoService.updateSEO({
+      title: 'Rafael Moreno | Full Stack Developer - Website',
+      description: 'Bienvenido al website de Rafael Moreno. Full Stack Developer especializado en Angular, React, Node.js y Machine Learning.',
+      url: 'https://rafaelespinozadev.com/section/about-me'
+    });
+    
+  
     this.loadTranslations();
     
     // Suscribirse a cambios de idioma

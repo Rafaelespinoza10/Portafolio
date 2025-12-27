@@ -5,6 +5,7 @@ import { LanguageService } from '../../../services/language.service';
 import { Subscription } from 'rxjs';
 import { skip } from 'rxjs/operators';
 import { translations } from '../../../i18n/translations';
+import { SEOService } from '../../../services/seo.service';
 
 @Component({
   selector: 'app-blog-detail-page',
@@ -35,7 +36,8 @@ export class BlogDetailPageComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private blogService: BlogService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private seoService: SEOService
   ) {}
 
   ngOnInit(): void {
@@ -118,7 +120,35 @@ export class BlogDetailPageComponent implements OnInit, OnDestroy {
       pdfUrl: baseArticle.pdfUrl,
       pdfType: baseArticle.pdfType,
       certificates: baseArticle.certificates
-    };
+    };    
+
+    if (this.article) {
+      this.seoService.updateSEO({
+        title: `${this.article.title} | Blog - Rafael Moreno`,
+        description: this.article.description || this.article.summary || 'Artículo del blog de Rafael Moreno',
+        image: this.article.image || undefined,
+        url: `https://rafaelespinozadev.com/section/blog/${id}`,
+        type: 'article'
+      });
+
+      this.seoService.addSchemaMarkup({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        'headline': this.article.title,
+        'description': this.article.description || this.article.summary,
+        'image': this.article.image || this.seoService.getDefaultImage(),
+        'author': {
+          '@type': 'Person',
+          'name': 'Rafael Moreno'
+        },
+        'publisher': {
+          '@type': 'Person',
+          'name': 'Rafael Moreno'
+        },
+        'datePublished': this.article.date || new Date().toISOString(),
+        'url': `https://rafaelespinozadev.com/section/blog/${id}`
+      });
+    }
   }
 
   private getArticleIndex(id: string): number {
